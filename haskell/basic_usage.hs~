@@ -1,3 +1,0 @@
-squareit x = x * x
-
-addthree a b c = a + b + c

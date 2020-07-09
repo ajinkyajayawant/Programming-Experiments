@@ -1,0 +1,367 @@
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand\inner[2]{\langle #1, #2 \rangle}
+% For diagonal matrix
+\DeclareMathOperator{\diag}{diag}
+
+%For the ceiling -
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\newcommand{\roundB}[1]{\left(#1\right)}
+\newcommand{\squareB}[1]{\left[#1\right]}
+\DeclareMathOperator*{\argminA}{arg\,min}
+\DeclareMathOperator*{\argmaxA}{arg\,max}
+
+\graphicspath{{../data/}}
+
+\usepackage{array}
+\newcolumntype{L}{>{$}l<{$}}
+
+\begin{tikzpicture}
+\begin{axis}[
+  title=Inv. cum. normal,
+  xlabel={$x$},
+  ylabel={$y$},
+  legend entries={$d=2$,$d=3$,$d=4$},
+]
+\addplot[blue] table {invcum.dat};
+\end{axis}
+\end{tikzpicture}
+
+% Coloured links
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = red %Colour of citations
+}
+\usepackage[hidelinks]{hyperref}
+
+% Plotting table by indexes
+\addplot table[x index = {0}, y index = {1}] {<name>.dat};
+\addplot table[x index = {0}, y index = {2}] {<name>.dat};
+
+\addplot [select coords between index={1}{5}] table {data.txt};
+
+% Plotting variable number of columns
+\pgfplotstableread{try.dat}\mytable
+
+\begin{tikzpicture}
+  \begin{axis}[
+    title= Random values,
+    xlabel={$x$},
+    ylabel={$y$},
+    ]
+    \pgfplotstablegetcolsof{\mytable}
+    \pgfmathparse{\pgfplotsretval-1}
+    \foreach \i in {1,...,\pgfmathresult}{%
+      \addplot table[x index=0,y index=\i] {\mytable};
+    }
+  \end{axis}
+\end{tikzpicture}
+
+% New document
+\documentclass{article}
+
+\begin{document}
+
+\end{document}
+
+% For three plots side by side in a two column environment.
+\begin{figure*}
+
+\begin{minipage}[b]{0.33\linewidth}
+  \centering
+  \centerline{Knn graph model}\medskip
+\end{minipage}
+
+\begin{minipage}[b]{0.33\linewidth}
+  \centering
+  \centerline{(a) Result 1}\medskip
+\end{minipage}
+
+\begin{minipage}[b]{0.33\linewidth}
+  \centering
+  \centerline{(a) Result 1}\medskip
+\end{minipage}
+
+\end{figure*}
+
+% Multiple figures
+\begin{minipage}[b]{1.0\linewidth}
+  \centering
+  \centerline{\rule{4cm}{4cm}}
+%   \centerline{\includegraphics[width=4.0cm]{image3}}
+%  \vspace{2.0cm}
+  \centerline{(a) Result 1}\medskip
+\end{minipage}
+%
+\begin{minipage}[b]{.48\linewidth}
+  \centering
+  \centerline{\rule{4cm}{4cm}}
+%   \centerline{\includegraphics[width=4.0cm]{image3}}
+%  \vspace{1.5cm}
+  \centerline{(b) Results 3}\medskip
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.48\linewidth}
+  \centering
+  \centerline{\rule{4cm}{4cm}}
+%   \centerline{\includegraphics[width=4.0cm]{image3}}
+%  \vspace{1.5cm}
+  \centerline{(c) Result 4}\medskip
+\end{minipage}
+
+% Numbering only one line in align
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\begin{document}
+\begin{align*}
+a &=b \\
+  &=c \numberthis \label{eqn}
+\end{align*}
+Equation \eqref{eqn} shows that $a=c$.
+\begin{equation}
+d = e
+\end{equation}
+\end{document}
+
+% For selecting range of rows from a table for pgfplots to plot
+% https://tex.stackexchange.com/questions/199376/how-to-plot-the-first-n-rows-of-a-table-using-pgfplots
+
+\pgfplotsset{select coords between index/.style 2 args={
+    x filter/.code={
+        \ifnum\coordindex<#1\def\pgfmathresult{}\fi
+        \ifnum\coordindex>#2\def\pgfmathresult{}\fi
+    }
+}}
+
+\begin{document}
+    \begin{tikzpicture}
+        \begin{axis}
+        \addplot [select coords between index={1}{5}] table {data.txt};
+        \end{axis}
+    \end{tikzpicture}
+\end{document}
+% For 2 arguments we use the '2 args', otherwise we simply omit '2 args'.
+
+% Beamer navigation set off
+\setbeamertemplate{navigation symbols}{}
+
+% Placeholder image - example-image-a
+
+% page number beamer -
+\setbeamertemplate{footline}[frame number]
+% Known issues beamer: Command algorithm(float object) does not go well with beamer.
+
+% Page numbering switch off for a section
+\pagenumbering{gobble}
+<Content>
+\pagenumbering{arabic}
+
+% Removing the references title while listing publications
+% https://tex.stackexchange.com/questions/22645/hiding-the-title-of-the-bibliography
+% In the body -
+\nocite{*}
+
+\begingroup
+\renewcommand{\section}[2]{}%
+%\renewcommand{\chapter}[2]{}% for other classes
+\bibliography{pubs}
+\endgroup
+
+% If there are no cite commands then latex throws the error 'Empty 'thebibliography' environment'
+
+% Notes
+% Use bfseries not bf - https://tex.stackexchange.com/questions/41681/correct-way-to-bold-italicize-text
+
+% For top aligned minipages do 
+\begin{minipage}[]{<x>\textwidth}
+
+% Enumerate with different styles
+\usepackage{enumitem}
+\begin{enumerate}[label=\alph*)]
+\end{enumerate}
+
+% Cases in equations
+% Example:
+\begin{equation*}
+    P[Y=y] = \begin{cases}
+    \frac{4}{10}, \quad y = 2\\
+    \frac{3}{10}, \quad y = 1\\
+    \frac{2}{10}, \quad y = 0\\
+    \frac{1}{10}, \quad y = -1
+    \end{cases}
+\end{equation*}
+
+% For the limit line to the right
+\Bigr_{lim1}^{lim2}
+
+\iffalse
+Spaces
+------
+There are a number of horizontal spacing macros for LaTeX:
+
+\, inserts a \thinspace (equivalent to .16667em) in text mode, or \thinmuskip (equivalent to 3mu) in math mode;
+\! inserts a negative \thinmuskip in math mode;
+\> inserts \medmuskip (equivalent to 4.0mu plus 2.0mu minus 4.0mu) in math mode;
+\; inserts \thickmuskip (equivalent to 5.0mu plus 5.0mu) in math mode;
+\: is equivalent to \> (see above);
+\enspace inserts a space of .5em in text or math mode;
+\quad inserts a space of 1em in text or math mode;
+\qquad inserts a space of 2em in text or math mode;
+\kern <len> inserts a skip of <len> (may be negative) in text or math mode (a plain TeX skip);
+\hskip <len> (similar to \kern);
+\hspace{<len>} inserts a space of length <len> (may be negative) in math or text mode (a LaTeX \hskip);
+\hphantom{<stuff>} inserts space of length equivalent to <stuff> in math or text mode. Should be \protected when used in fragile commands (like \caption and sectional headings);
+\  inserts what is called a "control space" (in text or math mode);
+  inserts an inter-word space in text mode (and is gobbled in math mode). Similarly for \space and { }.
+~ inserts an "unbreakable" space (similar to an HTML &nbsp;) (in text or math mode);
+\hfill inserts a so-called "rubber length" or stretch between elements (in text or math mode). Note that you may need to provide a type of anchor to fill from/to; see What is the difference between \hspace*{\fill} and \hfill?;
+\fi
+
+\iffalse
+Algorithms
+----------
+Taken from https://tex.stackexchange.com/questions/229355/algorithm-algorithmic-algorithmicx-algorithm2e-algpseudocode-confused
+
+algorithm: Float wrapper for algorithms. It is similar to block commands table or figure, which you wrap around your table/figure to give it a number and to prevent it being split over two pages.
+algorithmic: This is the environment in which you write your pseudocode. You have predefined commands for common structures such as if, while, procedure. All the commands are capitalized, e.g. \IF{cond} ... \ELSE ....
+algorithmicx: This package is like algorithmic upgraded. It enables you to define custom commands, which is something  algorithmic can't do. So if you don't want to write your (crazy) custom commands, you will be fine with algorithmic. You use algorithmicx the same way you use algorithmic, only the syntax and details are slightly different. See the example below for details.
+algpseudocode: This is just a layout for algorithmicx which tries to be as simillar as possible to algorithmic.
+algorithm2e: This is another algorithm environment just like algorithmic or algorithmicx.
+\fi
+Example:
+\usepackage{algpseudocode}
+\begin{algorithm}
+\caption{Euclid’s algorithm}\label{euclid}
+\begin{algorithmic}[1]
+\Procedure{Euclid}{$a,b$}\Comment{The g.c.d. of a and b}
+\State $r\gets a\bmod b$
+\While{$r\not=0$}\Comment{We have the answer if r is 0}
+\State $a\gets b$
+\State $b\gets r$
+\State $r\gets a\bmod b$
+\EndWhile\label{euclidendwhile}
+\State \textbf{return} $b$\Comment{The gcd is b}
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\iffalse
+If I want to use algorithmicx I just need to do \usepackage{algorithm} \usepackage{algpseudocode}. The reason for this is because the algorithmicx package provides (in addition to just defining the algorithmic environment through algorithmicx.sty) a bundle of style files with predefined macros (like \Procedure, \Comment, etc), including algpseudocode.sty. Taken from https://tex.stackexchange.com/questions/29429/how-to-use-algorithmicx-package.
+\fi
+
+% Including python code
+\usepackage{xcolor}
+\usepackage[procnames]{listings}
+
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{0,0,113}
+\definecolor{red}{RGB}{160,0,0}
+\definecolor{green}{RGB}{0,150,0}
+
+\lstset{language=Python, 
+  basicstyle=\ttfamily\small, 
+  keywordstyle=\color{keywords},
+  commentstyle=\color{comments},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  identifierstyle=\color{green},
+  procnamekeys={def,class}}
+\lstinputlisting{../coding_hws/hw10_code_ajinkya.py}
+
+% Include output file
+\usepackage{verbatim}
+\verbatiminput{output_log.txt}
+
+% Checking whether a pdf image is transparent
+\documentclass{article}
+
+\usepackage{pagecolor,graphicx}
+
+\pagecolor{yellow!30!orange}
+
+\begin{document}
+\begin{figure}
+  \includegraphics{try1.pdf}
+\end{figure}
+\end{document}
+
+% If most of the content in your table is mathematical it is better to use array instead of tabular and use
+\text{}
+% whereever there is text. https://tex.stackexchange.com/questions/112576/math-mode-in-tabular-without-having-to-use-everywhere
+
+% For no end of for loop in the pseudocode package use
+\usepackage[noend]{pseudocode}
+
+% & causes a problem while using matrix in tikz in beamer. Replace & with \pgfmatrixnextcell. http://pgf-and-tikz.10981.n7.nabble.com/problem-using-a-tikz-matrix-within-beamer-td1519.html
+
+% For metropolis theme in beamer for doing fractional numbering do \usetheme[numbering=fraction]{metropolis} instead of just \usetheme{metropolis}
+
+% For theorem and lemmas
+\newtheorem{prop}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+% Span multiple columns or rows in a table
+% https://texblog.org/2012/12/21/multi-column-and-multi-row-cells-in-latex-tables/
+% Sapn multiple rows -
+\documentclass[11pt]{article}
+\usepackage{multirow}
+\begin{document}
+ 
+\begin{table}[ht]
+\caption{Multi-row table}
+\begin{center}
+\begin{tabular}{cc}
+    \hline
+    \multirow{2}{*}{Multirow}&X\\
+    &X\\
+    \hline
+\end{tabular}
+\end{center}
+\label{tab:multicol}
+\end{table}
+ 
+\end{document}
+% Span multiple columns and rows -
+\documentclass[11pt]{article}
+\usepackage{multirow}
+\begin{document}
+ 
+\begin{table}[ht]
+\caption{Multi-column and multi-row table}
+\begin{center}
+\begin{tabular}{ccc}
+    \hline
+    \multicolumn{2}{c}{\multirow{2}{*}{Multi-col-row}}&X\\
+    \multicolumn{2}{c}{}&X\\
+    \hline
+    X&X&X\\
+    \hline
+\end{tabular}
+\end{center}
+\label{tab:multicol}
+\end{table}
+ 
+\end{document}
+
+% Adding space between columns in table -
+\setlength{\tabcolsep}{5pt}
+% Adding space between rows in table -
+\renewcommand{\arraystretch}{1.5}
+% To add space between columns for one particular table, the following syntax is useful -
+\begin{tabular}{l@{\hskip 1in}c@{\hskip 0.5in}c}
+  One&Two& Three\\
+  Four& Five& Six
+\end{tabular}
+
+% To disable algorithm numbering for algorithms, put
+\renewcommand{\thealgorithm}{}
+% after
+\begin{algorithm}.
+% To disable the algorithm label for algorithms, put
+\floatname{algorithm}{}
+% after
+\begin{algorithm}.

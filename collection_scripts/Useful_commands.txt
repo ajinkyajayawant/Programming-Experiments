@@ -1,4 +1,4 @@
-Change to zsh
+Change shell to zsh
 chsh -s $(which zsh)
 
 sudo add-apt-repository ppa:blueman/ppa
@@ -85,7 +85,7 @@ M-x create-directory
 M-x delete-directory
 M-x delete-file
 
-github
+Git
 ------
 git init
 git remote add origin https://github.com/ginkx/surfacing-tetrahedral.git
@@ -119,6 +119,20 @@ git remote set-url origin git@github.com:ginkx/surfacing-tetrahedral.git
 git push origin master
 Sometimes when I add a file like LICENSE to github repository I need to update it with the local repository. To do that I do 'git fetch origin', then I do 'git merge origin/master' and 'git push -u origin master'.
 To view all commits do 'git log'.
+
+Git commits to different branches
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Get the code from the remote branch - git fetch
+Merge the code locally with my current commit - git pull
+
+Git comparing
+~~~~~~~~~~~~~
+To list the SHA HASHES of commits - git log
+To compare with previous commit - git diff HEAD^ HEAD
+To list the files in a commit - git ls-tree --name-only -r <SHA_HASH>
+List the differences between the commits - git diff --stat <SHA_HASH1> <SHA_HASH2>
+Show the files which changed between the commits - git diff --name-only <SHA_HASH1> <SHA_HASH2>
+Show the files which changed between the commits along with short summary about change in file status - git diff --name-status <SHA_HASH1> <SHA_HASH2>
 
 Git edit upload commands
 -------------------------------
@@ -528,6 +542,14 @@ Another way of defining a symbolic function is just define your symbols and then
 For example if xx,yy,zz are defined symbols then f3 = mp.e**xx-mp.e**yy+zz-3 is a valid function.
 For printing symbolic functions simply do print(f3)
 Multiple substitutions: f2.subs([(xx,1),(yy,2)])
+Memory info
+~~~~~~~~~~~
+To know the memory location of a particular object, do 'list(map(id, <object name>))'
+PDB
+~~~
+When in debugger, to list all the breakpoints, simply type 'b'.
+Breakpoints are placed in files. To specify a filename to place a breakpoint, do 'b <filepath/filename>:<line number>'
+To stop code execution at the particular point and enter the debugger, do 'pdb.set_trace()'.
 
 Java
 ----
@@ -573,6 +595,12 @@ while [ $x -le 5 ]
 do
   echo "Welcome $x times"
   x=$(( $x + 1 ))
+done
+
+Looping over sub-directories in bash
+for dir in ./*/
+do
+dirn=${dir%*/}
 done
 
 for loop, array for for loop, -le flag,
@@ -716,3 +744,15 @@ Alternative grammar checker option:
 textidote --check en --output html input.tex > report.html
 
 For scaling pdfs, pdfscale very useful - https://github.com/tavinus/pdfScale.
+
+Whenever you are executing a file via command line and the command line says file does not exist, it is possible that the dependencies/libraries that the file uses do not exist.
+To run a 32 bit application on the 64-bit computer you need to install some i386 libraries.
+To find what libraries are required run ldd <executable name>
+
+To see the memory consumption of the system, run the following command.
+free -mt -c 1000
+
+Docker
+~~~~~~
+For mounting a particular
+docker run -it --name <dockername> --mount type=bind,source=<machine path>,target=<docker path> --rm --gpus all <id of docker>

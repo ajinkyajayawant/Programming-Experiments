@@ -120,10 +120,17 @@ git push origin master
 Sometimes when I add a file like LICENSE to github repository I need to update it with the local repository. To do that I do 'git fetch origin', then I do 'git merge origin/master' and 'git push -u origin master'.
 To view all commits do 'git log'.
 
+Git branch details
+~~~~~~~~~~~~~~~~~~
+git branch -av
+
+Resolve merge conflict: Simple way is to edit the file yourself to remove the conflicts.
+
 Git file status
 ~~~~~~~~~~~~~~~
 git status --ignored
 git ls-files --others --ignored --exclude-standard
+git ls-files --cached
 
 Git deleting branches locally when you mess it up
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -362,7 +369,7 @@ Vim move to the start of the file - gg, move to the end of the file - G.
 Find and delete files
 ---------------------
 find . -name "*<name>*" -type f
-find . -name "*<name>*" -type f -delete
+find . -name "*<name>*" -type f -delete (This is useful when you want to recursively delete a particular filetype from a directory. rm -r does not work for that purpose.)
 Find upto a depth: find . -maxdepth 4 -iname "*<expression>*"
 Don't search file in a path( there were some warnings)(From https://askubuntu.com/questions/176010/exclude-some-of-the-find-results): find . ! -path "*<directory name>*" -iname "*<pattern>*"
 
@@ -505,6 +512,7 @@ Parse the numbers correctly while file globbing using ls ./*: ls -v ./*
 Screensaver - Menu-> screensaver -> blank screen only
 Suspend - xscreensaver-command -lock ; xfce4-session-logout --suspend
 The suspend button is not locking the computer
+For enabling the screen lock, make sure 'xscreensaver' package is installed and 
 
 Adding users xfce
 -----------------
@@ -784,3 +792,10 @@ Docker
 ~~~~~~
 For mounting a particular
 docker run -it --name <dockername> --mount type=bind,source=<machine path>,target=<docker path> --rm --gpus all <id of docker>
+
+Tiling images
+~~~~~~~~~~~~~
+montage a.png b.png -geometry <width>x montage_output.png
+
+To check the RAM slots in the machine, 'sudo lshw -class memory'
+To just dump all hardware information, do - 'sudo lshw'

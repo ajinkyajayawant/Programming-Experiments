@@ -15,3 +15,6 @@ tup2lst (2, 3)
 tup2lst ("aj", "dj")
 tup2lst (2,"zj")
 -- The last command gives back an error as expected
+
+-- Output of accumulation using partial application
+((accum 2) 3) 4

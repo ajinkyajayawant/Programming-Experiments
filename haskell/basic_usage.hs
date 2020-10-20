@@ -49,3 +49,14 @@ tupAdd (a, b) = a + b
 -- Trying generic type definitions
 tup2lst :: (a, a) -> [a]
 tup2lst (x, y) = [x, y]
+
+-- Partial application of curried function
+accum x = addthree x
+
+-- Let in clause
+
+
+-- Where clause 
+
+
+-- If as an expression

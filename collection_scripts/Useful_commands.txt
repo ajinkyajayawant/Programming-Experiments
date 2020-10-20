@@ -122,9 +122,23 @@ To view all commits do 'git log'.
 
 Git branch details
 ~~~~~~~~~~~~~~~~~~
+Create a new branch: git branch <new branch name>
 git branch -av
 
 Resolve merge conflict: Simple way is to edit the file yourself to remove the conflicts.
+
+Git stashing working directory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Git stash basically stores all changes since a commit in a buffer and returns a clean working directory.
+Create a named stash using - git stash save "<stash name>"
+Create a named stash using (saves untracked files too) - git stash -u "<stash name>"
+List all stashes - git stash list
+Check details on a stash - git stash show stash@{0}
+To apply a stash to the current working directory - git stash apply stash@{0}
+Drop a stash - git stash drop stash@{0}
+Drop all stashes - git stash clear
+
+Git get a file from a particular Hash - git show <HASH>:/path/to/file > <file_destination>
 
 Git file status
 ~~~~~~~~~~~~~~~
@@ -150,6 +164,8 @@ Git commits to different branches
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Get the code from the remote branch - git fetch
 Merge the code locally with my current commit - git pull
+
+Merge a branch into another: git merge --no-ff <name of branch to merge>
 
 Git comparing
 ~~~~~~~~~~~~~
@@ -222,7 +238,7 @@ Openssh server
 
 Formatting
 ----------
-lsblk
+lsblk 
 sudo dd if=/dev/zero of=/dev/sdb bs=4k status=progress && sync
 sudo fdisk /dev/sdb, Then press letter o to create a new empty DOS partition table. Press letter n to add a new partition. You will be prompted for the size of the partition. Making a primary partition when prompted, if you are not sure. Then press letter w to write table to disk and exit. 
 lsblk
@@ -336,6 +352,7 @@ com.mathworks.mlservices.MLEditorServices.closeAll
 editorservices.closeGroup
 e=editorservices.getAll; e.close
 Doesn't work in the recent editions
+To get a field of a structure using a function: getfield(<objectname>,'object member name')
 
 To save a variable outside while debugging, do - assignin('<workspace name>','<variable name>',<variable value>);
 
@@ -365,6 +382,7 @@ Profit!
 For copying to the system buffer use "+y and for pasting from the system buffer use "+p.
 I want to use emacs as my defulat text editor because the shortcuts are easier to remember as commands. Starting file in emacs without opening a new instance is difficult as it requires a running server and using emacsclient. I'll just use vim for now and remember the shortcuts.
 Vim move to the start of the file - gg, move to the end of the file - G.
+Adding same letter <n> times :normal <n>i<letter>
 
 Find and delete files
 ---------------------
@@ -581,6 +599,17 @@ When in debugger, to list all the breakpoints, simply type 'b'.
 Breakpoints are placed in files. To specify a filename to place a breakpoint, do 'b <filepath/filename>:<line number>'
 To stop code execution at the particular point and enter the debugger, do 'pdb.set_trace()'.
 
+Installing and using conda
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+conda config --set auto_activate_base False
+Create an environment: conda create --name <env_name>
+Start the environment: conda activate <env_name>
+Install package: conda install <package_name>
+List of packages: conda list
+List of environments: conda env list 
+Activate an environment: conda activate <env_name>
+Deactivate and environment: conda deactivate
+
 Java
 ----
 Version: java -version
@@ -608,6 +637,7 @@ Primary protection from deletions:(Remove the write permissions from all, then i
 chmod ugo-w <filename>
 
 Sorting the space consumed by files: (https://serverfault.com/questions/62411/how-can-i-sort-du-h-output-by-size) du -h | sort -h
+To find the space available: df -ha
 
 Foxit pdf reader
 ----------------
@@ -721,11 +751,13 @@ IEEE may enforce subfig.
 ssh
 ~~~
 To disconnect from an ssh connection, Press Enter, ~, .
+To suspend from an ssh session, Press Enter, ~, C-z
 Normal characters are forwarded over the ssh session, so we need to use special characters like the above.
 Sometimes disconnecting the connection results in termination signal for the program in screen. To avoid that, just suspending the ssh service works.
 Sometimes when I try to connect to a screen using screen -r command it says "There is no screen to be resumed matching". This behavior actually results from using multi-display mode. When you detach a screen session on multi-display, it will only detach on the current terminal. In my case it usually happens if the screen was started from another ssh session or terminal which did not detach before the session closed I think. Using -x instead of -r helps.
 'echo $TERM && echo $STY && screen -ls' helps to know whether I'm in a screen. For tmux it is 'echo $TERM && echo $STY && tmux ls'
 For screen logging use -L option.
+To enable scrolling in screen do C-A Esc -> scroll -> q
 
 To crop margins from pdf - pdfcrop --margins '-<left> -<top> -<right> -<bottom>' input.pdf output.pdf. This forcefully crops the margins. pdfcrop input.pdf output.pdf does not forcefully crop the margins.
 Briss is an awesome tool to crop margins. Run it using 'java -jar briss-0.9.jar'

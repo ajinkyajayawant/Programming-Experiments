@@ -1,0 +1,2 @@
+on changing size of prime_store array,sum is changing,why?
+also it takes a lot of system and user time why?

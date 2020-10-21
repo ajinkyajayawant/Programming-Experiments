@@ -289,6 +289,7 @@ Firefox
 always open in private mode: about:config -> Browser.privatebrowsing.autostart to true
 do not close window on closing last tab: about:cnofig -> browser.tabs.closeWindowWithLastTab
 focus on link bar - alt+D, ctrl+L,
+Command to open window in private mode: firefor -private-window &
 
 Opera in private mode
 ---------------------
@@ -390,6 +391,8 @@ find . -name "*<name>*" -type f
 find . -name "*<name>*" -type f -delete (This is useful when you want to recursively delete a particular filetype from a directory. rm -r does not work for that purpose.)
 Find upto a depth: find . -maxdepth 4 -iname "*<expression>*"
 Don't search file in a path( there were some warnings)(From https://askubuntu.com/questions/176010/exclude-some-of-the-find-results): find . ! -path "*<directory name>*" -iname "*<pattern>*"
+For finding and deleting directories(and their contents) matching a particular name: find . -type d -name "*<name>*" -exec rm -rf {} +
+Proxy to remove C and C++ executables. be careful can delete other files too: find . -type f -not -iname "*.*" -exec rm '{}' \;
 
 Disabling open window after inserting usb
 -----------------------------------------

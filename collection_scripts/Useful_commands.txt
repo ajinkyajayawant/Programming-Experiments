@@ -136,6 +136,7 @@ List all stashes - git stash list
 Check details on a stash - git stash show stash@{0}
 To apply a stash to the current working directory - git stash apply stash@{0}
 Drop a stash - git stash drop stash@{0}
+Pop a stash(Convenient because you don't have to remember whether you used a stash or not) - git stash pop stash@{0}
 Drop all stashes - git stash clear
 
 Git get a file from a particular Hash - git show <HASH>:/path/to/file > <file_destination>
@@ -149,6 +150,7 @@ git ls-files --cached
 Git deleting branches locally when you mess it up
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 git branch -d <local_branch>
+To delete a branch from the online repository: git push <remote> --delete <branch>
 
 Git stop tracking files but don't delete from local tree:
 git rm --cached
@@ -175,6 +177,20 @@ To list the files in a commit - git ls-tree --name-only -r <SHA_HASH>
 List the differences between the commits - git diff --stat <SHA_HASH1> <SHA_HASH2>
 Show the files which changed between the commits - git diff --name-only <SHA_HASH1> <SHA_HASH2>
 Show the files which changed between the commits along with short summary about change in file status - git diff --name-status <SHA_HASH1> <SHA_HASH2>
+If a good visual utility like meld is available do git difftool instead of git diff
+git diff HEAD shows the difference with the last commit
+
+git index
+~~~~~~~~~
+Git index actually contains all files tracked - staged and committed.
+Ref 1 - https://stackoverflow.com/questions/3516823/whats-the-difference-between-the-index-cached-and-staged-in-git/47543410#47543410
+Ref 2 (See QA) - https://stackoverflow.com/questions/1587846/how-do-i-show-the-changes-which-have-been-staged
+
+Git diff explanation
+~~~~~~~~~~~~~~~~~~~~
+The symbols --- and +++ represent what is used to describe the file.
+@@ represents chunks.
+-1,2 +1 means line one and two were changed in the first file and line one was changed in the second file.
 
 Git edit upload commands
 -------------------------------
@@ -317,6 +333,7 @@ cp -nvr -> Nice recursive copy without copying already existing files
 mv cannot do recursive merging, one point to keep in mind.
 cp cannot delete files from source directory.
 So if there is enough space to create a copy then just use cp and delete the source files, otherwise need to use the slower rsync and then delete the empty directories. rsync only copies/sends differences of files.
+mv -v is a convenient option so that we know which files are being moved.
 
 MATLAB
 ======
@@ -384,6 +401,7 @@ For copying to the system buffer use "+y and for pasting from the system buffer 
 I want to use emacs as my defulat text editor because the shortcuts are easier to remember as commands. Starting file in emacs without opening a new instance is difficult as it requires a running server and using emacsclient. I'll just use vim for now and remember the shortcuts.
 Vim move to the start of the file - gg, move to the end of the file - G.
 Adding same letter <n> times :normal <n>i<letter>
+Set line numbers: set number
 
 Find and delete files
 ---------------------
@@ -808,6 +826,7 @@ Attaching a screen by number - tmux attach-session -t
 Detaching from a session - Ctrl-b + d
 Split current pane vertically into two panes - Ctrl+b " 
 Tmux does not have looging by default. To know whether you are in a tmux session, check whether there is a green bar at the bottom.
+To close a tmux session Ctrl-b + : then enter kill-session and press enter.
 
 Alternative grammar checker option:
 * Use libreoffice write grammar checker. (Tools-> Spelling and grammar, options, grammar as you type). Or with abiword. Install abiword-plugin-grammar. Edit-> Preferences -> Spell checking -> Check grammar as you type.

@@ -29,6 +29,24 @@
 \end{axis}
 \end{tikzpicture}
 
+
+% tikz pgfplots with one axis manually specified
+\begin{figure}[t]
+\begin{tikzpicture}
+\pgfplotstableread{<filename>.txt}\crossvalidtable;
+\begin{axis}[
+  xlabel={$k$},
+  ylabel={Avg. accuracy}
+]
+\addplot table [
+x={create col/set list={10,20,30,40,50,60,70,80,90,100,110}},
+y index=0
+] {\crossvalidtable};
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+
 % Coloured links
 \usepackage{hyperref}
 \hypersetup{

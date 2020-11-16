@@ -1,0 +1,53 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x1988c50 .scope module, "testic74hc138" "testic74hc138" 2 1;
+ .timescale 0 0;
+v0x19bd7c0_0 .net "CatchOutput", 0 0, L_0x19be460; 1 drivers
+v0x19bd880_0 .var "EnInputs", 2 0;
+v0x19bd920_0 .net "EnableInputs", 0 0, C4<z>; 0 drivers
+v0x19bd9c0_0 .var "NumberIn", 2 0;
+L_0x19be140 .part v0x19bd9c0_0, 0, 1;
+L_0x19be230 .part v0x19bd9c0_0, 1, 1;
+L_0x19be370 .part v0x19bd9c0_0, 2, 1;
+L_0x19be460 .part L_0x19bdfb0, 0, 1;
+L_0x19be550 .part v0x19bd880_0, 0, 1;
+S_0x1987670 .scope module, "m0" "ic74hc138" 2 13, 2 16, S_0x1988c50;
+ .timescale 0 0;
+L_0x19bd3d0 .functor OR 1, L_0x19be550, C4<x>, C4<0>, C4<0>;
+L_0x19bdc60 .functor NOT 1, C4<x>, C4<0>, C4<0>, C4<0>;
+L_0x19bdd20 .functor OR 1, L_0x19bd3d0, L_0x19bdc60, C4<0>, C4<0>;
+v0x199a420_0 .net "DecodedOut", 7 0, L_0x19bdfb0; 1 drivers
+v0x19bcdb0_0 .net "Enable2", 0 0, C4<x>; 1 drivers
+v0x19bce50_0 .net "EnableB0", 0 0, L_0x19be550; 1 drivers
+v0x19bcef0_0 .net "EnableB1", 0 0, C4<x>; 1 drivers
+v0x19bcfa0_0 .net "NumberBit0", 0 0, L_0x19be140; 1 drivers
+v0x19bd040_0 .net "NumberBit1", 0 0, L_0x19be230; 1 drivers
+v0x19bd120_0 .net "NumberBit2", 0 0, L_0x19be370; 1 drivers
+v0x19bd1c0_0 .net *"_s10", 7 0, C4<00000001>; 1 drivers
+v0x19bd2b0_0 .net *"_s12", 7 0, L_0x19bde40; 1 drivers
+v0x19bd350_0 .net *"_s2", 0 0, L_0x19bd3d0; 1 drivers
+v0x19bd450_0 .net *"_s4", 0 0, L_0x19bdc60; 1 drivers
+v0x19bd4f0_0 .net *"_s6", 0 0, L_0x19bdd20; 1 drivers
+v0x19bd600_0 .net *"_s8", 7 0, C4<11111111>; 1 drivers
+v0x19bd6a0_0 .net "inputConcatenated", 2 0, L_0x19bda40; 1 drivers
+L_0x19bda40 .concat [ 1 1 1 0], L_0x19be140, L_0x19be230, L_0x19be370;
+L_0x19bde40 .shift/l 8, C4<00000001>, L_0x19bda40;
+L_0x19bdfb0 .functor MUXZ 8, L_0x19bde40, C4<11111111>, L_0x19bdd20, C4<>;
+    .scope S_0x1988c50;
+T_0 ;
+    %movi 8, 4, 3;
+    %set/v v0x19bd880_0, 8, 3;
+    %movi 8, 5, 3;
+    %set/v v0x19bd9c0_0, 8, 3;
+    %vpi_call 2 9 "$display", "%8b", v0x19bd7c0_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "./Ass2Patkar.v";

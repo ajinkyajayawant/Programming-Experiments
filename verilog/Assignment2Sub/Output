@@ -1,0 +1,277 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision - 9;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xa57390 .scope module, "TestBench" "TestBench" 2 3;
+ .timescale -9 -9;
+L_0xa7ece0 .functor NOT 8, L_0xa7ac30, C4<00000000>, C4<00000000>, C4<00000000>;
+L_0xa7ed40 .functor AND 8, L_0xa7e750, L_0xa7ece0, C4<11111111>, C4<11111111>;
+L_0xa7eda0 .functor NOT 8, L_0xa7af60, C4<00000000>, C4<00000000>, C4<00000000>;
+L_0xa7ee00 .functor AND 8, L_0xa7e750, L_0xa7eda0, C4<11111111>, C4<11111111>;
+L_0xa7eef0 .functor NOT 8, L_0xa7b2e0, C4<00000000>, C4<00000000>, C4<00000000>;
+L_0xa7ef50 .functor AND 8, L_0xa7e750, L_0xa7eef0, C4<11111111>, C4<11111111>;
+L_0xa7f040 .functor NOT 8, L_0xa7b610, C4<00000000>, C4<00000000>, C4<00000000>;
+L_0xa7f0a0 .functor AND 8, L_0xa7e750, L_0xa7f040, C4<11111111>, C4<11111111>;
+L_0xa7f1a0 .functor NOT 8, L_0xa7b940, C4<00000000>, C4<00000000>, C4<00000000>;
+L_0xa7f200 .functor AND 8, L_0xa7e750, L_0xa7f1a0, C4<11111111>, C4<11111111>;
+L_0xa7f310 .functor NOT 8, L_0xa7bc70, C4<00000000>, C4<00000000>, C4<00000000>;
+L_0xa7f370 .functor AND 8, L_0xa7e750, L_0xa7f310, C4<11111111>, C4<11111111>;
+L_0xa7f2b0 .functor NOT 8, L_0xa7bfa0, C4<00000000>, C4<00000000>, C4<00000000>;
+L_0xa7ee60 .functor AND 8, L_0xa7e750, L_0xa7f2b0, C4<11111111>, C4<11111111>;
+L_0xa7f5b0 .functor NOT 8, L_0xa7c3e0, C4<00000000>, C4<00000000>, C4<00000000>;
+L_0xa7f610 .functor AND 8, L_0xa7e750, L_0xa7f5b0, C4<11111111>, C4<11111111>;
+v0xa79310_0 .net "Column0", 7 0, L_0xa7ed40; 1 drivers
+v0xa793d0_0 .net "Column1", 7 0, L_0xa7ee00; 1 drivers
+v0xa79470_0 .net "Column2", 7 0, L_0xa7ef50; 1 drivers
+v0xa79510_0 .net "Column3", 7 0, L_0xa7f0a0; 1 drivers
+v0xa795c0_0 .net "Column4", 7 0, L_0xa7f200; 1 drivers
+v0xa79660_0 .net "Column5", 7 0, L_0xa7f370; 1 drivers
+v0xa79740_0 .net "Column6", 7 0, L_0xa7ee60; 1 drivers
+v0xa797e0_0 .net "Column7", 7 0, L_0xa7f610; 1 drivers
+v0xa798d0_0 .var "EnableIc02", 0 0;
+v0xa79950_0 .var "EnableIc0B0", 0 0;
+v0xa79a60_0 .var "EnableIc0B1", 0 0;
+v0xa79b10_0 .var "EnableIc12", 0 0;
+v0xa79c30_0 .var "EnableIc1B0", 0 0;
+v0xa79ce0_0 .var "EnableIc1B1", 0 0;
+v0xa79e10_0 .net "Extend0", 7 0, L_0xa7ac30; 1 drivers
+v0xa79ec0_0 .net "Extend1", 7 0, L_0xa7af60; 1 drivers
+v0xa79d60_0 .net "Extend2", 7 0, L_0xa7b2e0; 1 drivers
+v0xa7a030_0 .net "Extend3", 7 0, L_0xa7b610; 1 drivers
+v0xa7a150_0 .net "Extend4", 7 0, L_0xa7b940; 1 drivers
+v0xa7a1d0_0 .net "Extend5", 7 0, L_0xa7bc70; 1 drivers
+v0xa7a0b0_0 .net "Extend6", 7 0, L_0xa7bfa0; 1 drivers
+v0xa7a330_0 .net "Extend7", 7 0, L_0xa7c3e0; 1 drivers
+v0xa7a250_0 .net "TestCounterOut0", 2 0, v0xa780b0_0; 1 drivers
+v0xa7a470_0 .net "TestCounterOut1", 2 0, v0xa77ec0_0; 1 drivers
+v0xa7a3e0_0 .net "TestOutputs0", 7 0, L_0xa7d3b0; 1 drivers
+v0xa7a5c0_0 .net "TestOutputs1", 7 0, L_0xa7e750; 1 drivers
+v0xa7a520_0 .net *"_s30", 7 0, L_0xa7ece0; 1 drivers
+v0xa7a720_0 .net *"_s34", 7 0, L_0xa7eda0; 1 drivers
+v0xa7a640_0 .net *"_s38", 7 0, L_0xa7eef0; 1 drivers
+v0xa7a890_0 .net *"_s42", 7 0, L_0xa7f040; 1 drivers
+v0xa7a7a0_0 .net *"_s46", 7 0, L_0xa7f1a0; 1 drivers
+v0xa7aa10_0 .net *"_s50", 7 0, L_0xa7f310; 1 drivers
+v0xa7a910_0 .net *"_s54", 7 0, L_0xa7f2b0; 1 drivers
+v0xa7a990_0 .net *"_s58", 7 0, L_0xa7f5b0; 1 drivers
+v0xa7abb0_0 .var "clock", 0 0;
+L_0xa7aec0 .part L_0xa7d3b0, 0, 1;
+L_0xa7b240 .part L_0xa7d3b0, 1, 1;
+L_0xa7b570 .part L_0xa7d3b0, 2, 1;
+L_0xa7b8a0 .part L_0xa7d3b0, 3, 1;
+L_0xa7bbd0 .part L_0xa7d3b0, 4, 1;
+L_0xa7bf00 .part L_0xa7d3b0, 5, 1;
+L_0xa7c230 .part L_0xa7d3b0, 6, 1;
+L_0xa7c620 .part L_0xa7d3b0, 7, 1;
+L_0xa7c6c0 .part v0xa780b0_0, 2, 1;
+L_0xa7d540 .part v0xa780b0_0, 0, 1;
+L_0xa7d690 .part v0xa780b0_0, 1, 1;
+L_0xa7d7c0 .part v0xa780b0_0, 2, 1;
+L_0xa7e930 .part v0xa77ec0_0, 0, 1;
+L_0xa7ea70 .part v0xa77ec0_0, 1, 1;
+L_0xa7eb60 .part v0xa77ec0_0, 2, 1;
+S_0xa790c0 .scope module, "b0" "BitExtend" 2 77, 3 34, S_0xa57390;
+ .timescale -9 -9;
+v0xa791b0_0 .alias "EightBits", 7 0, v0xa79e10_0;
+v0xa79270_0 .net "OneBit", 0 0, L_0xa7aec0; 1 drivers
+LS_0xa7ac30_0_0 .concat [ 1 1 1 1], L_0xa7aec0, L_0xa7aec0, L_0xa7aec0, L_0xa7aec0;
+LS_0xa7ac30_0_4 .concat [ 1 1 1 1], L_0xa7aec0, L_0xa7aec0, L_0xa7aec0, L_0xa7aec0;
+L_0xa7ac30 .concat [ 4 4 0 0], LS_0xa7ac30_0_0, LS_0xa7ac30_0_4;
+S_0xa78e70 .scope module, "b1" "BitExtend" 2 78, 3 34, S_0xa57390;
+ .timescale -9 -9;
+v0xa78f60_0 .alias "EightBits", 7 0, v0xa79ec0_0;
+v0xa79020_0 .net "OneBit", 0 0, L_0xa7b240; 1 drivers
+LS_0xa7af60_0_0 .concat [ 1 1 1 1], L_0xa7b240, L_0xa7b240, L_0xa7b240, L_0xa7b240;
+LS_0xa7af60_0_4 .concat [ 1 1 1 1], L_0xa7b240, L_0xa7b240, L_0xa7b240, L_0xa7b240;
+L_0xa7af60 .concat [ 4 4 0 0], LS_0xa7af60_0_0, LS_0xa7af60_0_4;
+S_0xa78c20 .scope module, "b2" "BitExtend" 2 79, 3 34, S_0xa57390;
+ .timescale -9 -9;
+v0xa78d10_0 .alias "EightBits", 7 0, v0xa79d60_0;
+v0xa78dd0_0 .net "OneBit", 0 0, L_0xa7b570; 1 drivers
+LS_0xa7b2e0_0_0 .concat [ 1 1 1 1], L_0xa7b570, L_0xa7b570, L_0xa7b570, L_0xa7b570;
+LS_0xa7b2e0_0_4 .concat [ 1 1 1 1], L_0xa7b570, L_0xa7b570, L_0xa7b570, L_0xa7b570;
+L_0xa7b2e0 .concat [ 4 4 0 0], LS_0xa7b2e0_0_0, LS_0xa7b2e0_0_4;
+S_0xa789d0 .scope module, "b3" "BitExtend" 2 80, 3 34, S_0xa57390;
+ .timescale -9 -9;
+v0xa78ac0_0 .alias "EightBits", 7 0, v0xa7a030_0;
+v0xa78b80_0 .net "OneBit", 0 0, L_0xa7b8a0; 1 drivers
+LS_0xa7b610_0_0 .concat [ 1 1 1 1], L_0xa7b8a0, L_0xa7b8a0, L_0xa7b8a0, L_0xa7b8a0;
+LS_0xa7b610_0_4 .concat [ 1 1 1 1], L_0xa7b8a0, L_0xa7b8a0, L_0xa7b8a0, L_0xa7b8a0;
+L_0xa7b610 .concat [ 4 4 0 0], LS_0xa7b610_0_0, LS_0xa7b610_0_4;
+S_0xa78780 .scope module, "b4" "BitExtend" 2 81, 3 34, S_0xa57390;
+ .timescale -9 -9;
+v0xa78870_0 .alias "EightBits", 7 0, v0xa7a150_0;
+v0xa78930_0 .net "OneBit", 0 0, L_0xa7bbd0; 1 drivers
+LS_0xa7b940_0_0 .concat [ 1 1 1 1], L_0xa7bbd0, L_0xa7bbd0, L_0xa7bbd0, L_0xa7bbd0;
+LS_0xa7b940_0_4 .concat [ 1 1 1 1], L_0xa7bbd0, L_0xa7bbd0, L_0xa7bbd0, L_0xa7bbd0;
+L_0xa7b940 .concat [ 4 4 0 0], LS_0xa7b940_0_0, LS_0xa7b940_0_4;
+S_0xa78530 .scope module, "b5" "BitExtend" 2 82, 3 34, S_0xa57390;
+ .timescale -9 -9;
+v0xa78620_0 .alias "EightBits", 7 0, v0xa7a1d0_0;
+v0xa786e0_0 .net "OneBit", 0 0, L_0xa7bf00; 1 drivers
+LS_0xa7bc70_0_0 .concat [ 1 1 1 1], L_0xa7bf00, L_0xa7bf00, L_0xa7bf00, L_0xa7bf00;
+LS_0xa7bc70_0_4 .concat [ 1 1 1 1], L_0xa7bf00, L_0xa7bf00, L_0xa7bf00, L_0xa7bf00;
+L_0xa7bc70 .concat [ 4 4 0 0], LS_0xa7bc70_0_0, LS_0xa7bc70_0_4;
+S_0xa78320 .scope module, "b6" "BitExtend" 2 83, 3 34, S_0xa57390;
+ .timescale -9 -9;
+v0xa78410_0 .alias "EightBits", 7 0, v0xa7a0b0_0;
+v0xa78490_0 .net "OneBit", 0 0, L_0xa7c230; 1 drivers
+LS_0xa7bfa0_0_0 .concat [ 1 1 1 1], L_0xa7c230, L_0xa7c230, L_0xa7c230, L_0xa7c230;
+LS_0xa7bfa0_0_4 .concat [ 1 1 1 1], L_0xa7c230, L_0xa7c230, L_0xa7c230, L_0xa7c230;
+L_0xa7bfa0 .concat [ 4 4 0 0], LS_0xa7bfa0_0_0, LS_0xa7bfa0_0_4;
+S_0xa78130 .scope module, "b7" "BitExtend" 2 84, 3 34, S_0xa57390;
+ .timescale -9 -9;
+v0xa78220_0 .alias "EightBits", 7 0, v0xa7a330_0;
+v0xa782a0_0 .net "OneBit", 0 0, L_0xa7c620; 1 drivers
+LS_0xa7c3e0_0_0 .concat [ 1 1 1 1], L_0xa7c620, L_0xa7c620, L_0xa7c620, L_0xa7c620;
+LS_0xa7c3e0_0_4 .concat [ 1 1 1 1], L_0xa7c620, L_0xa7c620, L_0xa7c620, L_0xa7c620;
+L_0xa7c3e0 .concat [ 4 4 0 0], LS_0xa7c3e0_0_0, LS_0xa7c3e0_0_4;
+S_0xa77f40 .scope module, "c0" "mod8counter" 2 87, 3 20, S_0xa57390;
+ .timescale -9 -9;
+v0xa78030_0 .net "clk", 0 0, v0xa7abb0_0; 1 drivers
+v0xa780b0_0 .var "count", 2 0;
+E_0xa759f0 .event posedge, v0xa78030_0;
+S_0xa77d50 .scope module, "c1" "mod8counter" 2 89, 3 20, S_0xa57390;
+ .timescale -9 -9;
+v0xa77e40_0 .net "clk", 0 0, L_0xa7c6c0; 1 drivers
+v0xa77ec0_0 .var "count", 2 0;
+E_0xa76960 .event posedge, v0xa77e40_0;
+S_0xa76af0 .scope module, "m0" "ic74hc138" 2 92, 3 2, S_0xa57390;
+ .timescale -9 -9;
+L_0xa799d0 .functor OR 1, L_0xa7ca80, L_0xa7cd00, C4<0>, C4<0>;
+L_0xa7d1b0 .functor OR 1, L_0xa799d0, L_0xa7d020, C4<0>, C4<0>;
+L_0xa7d300 .functor NOT 8, L_0xa7c760, C4<00000000>, C4<00000000>, C4<00000000>;
+v0xa768e0_0 .alias "DecodedOut", 7 0, v0xa7a3e0_0;
+v0xa76c00_0 .net "Enable2", 0 0, v0xa798d0_0; 1 drivers
+v0xa76ca0_0 .net "EnableB0", 0 0, v0xa79950_0; 1 drivers
+v0xa76d40_0 .net "EnableB1", 0 0, v0xa79a60_0; 1 drivers
+v0xa76de0_0 .net "NumberBit0", 0 0, L_0xa7d540; 1 drivers
+v0xa76e80_0 .net "NumberBit1", 0 0, L_0xa7d690; 1 drivers
+v0xa76f20_0 .net "NumberBit2", 0 0, L_0xa7d7c0; 1 drivers
+v0xa76fc0_0 .net *"_s0", 7 0, C4<00000001>; 1 drivers
+v0xa77060_0 .net *"_s10", 2 0, C4<001>; 1 drivers
+v0xa77100_0 .net *"_s12", 0 0, L_0xa7ca80; 1 drivers
+v0xa771a0_0 .net *"_s14", 2 0, L_0xa7cbc0; 1 drivers
+v0xa77240_0 .net *"_s17", 1 0, C4<00>; 1 drivers
+v0xa772e0_0 .net *"_s18", 2 0, C4<001>; 1 drivers
+v0xa77380_0 .net *"_s20", 0 0, L_0xa7cd00; 1 drivers
+v0xa774a0_0 .net *"_s22", 0 0, L_0xa799d0; 1 drivers
+v0xa77540_0 .net *"_s24", 1 0, L_0xa7cee0; 1 drivers
+v0xa77400_0 .net *"_s27", 0 0, C4<0>; 1 drivers
+v0xa77690_0 .net *"_s28", 1 0, C4<00>; 1 drivers
+v0xa777b0_0 .net *"_s30", 0 0, L_0xa7d020; 1 drivers
+v0xa77830_0 .net *"_s32", 0 0, L_0xa7d1b0; 1 drivers
+v0xa77710_0 .net *"_s34", 7 0, C4<00000000>; 1 drivers
+v0xa77960_0 .net *"_s36", 7 0, L_0xa7d300; 1 drivers
+v0xa778b0_0 .net *"_s6", 2 0, L_0xa7c940; 1 drivers
+v0xa77aa0_0 .net *"_s9", 1 0, C4<00>; 1 drivers
+v0xa77a00_0 .net "inputConcatenated", 2 0, L_0xa7c850; 1 drivers
+v0xa77bf0_0 .net "shiftedOutput", 7 0, L_0xa7c760; 1 drivers
+L_0xa7c760 .shift/l 8, C4<00000001>, L_0xa7c850;
+L_0xa7c850 .concat [ 1 1 1 0], L_0xa7d540, L_0xa7d690, L_0xa7d7c0;
+L_0xa7c940 .concat [ 1 2 0 0], v0xa79950_0, C4<00>;
+L_0xa7ca80 .cmp/eq 3, L_0xa7c940, C4<001>;
+L_0xa7cbc0 .concat [ 1 2 0 0], v0xa79a60_0, C4<00>;
+L_0xa7cd00 .cmp/eq 3, L_0xa7cbc0, C4<001>;
+L_0xa7cee0 .concat [ 1 1 0 0], v0xa798d0_0, C4<0>;
+L_0xa7d020 .cmp/eq 2, L_0xa7cee0, C4<00>;
+L_0xa7d3b0 .functor MUXZ 8, L_0xa7d300, C4<00000000>, L_0xa7d1b0, C4<>;
+S_0xa56d30 .scope module, "m1" "ic74hc138" 2 94, 3 2, S_0xa57390;
+ .timescale -9 -9;
+L_0xa7d630 .functor OR 1, L_0xa7dc00, L_0xa7df20, C4<0>, C4<0>;
+L_0xa7e510 .functor OR 1, L_0xa7d630, L_0xa7e380, C4<0>, C4<0>;
+L_0xa7e6a0 .functor NOT 8, L_0xa7d860, C4<00000000>, C4<00000000>, C4<00000000>;
+v0xa57990_0 .alias "DecodedOut", 7 0, v0xa7a5c0_0;
+v0xa75830_0 .net "Enable2", 0 0, v0xa79b10_0; 1 drivers
+v0xa758d0_0 .net "EnableB0", 0 0, v0xa79c30_0; 1 drivers
+v0xa75970_0 .net "EnableB1", 0 0, v0xa79ce0_0; 1 drivers
+v0xa75a20_0 .net "NumberBit0", 0 0, L_0xa7e930; 1 drivers
+v0xa75ac0_0 .net "NumberBit1", 0 0, L_0xa7ea70; 1 drivers
+v0xa75ba0_0 .net "NumberBit2", 0 0, L_0xa7eb60; 1 drivers
+v0xa75c40_0 .net *"_s0", 7 0, C4<00000001>; 1 drivers
+v0xa75d30_0 .net *"_s10", 2 0, C4<001>; 1 drivers
+v0xa75dd0_0 .net *"_s12", 0 0, L_0xa7dc00; 1 drivers
+v0xa75ed0_0 .net *"_s14", 2 0, L_0xa7dcf0; 1 drivers
+v0xa75f70_0 .net *"_s17", 1 0, C4<00>; 1 drivers
+v0xa76080_0 .net *"_s18", 2 0, C4<001>; 1 drivers
+v0xa76120_0 .net *"_s20", 0 0, L_0xa7df20; 1 drivers
+v0xa76240_0 .net *"_s22", 0 0, L_0xa7d630; 1 drivers
+v0xa762e0_0 .net *"_s24", 1 0, L_0xa7e140; 1 drivers
+v0xa761a0_0 .net *"_s27", 0 0, C4<0>; 1 drivers
+v0xa76430_0 .net *"_s28", 1 0, C4<00>; 1 drivers
+v0xa76550_0 .net *"_s30", 0 0, L_0xa7e380; 1 drivers
+v0xa765d0_0 .net *"_s32", 0 0, L_0xa7e510; 1 drivers
+v0xa764b0_0 .net *"_s34", 7 0, C4<00000000>; 1 drivers
+v0xa76700_0 .net *"_s36", 7 0, L_0xa7e6a0; 1 drivers
+v0xa76650_0 .net *"_s6", 2 0, L_0xa7da40; 1 drivers
+v0xa76840_0 .net *"_s9", 1 0, C4<00>; 1 drivers
+v0xa767a0_0 .net "inputConcatenated", 2 0, L_0xa7d950; 1 drivers
+v0xa76990_0 .net "shiftedOutput", 7 0, L_0xa7d860; 1 drivers
+L_0xa7d860 .shift/l 8, C4<00000001>, L_0xa7d950;
+L_0xa7d950 .concat [ 1 1 1 0], L_0xa7e930, L_0xa7ea70, L_0xa7eb60;
+L_0xa7da40 .concat [ 1 2 0 0], v0xa79c30_0, C4<00>;
+L_0xa7dc00 .cmp/eq 3, L_0xa7da40, C4<001>;
+L_0xa7dcf0 .concat [ 1 2 0 0], v0xa79ce0_0, C4<00>;
+L_0xa7df20 .cmp/eq 3, L_0xa7dcf0, C4<001>;
+L_0xa7e140 .concat [ 1 1 0 0], v0xa79b10_0, C4<0>;
+L_0xa7e380 .cmp/eq 2, L_0xa7e140, C4<00>;
+L_0xa7e750 .functor MUXZ 8, L_0xa7e6a0, C4<00000000>, L_0xa7e510, C4<>;
+    .scope S_0xa77f40;
+T_0 ;
+    %set/v v0xa780b0_0, 0, 3;
+    %end;
+    .thread T_0;
+    .scope S_0xa77f40;
+T_1 ;
+    %wait E_0xa759f0;
+    %ix/load 0, 1, 0;
+    %load/vp0 8, v0xa780b0_0, 3;
+    %ix/load 0, 3, 0;
+    %assign/v0 v0xa780b0_0, 0, 8;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0xa77d50;
+T_2 ;
+    %set/v v0xa77ec0_0, 0, 3;
+    %end;
+    .thread T_2;
+    .scope S_0xa77d50;
+T_3 ;
+    %wait E_0xa76960;
+    %ix/load 0, 1, 0;
+    %load/vp0 8, v0xa77ec0_0, 3;
+    %ix/load 0, 3, 0;
+    %assign/v0 v0xa77ec0_0, 0, 8;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_0xa57390;
+T_4 ;
+    %set/v v0xa79950_0, 0, 1;
+    %set/v v0xa79a60_0, 0, 1;
+    %set/v v0xa798d0_0, 1, 1;
+    %set/v v0xa79c30_0, 0, 1;
+    %set/v v0xa79ce0_0, 0, 1;
+    %set/v v0xa79b10_0, 1, 1;
+    %set/v v0xa7abb0_0, 0, 1;
+    %vpi_call 2 71 "$dumpfile", "./gtkfile.vcd";
+    %vpi_call 2 72 "$dumpvars", 1'sb0;
+    %delay 1000, 0;
+    %vpi_call 2 73 "$finish";
+    %end;
+    .thread T_4;
+    .scope S_0xa57390;
+T_5 ;
+    %delay 10, 0;
+    %load/v 8, v0xa7abb0_0, 1;
+    %inv 8, 1;
+    %set/v v0xa7abb0_0, 8, 1;
+    %jmp T_5;
+    .thread T_5;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "./TestBench.v";
+    "./Source.v";

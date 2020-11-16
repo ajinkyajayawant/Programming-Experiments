@@ -1,0 +1,49 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x1bdd550 .scope module, "ic74hc138" "ic74hc138" 2 1;
+ .timescale 0 0;
+L_0x1c12ef0 .functor OR 1, L_0x1c13e50, L_0x1c14190, C4<0>, C4<0>;
+L_0x1c14720 .functor OR 1, L_0x1c12ef0, L_0x1c14590, C4<0>, C4<0>;
+v0x1bf05c0_0 .net "DecodedOut", 7 0, L_0x1c14870; 1 drivers
+v0x1c128d0_0 .net "Enable2", 0 0, C4<z>; 0 drivers
+v0x1c12970_0 .net "EnableB0", 0 0, C4<z>; 0 drivers
+v0x1c12a10_0 .net "EnableB1", 0 0, C4<z>; 0 drivers
+v0x1c12ac0_0 .net "NumberBit0", 0 0, C4<z>; 0 drivers
+v0x1c12b60_0 .net "NumberBit1", 0 0, C4<z>; 0 drivers
+v0x1c12c40_0 .net "NumberBit2", 0 0, C4<z>; 0 drivers
+v0x1c12ce0_0 .net *"_s0", 7 0, C4<11111110>; 1 drivers
+v0x1c12dd0_0 .net *"_s10", 1 0, C4<00>; 1 drivers
+v0x1c12e70_0 .net *"_s12", 0 0, L_0x1c13e50; 1 drivers
+v0x1c12f70_0 .net *"_s14", 1 0, L_0x1c13f90; 1 drivers
+v0x1c13010_0 .net *"_s17", 0 0, C4<0>; 1 drivers
+v0x1c13120_0 .net *"_s18", 1 0, C4<00>; 1 drivers
+v0x1c131c0_0 .net *"_s20", 0 0, L_0x1c14190; 1 drivers
+v0x1c132e0_0 .net *"_s22", 0 0, L_0x1c12ef0; 1 drivers
+v0x1c13380_0 .net *"_s24", 2 0, L_0x1c143e0; 1 drivers
+v0x1c13240_0 .net *"_s27", 1 0, C4<00>; 1 drivers
+v0x1c134d0_0 .net *"_s28", 2 0, C4<001>; 1 drivers
+v0x1c135f0_0 .net *"_s30", 0 0, L_0x1c14590; 1 drivers
+v0x1c13670_0 .net *"_s32", 0 0, L_0x1c14720; 1 drivers
+v0x1c13550_0 .net *"_s34", 7 0, C4<11111111>; 1 drivers
+v0x1c137a0_0 .net *"_s6", 1 0, L_0x1c13c80; 1 drivers
+v0x1c136f0_0 .net *"_s9", 0 0, C4<0>; 1 drivers
+v0x1c138e0_0 .net "inputConcatenated", 2 0, L_0x1c13b00; 1 drivers
+v0x1c13840_0 .net "shiftedOutput", 7 0, L_0x1c13a30; 1 drivers
+L_0x1c13a30 .shift/l 8, C4<11111110>, L_0x1c13b00;
+L_0x1c13b00 .concat [ 1 1 1 0], C4<z>, C4<z>, C4<z>;
+L_0x1c13c80 .concat [ 1 1 0 0], C4<z>, C4<0>;
+L_0x1c13e50 .cmp/eq 2, L_0x1c13c80, C4<00>;
+L_0x1c13f90 .concat [ 1 1 0 0], C4<z>, C4<0>;
+L_0x1c14190 .cmp/eq 2, L_0x1c13f90, C4<00>;
+L_0x1c143e0 .concat [ 1 2 0 0], C4<z>, C4<00>;
+L_0x1c14590 .cmp/eq 3, L_0x1c143e0, C4<001>;
+L_0x1c14870 .functor MUXZ 8, L_0x1c13a30, C4<11111111>, L_0x1c14720, C4<>;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "./delete2.v";

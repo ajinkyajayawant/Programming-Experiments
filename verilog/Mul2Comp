@@ -1,0 +1,66 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x1ebfb60 .scope module, "testMul2Comp" "testMul2Comp" 2 1;
+ .timescale 0 0;
+v0x1ef58f0_0 .var "in1", 3 0;
+v0x1ef5990_0 .var "in2", 3 0;
+v0x1ef5a40_0 .var "in3", 3 0;
+v0x1ef5af0_0 .var "in4", 3 0;
+v0x1ef5bd0_0 .net "out1", 3 0, L_0x1ef5f60; 1 drivers
+v0x1ef5c80_0 .net "out2", 3 0, L_0x1ef62a0; 1 drivers
+S_0x1ec0570 .scope module, "u0" "Mul2Comp" 2 8, 2 15, S_0x1ebfb60;
+ .timescale 0 0;
+v0x1ee3fb0_0 .net "Ai", 3 0, v0x1ef5990_0; 1 drivers
+v0x1ef5250_0 .net "Ar", 3 0, v0x1ef58f0_0; 1 drivers
+v0x1ef52f0_0 .net "Bi", 3 0, v0x1ef5af0_0; 1 drivers
+v0x1ef5390_0 .net "Br", 3 0, v0x1ef5a40_0; 1 drivers
+v0x1ef5440_0 .alias "Yi", 3 0, v0x1ef5c80_0;
+v0x1ef54e0_0 .alias "Yr", 3 0, v0x1ef5bd0_0;
+v0x1ef55c0_0 .net *"_s1", 3 0, L_0x1ef5d00; 1 drivers
+v0x1ef5660_0 .net *"_s3", 3 0, L_0x1ef5e20; 1 drivers
+v0x1ef5750_0 .net *"_s7", 3 0, L_0x1ef6160; 1 drivers
+v0x1ef57f0_0 .net *"_s9", 3 0, L_0x1ef6200; 1 drivers
+L_0x1ef5d00 .arith/mult 4, v0x1ef58f0_0, v0x1ef5a40_0;
+L_0x1ef5e20 .arith/mult 4, v0x1ef5990_0, v0x1ef5af0_0;
+L_0x1ef5f60 .arith/sub 4, L_0x1ef5d00, L_0x1ef5e20;
+L_0x1ef6160 .arith/mult 4, v0x1ef58f0_0, v0x1ef5af0_0;
+L_0x1ef6200 .arith/mult 4, v0x1ef5990_0, v0x1ef5a40_0;
+L_0x1ef62a0 .arith/sum 4, L_0x1ef6160, L_0x1ef6200;
+    .scope S_0x1ebfb60;
+T_0 ;
+    %movi 8, 2, 4;
+    %set/v v0x1ef58f0_0, 8, 4;
+    %end;
+    .thread T_0;
+    .scope S_0x1ebfb60;
+T_1 ;
+    %movi 8, 2, 4;
+    %set/v v0x1ef5990_0, 8, 4;
+    %end;
+    .thread T_1;
+    .scope S_0x1ebfb60;
+T_2 ;
+    %movi 8, 1, 4;
+    %set/v v0x1ef5a40_0, 8, 4;
+    %end;
+    .thread T_2;
+    .scope S_0x1ebfb60;
+T_3 ;
+    %movi 8, 5, 4;
+    %set/v v0x1ef5af0_0, 8, 4;
+    %end;
+    .thread T_3;
+    .scope S_0x1ebfb60;
+T_4 ;
+    %vpi_call 2 10 "$display", "Multiplication of %d+%di and %d+%di yields %d+%di", v0x1ef58f0_0, v0x1ef5990_0, v0x1ef5a40_0, v0x1ef5af0_0, v0x1ef5bd0_0, v0x1ef5c80_0;
+    %end;
+    .thread T_4;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "./Mul2Comp.v";

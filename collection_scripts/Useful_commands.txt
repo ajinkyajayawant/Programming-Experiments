@@ -138,6 +138,7 @@ To apply a stash to the current working directory - git stash apply stash@{0}
 Drop a stash - git stash drop stash@{0}
 Pop a stash(Convenient because you don't have to remember whether you used a stash or not) - git stash pop stash@{0}
 Drop all stashes - git stash clear
+To discard unstaged changes the cleanest way I have found is to stash them and then drop the stash.
 
 Git get a file from a particular Hash - git show <HASH>:/path/to/file > <file_destination>
 
@@ -179,6 +180,7 @@ Show the files which changed between the commits - git diff --name-only <SHA_HAS
 Show the files which changed between the commits along with short summary about change in file status - git diff --name-status <SHA_HASH1> <SHA_HASH2>
 If a good visual utility like meld is available do git difftool instead of git diff
 git diff HEAD shows the difference with the last commit
+To see the commits in which a file has changed: git log --follow -- <filename>
 
 git index
 ~~~~~~~~~
@@ -853,3 +855,25 @@ montage a.png b.png -geometry <width>x montage_output.png
 
 To check the RAM slots in the machine, 'sudo lshw -class memory'
 To just dump all hardware information, do - 'sudo lshw'
+
+Extracting printable strings from a mixed file: strings <filename>. For example strings .git/index
+
+Anaconda install and use
+~~~~~~~~~~~~~~~~~~~~~~~~
+wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
+./Anaconda3-2020.07-Linux-x86_64.sh
+conda init
+conda info
+cd ~/anaconda3/
+conda create --name tryenv
+conda activate tryenv
+conda list
+conda info --envs (Lists all the environments created so far)
+conda install -c conda-forge pygsp (pygsp was not available via regular install)
+conda search Tkinter
+conda install Tkinter
+conda config --set auto_activate_base False
+
+Libre office calc
+~~~~~~~~~~~~~~~~~
+=COUNTA(A1:A10) gives the number of non-empty cells between 1 and 10.

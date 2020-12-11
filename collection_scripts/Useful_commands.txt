@@ -147,6 +147,7 @@ Git file status
 git status --ignored
 git ls-files --others --ignored --exclude-standard
 git ls-files --cached
+Checkout a file from an old commit(In case you deleted by mistake or don't want to current one): git checkout <HASH> -- <filepath>
 
 Git deleting branches locally when you mess it up
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -404,6 +405,7 @@ I want to use emacs as my defulat text editor because the shortcuts are easier t
 Vim move to the start of the file - gg, move to the end of the file - G.
 Adding same letter <n> times :normal <n>i<letter>
 Set line numbers: set number
+To skip to a particular line: <linenumber>G or :<linenumber>Ctrl+Return
 
 Find and delete files
 ---------------------
@@ -436,6 +438,11 @@ Convert epub to pdf
 -------------------
 Install calibre, run:
 ebook-convert <input_filename>.epub <output_filename>.pdf
+
+Extract text from pdf
+~~~~~~~~~~~~~~~~~~~~~
+pdftotext <input_filename>.pdf <output_filename>.txt
+gs -sDEVICE=txtwrite -o <output_filename>.txt <input_filename>.pdf
 
 Where is the bin file located
 -----------------------------
@@ -877,3 +884,8 @@ conda config --set auto_activate_base False
 Libre office calc
 ~~~~~~~~~~~~~~~~~
 =COUNTA(A1:A10) gives the number of non-empty cells between 1 and 10.
+=COUNTIF(A1:A10, 2) counts the number of times 2 appears in the range of those cells.
+=ISNUMBER(MATCH(2;A1:A10;0)) checks if 2 appears in the range of the cells.
+To keep a column fixed as you scroll, select a column to the right of the column. View->Freeze columns and rows.
+To move a row, ctrl+alt and drag for moving row.
+To have a sum formula for entire column, do it for one row and copy and paste that cell throughout the column.

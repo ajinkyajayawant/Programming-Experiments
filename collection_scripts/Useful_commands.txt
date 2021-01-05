@@ -67,6 +67,7 @@ Find the version: M-x emacs-version
 kill-rectangle: Mark one corner of the rectangle go to the other end and do M-x kill-rectangle. M-x copy-rectangle-as-kill copies a rectangle. M-x yank-rectangle pastes the rectangle.
 Count words and lines: M-x count-words, M-x count-lines
 Deleting backup files -> Open dired, press ~(flags all backup files), press x, confirm
+Deleting backup files recursively: M-x find-name-dired, select directory, file pattern *~ and repeat the procedure above
 Open file in view/read only alt+x view-file. Convert and already opened file into view mode: alt+x view-mode
 Substitute selection - (delete-selection-mode 1)
 Display line numbers - (global-linum-mode t)
@@ -79,6 +80,7 @@ Reload file - A-x revert-buffer
 M-x list-packages and M-x package-list-packages are different, wasn't able to install matlab mode from former, installed it with later
 Installed - matlab-mode
 Set mark - C-space
+Incremental regexp search: isearch-forward-regexp. But for convenience Ctrl+Alt+S is better to make the same search again and again.
 Directories and file
 ~~~~~~~~~~~~~~~~~~~~
 M-x create-directory
@@ -141,6 +143,7 @@ Drop all stashes - git stash clear
 To discard unstaged changes the cleanest way I have found is to stash them and then drop the stash.
 
 Git get a file from a particular Hash - git show <HASH>:/path/to/file > <file_destination>
+Git push a local branch to the repo: git push -u origin <branchname>
 
 Git file status
 ~~~~~~~~~~~~~~~
@@ -158,6 +161,7 @@ Git stop tracking files but don't delete from local tree:
 git rm --cached
 git rm --cached -r ./
 (May need to update index after this)
+Unstage staged file: git reset HEAD <filename>
 
 Git delete untracked files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -245,7 +249,9 @@ xdpyinfo  | grep 'dimensions:'
 
 Backup a folder into hard drive
 --------------------------------
-rsync --progress -rv --delete ./books/ /media/jinkx/TOURO\ Mobile/MintUrgentBackup/books
+rsync --progress --human-readable --recursive --verbose ./books/ /media/jinkx/TOURO\ Mobile/MintUrgentBackup/books
+To view changes that will be made: rsync --progress --human-readable --recursive --verbose --dry-run --itemize-changes --delete ./books/ /media/jinkx/TOURO\ Mobile/MintUrgentBackup/books
+If you want to delete extraneous files from destination directory: rsync --progress --human-readable --recursive --verbose --delete ./books/ /media/jinkx/TOURO\ Mobile/MintUrgentBackup/books
 
 Shortcuts
 ---------
@@ -406,6 +412,8 @@ Vim move to the start of the file - gg, move to the end of the file - G.
 Adding same letter <n> times :normal <n>i<letter>
 Set line numbers: set number
 To skip to a particular line: <linenumber>G or :<linenumber>Ctrl+Return
+Find vim swap type of files: find <path> -type f -name "*.sw[klmnop]"
+Find and delete vim swap type of files: find <path> -type f -name "*.sw[klmnop]" -delete
 
 Find and delete files
 ---------------------
@@ -458,6 +466,10 @@ pdftk manipulations
 -------------------
 Join multiple pages: pdftk pg_1.pdf pg_2.pdf pg_3.pdf cat output pg_all.pdf
 Rotate a page by 180 deg: pdftk pg.pdf cat 1-endsouth output pg1.pdf
+
+Information of a pdf file
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Count the number of pages: pdfinfo <filename>.pdf | grep Pages
 
 wifi start for antergos
 -----------------------
@@ -889,3 +901,19 @@ Libre office calc
 To keep a column fixed as you scroll, select a column to the right of the column. View->Freeze columns and rows.
 To move a row, ctrl+alt and drag for moving row.
 To have a sum formula for entire column, do it for one row and copy and paste that cell throughout the column.
+
+Standard regexp
+~~~~~~~~~~~~~~~
+[^{] Match the abscence of { character.
+. Matches any character usually excluding newlines.
+[^a-zA-z0-9] Matches anything but the those in the lists included in []
+
+TODO
+~~~~
+* How to search patterns and extract lines using emacs or bash?
+* What does [A-Z] mean in emacs regexp?
+* How to exclud pattern from regexp?
+* Think about how to add tag functionality for organizing files.
+* Use and document how good is Viztracer for logging without changing source code.
+* Understand the notation of rsync itemize flag output
+* How to match the first occurence of a pattern?

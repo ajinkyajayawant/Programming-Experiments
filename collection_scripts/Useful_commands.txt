@@ -309,6 +309,17 @@ History
 -------
 vim ~/.zsh_history
 
+Timed commands
+~~~~~~~~~~~~~~
+To run a command at a particular time
+at 10:10
+ls -l > /tmp/ls_output.txt
+Ctrl-D
+To avoid the prompt just do
+echo "ls -l > /tmp/ls_output" | at 10:10
+To view all at commands do atq
+To remove an at command do at -r <at id>
+
 Firefox 
 -------
 always open in private mode: about:config -> Browser.privatebrowsing.autostart to true

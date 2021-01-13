@@ -317,8 +317,8 @@ ls -l > /tmp/ls_output.txt
 Ctrl-D
 To avoid the prompt just do
 echo "ls -l > /tmp/ls_output" | at 10:10
-To view all at commands do atq
-To remove an at command do at -r <at id>
+To view all at commands do: atq
+To remove an at command do: at -r <at id>
 
 Firefox 
 -------
@@ -354,6 +354,8 @@ mv cannot do recursive merging, one point to keep in mind.
 cp cannot delete files from source directory.
 So if there is enough space to create a copy then just use cp and delete the source files, otherwise need to use the slower rsync and then delete the empty directories. rsync only copies/sends differences of files.
 mv -v is a convenient option so that we know which files are being moved.
+Find where a symbolic link is pointing: readlink <filename>. ls -l also does the job.
+To delete a symbolic link, do: unlink <symlink name>
 
 MATLAB
 ======
@@ -434,6 +436,13 @@ Find upto a depth: find . -maxdepth 4 -iname "*<expression>*"
 Don't search file in a path( there were some warnings)(From https://askubuntu.com/questions/176010/exclude-some-of-the-find-results): find . ! -path "*<directory name>*" -iname "*<pattern>*"
 For finding and deleting directories(and their contents) matching a particular name: find . -type d -name "*<name>*" -exec rm -rf {} +
 Proxy to remove C and C++ executables. be careful can delete other files too: find . -type f -not -iname "*.*" -exec rm '{}' \;
+Usually bash commands like grep use globbing instead of regexp. The default find command uses globbing. To use regexp specify the option regexp along with posix option for easier regexp as follows:
+find . -regextype posix-egrep -regex '<Regular expression>'
+But for find if you want to avoid a particular set of files it is much easier to use multiple commands as follows:
+find . -type f -not -iname "*.azw" -not -iname "*.mobi" -not -iname "*.pd*" -not -iname "*.txt*"
+If we are only interested in the directories one level deep or deeper, the following command is useful:
+find . -type d -mindepth 2
+locate <filename> also works in a similar way but it is a system level find(I think).
 
 Disabling open window after inserting usb
 -----------------------------------------

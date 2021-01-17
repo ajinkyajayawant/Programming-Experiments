@@ -11,11 +11,11 @@ showDate y m d = show y ++ "-" ++ show m ++ "-" ++ show d
 
 showAnniversary :: Anniversary -> String
 
-showAnniversary :: (Birthday name year month day) =
+showAnniversary (Birthday name year month day) =
   name ++ " born " ++ showDate year month day
 
-showAnniversary :: (Wedding name1 name2 year month day) =
-  name ++ " married " ++ name2 ++ " on " ++ showDate year month day
+showAnniversary (Wedding name1 name2 year month day) =
+  name1 ++ " married " ++ name2 ++ " on " ++ showDate year month day
 
 -- My solution
 data Date = Ymd Int Int Int
@@ -24,18 +24,21 @@ data Date = Ymd Int Int Int
 myshowDate :: Date -> String
 myshowDate (Ymd y m d) = show y ++ "-" ++ show m ++ "-" ++ show d
 
-data myAnniversary = myBirthday String Date
-                   | myWedding String String Date
+data MyAnniversary = MyBirthday String Date
+                   | MyWedding String String Date
 
-myshowAnniversary :: myAnniversary -> String
+myshowAnniversary :: MyAnniversary -> String
 
-myshowAnniversary :: (myBirthday name fixedDate) =
+myshowAnniversary (MyBirthday name fixedDate) =
   name ++ " born " ++ myshowDate fixedDate
 
-myshowAnniversary :: (myWedding name1 name2 fixedDate) =
-  name ++ " married " ++ name2 ++ " on " ++ myshowDate fixedDate
+myshowAnniversary (MyWedding name1 name2 fixedDate) =
+  name1 ++ " married " ++ name2 ++ " on " ++ myshowDate fixedDate
 
--- Executing and checking
-let date1 = Ymd 1970 10 24
-let Janniversary = myBirthday "John" date1
-myshowAnniversay Janniversary
+-- Initialization
+date1 = Ymd 1970 10 24
+janniversary = MyBirthday "John" date1
+
+-- Execution
+-- :load ./HaskellWikibook/date_pg111
+-- myshowAnniversary janniversary

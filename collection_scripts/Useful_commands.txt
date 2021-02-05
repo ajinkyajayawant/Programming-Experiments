@@ -81,6 +81,8 @@ M-x list-packages and M-x package-list-packages are different, wasn't able to in
 Installed - matlab-mode
 Set mark - C-space
 Incremental regexp search: isearch-forward-regexp. But for convenience Ctrl+Alt+S is better to make the same search again and again.
+Center page around the cursor: C-l
+Count number of lines in the page(before and after cursor): C-x l
 Directories and file
 ~~~~~~~~~~~~~~~~~~~~
 M-x create-directory
@@ -162,6 +164,8 @@ git rm --cached
 git rm --cached -r ./
 (May need to update index after this)
 Unstage staged file: git reset HEAD <filename>
+Visualize git branches: gitk --all
+Compare two branches git: git diff <branch1>..<branch2>
 
 Git delete untracked files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -209,6 +213,7 @@ git status
 git add -A
 git commit -m "fix for fully connected graph"
 git push origin master
+To push all branches: git push origin --all
 
 View changes git
 ----------------
@@ -443,6 +448,8 @@ find . -type f -not -iname "*.azw" -not -iname "*.mobi" -not -iname "*.pd*" -not
 If we are only interested in the directories one level deep or deeper, the following command is useful:
 find . -type d -mindepth 2
 locate <filename> also works in a similar way but it is a system level find(I think).
+Find files within two dates: find -newerct "10 Aug 2016" ! -newerct "10 Aug 2017" -ls > /tmp/find_output.txt
+For modification time search: find -newermt "10 Aug 2016" ! -newermt "10 Aug 2017" -ls > /tmp/find_output.txt
 
 Disabling open window after inserting usb
 -----------------------------------------
@@ -727,6 +734,8 @@ done
 
 for loop, array for for loop, -le flag,
 
+Disable history for a bash session: set +o history
+
 ADB
 ---
 adb shell getprop ro.build.version.serial (I think for the device ID)
@@ -927,6 +936,8 @@ Standard regexp
 [^{] Match the abscence of { character.
 . Matches any character usually excluding newlines.
 [^a-zA-z0-9] Matches anything but the those in the lists included in []
+Pattern to match r inside two dollar signs and avoid the rest of rs: \$[^\$]*(?<!no)(?<!inne)(?<!rightar)(?<!righta)(?<!sta)(?<!\\)(?<!\\)(?<!\\pe)(?<!\\a)(?<!\\p)(?<!\\f)(?<!\\dagge)(?<!mat)r(?!ecF)(?!ansp)[^\$]*\$
+\\begin{equation.*}[^\$]*(?<!no)(?<!inne)(?<!rightar)(?<!righta)(?<!sta)(?<!\\)(?<!\\)(?<!\\pe)(?<!\\a)(?<!\\p)(?<!\\f)(?<!\\dagge)(?<!mat)r(?!ecF)(?!ansp)[^\$]*\\end{equation.*}
 
 TODO
 ~~~~

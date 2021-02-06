@@ -154,6 +154,19 @@ git ls-files --others --ignored --exclude-standard
 git ls-files --cached
 Checkout a file from an old commit(In case you deleted by mistake or don't want to current one): git checkout <HASH> -- <filepath>
 
+Git and file permissions
+~~~~~~~~~~~~~~~~~~~~~~~~
+Discarding changes in file permissions/mode or executable :
+Config ONLY for current repo:
+git config core.filemode false
+
+Config globally:
+git config --global core.filemode false
+
+Add in ~/.gitconfig:
+[core]
+filemode = false
+
 Git deleting branches locally when you mess it up
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 git branch -d <local_branch>

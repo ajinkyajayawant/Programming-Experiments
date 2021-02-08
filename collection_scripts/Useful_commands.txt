@@ -692,9 +692,20 @@ List of environments: conda env list
 Activate an environment: conda activate <env_name>
 Deactivate and environment: conda deactivate
 
+Using viztracer
+~~~~~~~~~~~~~~~
+python3.6 -m viztracer -o <output name>.html --log_var <variable name> -- <program name.py>
+
 Java
 ----
 Version: java -version
+
+JSON
+----
+Filtering json
+~~~~~~~~~~~~~~
+cat <filename>.json | jq '.<attribute name>'
+cat <filename>.json | jq '.<attribute name>[<array slice>] .<attribute 2 name>'
 
 Convert pdf to jpg images
 -------------------------

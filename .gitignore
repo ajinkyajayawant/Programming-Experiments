@@ -6,6 +6,7 @@ cabal-dev
 *.hi
 *.hie
 *.chi
+*.pyc
 *.chs.h
 *.dyn_o
 *.dyn_hi

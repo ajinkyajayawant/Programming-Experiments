@@ -1,0 +1,1 @@
+python3.6 -c 'from table_generation_for_latex import argmax_max_two_tables; argmax_max_two_tables("/tmp/pandastry/sz_alg_snrs.dat","/tmp/pandastry/alg_times_iter.dat",[3,4,5,6,7],"/tmp/pandastry/output.dat")'

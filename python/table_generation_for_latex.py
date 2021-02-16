@@ -16,6 +16,6 @@ def argmax_max_two_tables(table1_path, table2_path, col_inds, save_path):
     for i, row in tab2_modified.iterrows():
         tab2_modified.loc[[i], ['New_Column']] = tab2_modified.loc[i, max_args[i]]
 
-    tab2_modified.to_csv(save_path, header=False)
+    tab2_modified.to_csv(save_path, header=False, index=False)
     
     return

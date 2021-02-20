@@ -1,3 +1,7 @@
+-- How to run a haskell program
+-- For interpreter type access: Type ghci at terminal
+
+-- Load/import a file
 :load basic_usage
 
 :t myconcat

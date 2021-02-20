@@ -1,0 +1,6 @@
+Capitalization of constructors
+Assignment can be directly done by = sign if it is a source file
+Looks like execution cannot be done in file loading.
+Declaration with ::
+Datatype construction of a particular type can be grouped with ()
+type commans seems like typedef in C

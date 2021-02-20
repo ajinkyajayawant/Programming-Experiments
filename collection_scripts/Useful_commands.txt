@@ -60,6 +60,7 @@ pacman -S gcc
 Pip
 ~~~
 Checking version of a python package: pip show <packagename> | grep Version
+pip-autoremove <package name> to remove package and dependencies
 
 emacs
 -----
@@ -875,6 +876,7 @@ dropbox exclude remove <directory path>
 
 Jupyter notebook launch
 'jupyter notebook'
+For a jupyter notebook for a specific python version, say 3.6: python3.6 -m noteboook
 
 Linux and users
 ~~~~~~~~~~~~~~~

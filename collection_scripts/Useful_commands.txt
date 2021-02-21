@@ -878,6 +878,13 @@ Jupyter notebook launch
 'jupyter notebook'
 For a jupyter notebook for a specific python version, say 3.6: python3.6 -m noteboook
 
+Ipython
+-------
+Start Ipython shell: python3.6 -m IPython
+List files: !ls or %ls
+Change directory: %cd <new directory>
+Run ipython scripts: python3.6 -m IPython <scriptname>.ipy
+
 Linux and users
 ~~~~~~~~~~~~~~~
 To find details about users

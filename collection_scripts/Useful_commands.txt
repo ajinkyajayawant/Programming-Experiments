@@ -89,6 +89,11 @@ Directories and file
 M-x create-directory
 M-x delete-directory
 M-x delete-file
+Kill/save multiple buffers:
+M-x buffer-menu
+Flag buffers for deletion using d
+Flag buffers for save using s
+Execute the commands with x
 
 Git
 ------
@@ -204,6 +209,7 @@ Show the files which changed between the commits along with short summary about 
 If a good visual utility like meld is available do git difftool instead of git diff
 git diff HEAD shows the difference with the last commit
 To see the commits in which a file has changed: git log --follow -- <filename>
+Comparing directories is also possible using meld.
 
 git index
 ~~~~~~~~~
@@ -884,6 +890,10 @@ Start Ipython shell: python3.6 -m IPython
 List files: !ls or %ls
 Change directory: %cd <new directory>
 Run ipython scripts: python3.6 -m IPython <scriptname>.ipy
+Set a breakpoint: %debug -b <filename>.py:<linenumber>
+turn on pdb: %pdb on
+turn off pdb: %pdb off
+To start a function in debug mode: %debug <function> After this you can use the standard debugging commands.
 
 Linux and users
 ~~~~~~~~~~~~~~~

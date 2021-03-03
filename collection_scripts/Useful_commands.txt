@@ -84,6 +84,7 @@ Set mark - C-space
 Incremental regexp search: isearch-forward-regexp. But for convenience Ctrl+Alt+S is better to make the same search again and again.
 Center page around the cursor: C-l
 Count number of lines in the page(before and after cursor): C-x l
+Filter regexp: M-x occur RET <regexp> and then M-x keep-lines
 Directories and file
 ~~~~~~~~~~~~~~~~~~~~
 M-x create-directory
@@ -210,6 +211,12 @@ If a good visual utility like meld is available do git difftool instead of git d
 git diff HEAD shows the difference with the last commit
 To see the commits in which a file has changed: git log --follow -- <filename>
 Comparing directories is also possible using meld.
+Otherwise for comparing directories either do:
+diff -r dir1 dir2
+or
+diff -qr dir1 dir2
+If the differences are hard to read, use
+diff -r dir1 dir2 | sort
 
 git index
 ~~~~~~~~~
@@ -981,6 +988,7 @@ Standard regexp
 [^a-zA-z0-9] Matches anything but the those in the lists included in []
 Pattern to match r inside two dollar signs and avoid the rest of rs: \$[^\$]*(?<!no)(?<!inne)(?<!rightar)(?<!righta)(?<!sta)(?<!\\)(?<!\\)(?<!\\pe)(?<!\\a)(?<!\\p)(?<!\\f)(?<!\\dagge)(?<!mat)r(?!ecF)(?!ansp)[^\$]*\$
 \\begin{equation.*}[^\$]*(?<!no)(?<!inne)(?<!rightar)(?<!righta)(?<!sta)(?<!\\)(?<!\\)(?<!\\pe)(?<!\\a)(?<!\\p)(?<!\\f)(?<!\\dagge)(?<!mat)r(?!ecF)(?!ansp)[^\$]*\\end{equation.*}
+Search for two words in a text file in linux: cat <filename> | grep -E 'word1|word2'
 
 TODO
 ~~~~
@@ -991,3 +999,12 @@ TODO
 * Use and document how good is Viztracer for logging without changing source code.
 * Understand the notation of rsync itemize flag output
 * How to match the first occurence of a pattern?
+
+Devices
+=======
+iPad
+----
+* Double home button for listing all the apps
+* Single tap home button for return to homescreen
+* Long press top button for switch off or switch on
+* To remove an account: open gmail, manage accounts, and remove account from this device

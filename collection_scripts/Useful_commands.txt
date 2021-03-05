@@ -1008,3 +1008,19 @@ iPad
 * Single tap home button for return to homescreen
 * Long press top button for switch off or switch on
 * To remove an account: open gmail, manage accounts, and remove account from this device
+
+Backups
+-------
+du --human-readable --max-depth=1 ~/ | sort --human-numeric-sort
+In order of large directory spaces, go one level deeper. Move the data somewhere else and run the command again until there is barely KBs of data.
+Sync dropbox and unlink:
+dropbox start && (echo "dropbox stop" | at now + 15 mins) && (echo "mv ~/.dropbox <backup dir>/.dropbox.old" | at now + 30 mins)
+Check desktop for any temp files:
+ls -a ~/Desktop
+This includes directories it couldn't traverse:
+References:
+https://stackoverflow.com/questions/815668/how-to-list-non-empty-subdirectories-on-linux
+https://askubuntu.com/questions/935377/how-to-filter-du-output
+https://stackoverflow.com/questions/9794791/how-to-get-total-size-of-folders-with-find-and-du
+find ~/ -mindepth 1 -maxdepth 1 -type d -not -empty | xargs du -h --max-depth=0 | sort -h
+Can do a separate command for files or add it to this.

@@ -85,6 +85,13 @@ Incremental regexp search: isearch-forward-regexp. But for convenience Ctrl+Alt+
 Center page around the cursor: C-l
 Count number of lines in the page(before and after cursor): C-x l
 Filter regexp: M-x occur RET <regexp> and then M-x keep-lines
+Help on a C-x command: C-x ?
+Open a new frame: C-x 5 2
+Close the current frame: C-x 5 0
+(Frames are the gui windows in emacs)
+It makes sense to have split window inside a tab so we can have different locations views of the same file.
+It makes sense to have different contexts in different frames. Like programming related stuff in a frame. Text notes in one frame. And so on.
+Reload config file M-x load-file
 Directories and file
 ~~~~~~~~~~~~~~~~~~~~
 M-x create-directory
@@ -159,7 +166,7 @@ Git file status
 git status --ignored
 git ls-files --others --ignored --exclude-standard
 git ls-files --cached
-Checkout a file from an old commit(In case you deleted by mistake or don't want to current one): git checkout <HASH> -- <filepath>
+(Use this command with caution as it will overwrite local modified by unstaged file) Checkout a file from an old commit(In case you deleted by mistake or don't want to current one): git checkout <HASH> -- <filepath>
 
 Git and file permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~

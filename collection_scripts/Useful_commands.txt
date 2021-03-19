@@ -8,7 +8,7 @@ sudo apt-get install pulseaudio-module-bluetooth
 continue tithout pairing
 pactl load-module module-bluetooth-discover
 
-Sometimes the pulseaudio does not detect the blutooth speaker, in that case can do 
+Sometimes the pulseaudio does not detect the blutooth speaker, in that case can do
 
 To provide yes as an answer to a command which prompts you, for example apt-get upgrade: yes | sudo apt-get upgrade
 Logical commands execution linux
@@ -66,6 +66,8 @@ emacs
 -----
 Find the version: M-x emacs-version
 kill-rectangle: Mark one corner of the rectangle go to the other end and do M-x kill-rectangle. M-x copy-rectangle-as-kill copies a rectangle. M-x yank-rectangle pastes the rectangle.
+For inserting text in a rectangle: M-x string-insert-rectangle RET string RET
+Replace rectangle: M-x string-rectangle
 Count words and lines: M-x count-words, M-x count-lines
 Deleting backup files -> Open dired, press ~(flags all backup files), press x, confirm
 Deleting backup files recursively: M-x find-name-dired, select directory, file pattern *~ and repeat the procedure above
@@ -92,6 +94,7 @@ Close the current frame: C-x 5 0
 It makes sense to have split window inside a tab so we can have different locations views of the same file.
 It makes sense to have different contexts in different frames. Like programming related stuff in a frame. Text notes in one frame. And so on.
 Reload config file M-x load-file
+If the tabbar crashes or disappears just enable it from Options->Show/Hide->Tab Bar
 Directories and file
 ~~~~~~~~~~~~~~~~~~~~
 M-x create-directory
@@ -302,9 +305,9 @@ Openssh server
 
 Formatting
 ----------
-lsblk 
+lsblk
 sudo dd if=/dev/zero of=/dev/sdb bs=4k status=progress && sync
-sudo fdisk /dev/sdb, Then press letter o to create a new empty DOS partition table. Press letter n to add a new partition. You will be prompted for the size of the partition. Making a primary partition when prompted, if you are not sure. Then press letter w to write table to disk and exit. 
+sudo fdisk /dev/sdb, Then press letter o to create a new empty DOS partition table. Press letter n to add a new partition. You will be prompted for the size of the partition. Making a primary partition when prompted, if you are not sure. Then press letter w to write table to disk and exit.
 lsblk
 sudo mkfs.vfat /dev/sdb1
 sudo eject /dev/sdb
@@ -359,7 +362,7 @@ echo "ls -l > /tmp/ls_output" | at 10:10
 To view all at commands do: atq
 To remove an at command do: at -r <at id>
 
-Firefox 
+Firefox
 -------
 always open in private mode: about:config -> Browser.privatebrowsing.autostart to true
 do not close window on closing last tab: about:cnofig -> browser.tabs.closeWindowWithLastTab
@@ -368,7 +371,7 @@ Command to open window in private mode: firefor -private-window &
 
 Opera in private mode
 ---------------------
-Only option found was to give the command 
+Only option found was to give the command
 opera --private &
 on the command line.
 For bookmarks: ctrl+shift+B -> Other bookmarks -> list, search
@@ -384,7 +387,7 @@ Never use --delete and --remove-source-files at the same time
 rsync is slower than cp and mv for simple operations. But it excels when stability is needed or just some incremental copy is needed or there are a lot of files which mv cannot handle that fast.
 For deleting empty directories in the source directory use
 find . -depth -type d -empty -delete
-Possible alternative to rsync 
+Possible alternative to rsync
 mv -uv, -u -> Update
 mv only changes the address whereas rsync actually copies the files to the new destination.
 There is no easy way to recursively sync directories other than rsync.
@@ -438,14 +441,14 @@ To save a variable outside while debugging, do - assignin('<workspace name>','<v
 Vim
 ---
 case insensitive search /<word>\c
-Opening file in new tab gvim: 
+Opening file in new tab gvim:
 In the gvim.desktop desktop file (/usr/share/applications/ for most GNU/Linux systems) look for the "Exec" line. It will probably be like this:
 Exec=gvim -f %F
 Change the Exec line to:
 Exec=gvim -p --remote-tab-silent %F
 You may also need to change the StartupNotify value to "false" if it is currently set "true", or your Vim may not respond properly when the file is already open in a tab.
 New window -> :vsplit,:hsplit
-Moving between windows -> Ctrl+W arrow, 
+Moving between windows -> Ctrl+W arrow,
 Closing window -> Ctrl+W q.
 Command for opening file in a new tab: --remote-tab
 "+(p/y/d) for accessing the system clipboard
@@ -487,7 +490,7 @@ For modification time search: find -newermt "10 Aug 2016" ! -newermt "10 Aug 201
 
 Disabling open window after inserting usb
 -----------------------------------------
-dconf-editor: org->gnome->desktop->media-handling->automount-open(uncheck) 
+dconf-editor: org->gnome->desktop->media-handling->automount-open(uncheck)
 For mate: org->mate->desktop->media-handling->automount-open(uncheck)
 
 Settings usually take effect when the application that usues them is closed and opened.
@@ -554,7 +557,7 @@ exiftool -all= <image_name>.jpg
 
 ppa-purge - sudo ppa-purge ppa:whatever/ppa
 
-Temperature - 
+Temperature -
 sudo pacman -S lm_sensors
 sensors
 
@@ -633,7 +636,7 @@ Parse the numbers correctly while file globbing using ls ./*: ls -v ./*
 Screensaver - Menu-> screensaver -> blank screen only
 Suspend - xscreensaver-command -lock ; xfce4-session-logout --suspend
 The suspend button is not locking the computer
-For enabling the screen lock, make sure 'xscreensaver' package is installed and 
+For enabling the screen lock, make sure 'xscreensaver' package is installed and
 
 Adding users xfce
 -----------------
@@ -709,7 +712,7 @@ Create an environment: conda create --name <env_name>
 Start the environment: conda activate <env_name>
 Install package: conda install <package_name>
 List of packages: conda list
-List of environments: conda env list 
+List of environments: conda env list
 Activate an environment: conda activate <env_name>
 Deactivate and environment: conda deactivate
 
@@ -929,9 +932,9 @@ tmux
 ~~~~
 List screens - tmux ls
 Starting a new session - tmux new -s my_session
-Attaching a screen by number - tmux attach-session -t 
+Attaching a screen by number - tmux attach-session -t
 Detaching from a session - Ctrl-b + d
-Split current pane vertically into two panes - Ctrl+b " 
+Split current pane vertically into two panes - Ctrl+b "
 Tmux does not have looging by default. To know whether you are in a tmux session, check whether there is a green bar at the bottom.
 To close a tmux session Ctrl-b + : then enter kill-session and press enter.
 

@@ -72,6 +72,8 @@ Count words and lines: M-x count-words, M-x count-lines
 Deleting backup files -> Open dired, press ~(flags all backup files), press x, confirm
 Deleting backup files recursively: M-x find-name-dired, select directory, file pattern *~ and repeat the procedure above
 Open file in view/read only alt+x view-file. Convert and already opened file into view mode: alt+x view-mode
+Open file in read only mode from terminal: emacsclient --create-frame --eval '(view-file "<filename>")'
+Opening file from dired: M-x dired, specify directory, press enter on a file.
 Substitute selection - (delete-selection-mode 1)
 Display line numbers - (global-linum-mode t)
 Replacing newline, enter newline character C-q C-j
@@ -95,6 +97,7 @@ It makes sense to have split window inside a tab so we can have different locati
 It makes sense to have different contexts in different frames. Like programming related stuff in a frame. Text notes in one frame. And so on.
 Reload config file M-x load-file
 If the tabbar crashes or disappears just enable it from Options->Show/Hide->Tab Bar
+To cloes an emacs window opened by clicking, C-x C-c. To close a frame from opened from inside emacs C-x 5 0.
 Directories and file
 ~~~~~~~~~~~~~~~~~~~~
 M-x create-directory
@@ -510,6 +513,11 @@ Convert epub to pdf
 -------------------
 Install calibre, run:
 ebook-convert <input_filename>.epub <output_filename>.pdf
+
+### Convert text files to images
+Reference - https://unix.stackexchange.com/questions/138804/how-to-transform-a-text-file-into-a-picture
+soffice --convert-to png --outdir <output directory> "<input file path with file name>" && mogrify -trim -bordercolor "#FFF" -border 10 +repage <output path and filename>.png
+convert -size 360x360 xc:white -font "FreeMono" -pointsize 40 -fill black -annotate +50+50 "<text to convert>" <output filename>.png
 
 Extract text from pdf
 ~~~~~~~~~~~~~~~~~~~~~

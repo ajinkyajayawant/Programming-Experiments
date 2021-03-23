@@ -78,6 +78,7 @@ Substitute selection - (delete-selection-mode 1)
 Display line numbers - (global-linum-mode t)
 Replacing newline, enter newline character C-q C-j
 Replace expressions - Suppose we have to replace a linebreak. This is basically an a newline at the end of a line to maintain fixed column width. '\(\ca\)C-q C-j \(\ca\)' replace with '\1 \2'. \(\) forms a group and in the replacing we can refer to the group by a number. Similarly if we want to replace three or more newlines with two newlines we can say replace 'C-qC-jC-qC-j+' with 'C-qC-jC-qC-j.
+Add a whitespace after comma: M-x query-replace-regexp ,\([[:graph:]]\) -> , \1
 Replace all occurences - !
 Ido mode suggestion ignore- press C-f again
 Delete lines containing a phrase - Meta-x flush-lines(It also has keep lines)

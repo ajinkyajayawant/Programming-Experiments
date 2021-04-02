@@ -614,7 +614,10 @@ To cd into /usr/local/bin/ just type /u/lo/b and then press tab
 Move file/directory to trash - gvfs-trash <filename>, from the package gvfs-bin
 
 Search for pattern inside multiple pdfs - pdfgrep -HiR 'pattern' /path
-Search for pattern inside multiple text files - grep -nrw --color '<path>' -ie '<pattern>' (Note: Do not use wildcards in the pattern here, do not use w if do not want to match entire word.)
+Search for pattern inside multiple text files - grep -nr --color '<path>' -ie '<pattern>'
+To search for whole words grep -nrw --color '<path>' -ie '<pattern>' (Note: Do not use wildcards in the pattern here, do not use w if do not want to match entire word.)
+Exclude directory from search --exclude-dir='<directory pattern>'
+Exclude file from search --exclude='<file name pattern>'
 
 If screen becomes big/zoomed in then press Alt+Mouse wheel.
 
@@ -982,8 +985,11 @@ wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
 conda init
 conda info
 cd ~/anaconda3/
-conda create --name tryenv
+List existing environments: conda env list
+conda create --name <environment name>
+Deleting existing environment: conda env remove --name <environment name>
 conda activate tryenv
+Deactivate the conda environment from inside: conda deactivate
 conda list
 conda info --envs (Lists all the environments created so far)
 conda install -c conda-forge pygsp (pygsp was not available via regular install)
@@ -996,9 +1002,13 @@ Libre office calc
 =COUNTA(A1:A10) gives the number of non-empty cells between 1 and 10.
 =COUNTIF(A1:A10, 2) counts the number of times 2 appears in the range of those cells.
 =ISNUMBER(MATCH(2;A1:A10;0)) checks if 2 appears in the range of the cells.
+=SUM(B14, B29, B38, B50) sums up the cells given by arguments.
+=SUM(B14:B20) sums up the cells given by argument array.
 To keep a column fixed as you scroll, select a column to the right of the column. View->Freeze columns and rows.
 To move a row, ctrl+alt and drag for moving row.
 To have a sum formula for entire column, do it for one row and copy and paste that cell throughout the column.
+To concatenate columns corresponding to the same rows, use Shift and Ctrl intuitively.
+To transpose columns: Select cell range, cut, click the starting cell, edit->paste special, Paste all and transpose.
 
 Standard regexp
 ~~~~~~~~~~~~~~~
@@ -1008,6 +1018,9 @@ Standard regexp
 Pattern to match r inside two dollar signs and avoid the rest of rs: \$[^\$]*(?<!no)(?<!inne)(?<!rightar)(?<!righta)(?<!sta)(?<!\\)(?<!\\)(?<!\\pe)(?<!\\a)(?<!\\p)(?<!\\f)(?<!\\dagge)(?<!mat)r(?!ecF)(?!ansp)[^\$]*\$
 \\begin{equation.*}[^\$]*(?<!no)(?<!inne)(?<!rightar)(?<!righta)(?<!sta)(?<!\\)(?<!\\)(?<!\\pe)(?<!\\a)(?<!\\p)(?<!\\f)(?<!\\dagge)(?<!mat)r(?!ecF)(?!ansp)[^\$]*\\end{equation.*}
 Search for two words in a text file in linux: cat <filename> | grep -E 'word1|word2'
+-E flag for grep gives us the extendend regexp support and -F limits grep to string search which makes it faster.
+Remember that parenthesis capture by default.
+Remember that character classes are their own mini language.
 
 TODO
 ~~~~

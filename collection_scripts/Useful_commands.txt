@@ -98,7 +98,8 @@ It makes sense to have split window inside a tab so we can have different locati
 It makes sense to have different contexts in different frames. Like programming related stuff in a frame. Text notes in one frame. And so on.
 Reload config file M-x load-file
 If the tabbar crashes or disappears just enable it from Options->Show/Hide->Tab Bar
-To cloes an emacs window opened by clicking, C-x C-c. To close a frame from opened from inside emacs C-x 5 0.
+To close an emacs window opened by clicking, C-x C-c. To close a frame from opened from inside emacs C-x 5 0.
+To see what all operations were done say after a file locally changed and emacs tried to revert, check out the Messages buffer.
 Directories and file
 ~~~~~~~~~~~~~~~~~~~~
 M-x create-directory
@@ -298,6 +299,8 @@ Backup a folder into hard drive
 rsync --progress --human-readable --recursive --verbose ./books/ /media/jinkx/TOURO\ Mobile/MintUrgentBackup/books
 To view changes that will be made: rsync --progress --human-readable --recursive --verbose --dry-run --itemize-changes --delete ./books/ /media/jinkx/TOURO\ Mobile/MintUrgentBackup/books
 If you want to delete extraneous files from destination directory: rsync --progress --human-readable --recursive --verbose --delete ./books/ /media/jinkx/TOURO\ Mobile/MintUrgentBackup/books
+
+Check if a program refuses to close because a file is open: lsof | grep -i <program name>
 
 Shortcuts
 ---------
@@ -717,17 +720,6 @@ When in debugger, to list all the breakpoints, simply type 'b'.
 Breakpoints are placed in files. To specify a filename to place a breakpoint, do 'b <filepath/filename>:<line number>'
 To stop code execution at the particular point and enter the debugger, do 'pdb.set_trace()'.
 
-Installing and using conda
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-conda config --set auto_activate_base False
-Create an environment: conda create --name <env_name>
-Start the environment: conda activate <env_name>
-Install package: conda install <package_name>
-List of packages: conda list
-List of environments: conda env list
-Activate an environment: conda activate <env_name>
-Deactivate and environment: conda deactivate
-
 Using viztracer
 ~~~~~~~~~~~~~~~
 python3.6 -m viztracer -o <output name>.html --log_var <variable name> -- <program name.py>
@@ -795,6 +787,7 @@ done
 for loop, array for for loop, -le flag,
 
 Disable history for a bash session: set +o history
+Clear bash history: history -c
 
 ADB
 ---
@@ -943,7 +936,11 @@ Change your password - passwd
 tmux
 ~~~~
 List screens - tmux ls
-Starting a new session - tmux new -s my_session
+Starting a new session: tmux new -s <session name>
+Starting a new session in a directory: tmux new -s <session name> -c <directory path>
+Starting a new session without attaching to it: tmux new -s <session name> -d
+Starting a new session without attaching to it and run a command: tmux new -s <session name> -d '<command>'
+For example to start a dropbox: tmux new -s dropbox -c ./downloads -d './dropbox.py start'
 Attaching a screen by number - tmux attach-session -t
 Detaching from a session - Ctrl-b + d
 Split current pane vertically into two panes - Ctrl+b "
@@ -978,24 +975,31 @@ To just dump all hardware information, do - 'sudo lshw'
 
 Extracting printable strings from a mixed file: strings <filename>. For example strings .git/index
 
-Anaconda install and use
-~~~~~~~~~~~~~~~~~~~~~~~~
+Installing and using Anacondaconda
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
 ./Anaconda3-2020.07-Linux-x86_64.sh
 conda init
 conda info
 cd ~/anaconda3/
-List existing environments: conda env list
-conda create --name <environment name>
-Deleting existing environment: conda env remove --name <environment name>
-conda activate tryenv
-Deactivate the conda environment from inside: conda deactivate
+
+Update conda: conda update -n base -c defaults conda
+
 conda list
-conda info --envs (Lists all the environments created so far)
-conda install -c conda-forge pygsp (pygsp was not available via regular install)
-conda search Tkinter
-conda install Tkinter
 conda config --set auto_activate_base False
+Create an environment: conda create --name <env_name>
+Create an environment for specific python: conda create --name <env_name> python=<version number>
+Start the environment: conda activate <env_name>
+Install package: conda install <package_name>
+List of packages: conda list
+List of environments: conda env list
+Info on environments: conda info --envs
+Activate an environment: conda activate <env_name>
+Deactivate and environment: conda deactivate
+Remove an environment: conda env remove --name <environment name>
+Package search: conda search Tkinter
+Package install: conda install Tkinter
+If not available via regular install: conda install -c conda-forge pygsp
 
 Libre office calc
 ~~~~~~~~~~~~~~~~~
@@ -1021,6 +1025,7 @@ Search for two words in a text file in linux: cat <filename> | grep -E 'word1|wo
 -E flag for grep gives us the extendend regexp support and -F limits grep to string search which makes it faster.
 Remember that parenthesis capture by default.
 Remember that character classes are their own mini language.
+Emacs regexp for removing set trace python commands: # +pdb.set_trace()C-qC-j
 
 TODO
 ~~~~

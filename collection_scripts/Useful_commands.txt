@@ -69,10 +69,12 @@ kill-rectangle: Mark one corner of the rectangle go to the other end and do M-x 
 For inserting text in a rectangle: M-x string-insert-rectangle RET string RET
 Replace rectangle: M-x string-rectangle
 Count words and lines: M-x count-words, M-x count-lines
+Show cursor position(especially column number) momentarily: M-x what-cursor-position
 Deleting backup files -> Open dired, press ~(flags all backup files), press x, confirm
 Deleting backup files recursively: M-x find-name-dired, select directory, file pattern *~ and repeat the procedure above
 Open file in view/read only alt+x view-file. Convert and already opened file into view mode: alt+x view-mode
 Open file in read only mode from terminal: emacsclient --create-frame --eval '(view-file "<filename>")'
+A file opened from gui closes all the frames when I close that buffer. A better option is to create an emacsclient frame assuming a server exists: emacsclient --create-frame &
 Opening file from dired: M-x dired, specify directory, press enter on a file.
 Substitute selection - (delete-selection-mode 1)
 Display line numbers - (global-linum-mode t)
@@ -223,7 +225,7 @@ List the differences between the commits - git diff --stat <SHA_HASH1> <SHA_HASH
 Show the files which changed between the commits - git diff --name-only <SHA_HASH1> <SHA_HASH2>
 Show the files which changed between the commits along with short summary about change in file status - git diff --name-status <SHA_HASH1> <SHA_HASH2>
 If a good visual utility like meld is available do git difftool instead of git diff
-git diff HEAD shows the difference with the last commit
+git diff HEAD shows the difference with the last commit. This helps when you stage the files and for the commit message you want to diff and see.
 To see the commits in which a file has changed: git log --follow -- <filename>
 Comparing directories is also possible using meld.
 Otherwise for comparing directories either do:
@@ -619,6 +621,7 @@ Move file/directory to trash - gvfs-trash <filename>, from the package gvfs-bin
 Search for pattern inside multiple pdfs - pdfgrep -HiR 'pattern' /path
 Search for pattern inside multiple text files - grep -nr --color '<path>' -ie '<pattern>'
 To search for whole words grep -nrw --color '<path>' -ie '<pattern>' (Note: Do not use wildcards in the pattern here, do not use w if do not want to match entire word.)
+Exclude binary files from search, use: -I
 Exclude directory from search --exclude-dir='<directory pattern>'
 Exclude file from search --exclude='<file name pattern>'
 

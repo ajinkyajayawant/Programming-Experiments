@@ -501,6 +501,8 @@ Disabling open window after inserting usb
 -----------------------------------------
 dconf-editor: org->gnome->desktop->media-handling->automount-open(uncheck)
 For mate: org->mate->desktop->media-handling->automount-open(uncheck)
+Doing these does not help xfce. For xfce, open home->Edit->Preferences->Advanced-?Configure management of removable drives and media->(Removable drives and media opens up)->Uncheck browse removable media
+(Or simply search Removable drives in the system search tool and do the modification there)
 
 Settings usually take effect when the application that usues them is closed and opened.
 
@@ -609,6 +611,13 @@ sudo apt-get install trash-cli, which has command trash <filename>,trash-list,tr
 Use 'ls -d */' to just list the directories.
 Use 'ls -l | egrep -v '^d'' to list only files.
 Use 'ls -I "*.py" -I "*.m"' to exclude files with extension py and m.
+
+Ubuntu package management
+~~~~~~~~~~~~~~~~~~~~~~~~~
+* Adding a repository: sudo add-apt-repository ppa:ubuntuhandbook1/apps
+* Removing a repository: sudo add-apt-repository --remove ppa:ubuntuhandbook1/apps
+* List the added ppas: apt policy
+* List packages installed by snap: snap list
 
 Update zshrc without logging out - source ~/.zshrc
 

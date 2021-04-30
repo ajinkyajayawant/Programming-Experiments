@@ -1,5 +1,6 @@
 Change shell to zsh
 chsh -s $(which zsh)
+List available shells: cat /etc/shells
 
 sudo add-apt-repository ppa:blueman/ppa
 sudo apt-get update
@@ -618,6 +619,9 @@ Ubuntu package management
 * Removing a repository: sudo add-apt-repository --remove ppa:ubuntuhandbook1/apps
 * List the added ppas: apt policy
 * List packages installed by snap: snap list
+* Install: snap install <package name>
+* For a less secure access to home install: snap install <package name> --classic
+* Remove: snap remove <package name>
 
 Update zshrc without logging out - source ~/.zshrc
 
@@ -664,6 +668,7 @@ Screensaver - Menu-> screensaver -> blank screen only
 Suspend - xscreensaver-command -lock ; xfce4-session-logout --suspend
 The suspend button is not locking the computer
 For enabling the screen lock, make sure 'xscreensaver' package is installed and
+bind the Locking key combinations to xflock4?
 
 Adding users xfce
 -----------------

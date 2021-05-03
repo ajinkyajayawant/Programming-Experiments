@@ -1,0 +1,7 @@
+
+
+# Replace filenames in a directory
+cd <directory path>
+import os
+for filename in os.listdir("."):
+    os.rename(os.path.join(".", filename), os.path.join(".", "<text to append to filename>"+filename))

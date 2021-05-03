@@ -168,6 +168,7 @@ Drop a stash - git stash drop stash@{0}
 Pop a stash(Convenient because you don't have to remember whether you used a stash or not) - git stash pop stash@{0}
 Drop all stashes - git stash clear
 To discard unstaged changes the cleanest way I have found is to stash them and then drop the stash.
+The cleanest way to check for conflicts with the current branch in git is to create a new branch and try to merge there. This is a good idea because branches are so cheap you could just delete the new branch after trying.
 
 Git get a file from a particular Hash - git show <HASH>:/path/to/file > <file_destination>
 Git push a local branch to the repo: git push -u origin <branchname>
@@ -187,6 +188,25 @@ git config core.filemode false
 
 Config globally:
 git config --global core.filemode false
+
+Find all the git configurations:
+git config --list
+
+Find available merge tools:
+git mergetool --tool-help
+
+Find current mergetool:
+git config --get merge.tool
+
+Configure mergetool:
+git config --global merge.tool <tool name>
+
+A merge conflict inserts markers in the conflicted files and your task is to clear the markers. git mergetool creates additional files with REMOTE, LOCAL,... names. Tools like meld use these files to edit the marked up conflicted file. When we exit the REMOTE, LOCAL, ... files get deleted too.
+git mergetool creates *.orig backup files while resolving merges. These are safe to remove once a file has been merged and its git mergetool session has completed.
+LOCAL - the head for the file(s) from the current branch on the machine that you are using.
+REMOTE - the head for files(s) from a remote location that you are trying to merge into your LOCAL branch.
+BASE - the common ancestor(s) of LOCAL and REMOTE.
+MERGED - the tag / HEAD object after the merge - this is saved as a new commit.
 
 Add in ~/.gitconfig:
 [core]
@@ -235,6 +255,8 @@ or
 diff -qr dir1 dir2
 If the differences are hard to read, use
 diff -r dir1 dir2 | sort
+git diff <x> <x+∆x> shows the difference ∆x.
+Check for conflicts before merging: git merge --no-commit --no-ff $BRANCH, git merge --abort But I think a clean way is to create a throwaway branch.
 
 git index
 ~~~~~~~~~
@@ -292,6 +314,7 @@ xrandr --output LVDS1 --rotate left
 xrandr --output LVDS1 --rotate right
 xrandr --output LVDS1 --rotate inverted
 xrandr --output LVDS1 --rotate normal
+Find display information: xrandr
 
 Screen resolution
 -----------------
@@ -622,6 +645,7 @@ Ubuntu package management
 * Install: snap install <package name>
 * For a less secure access to home install: snap install <package name> --classic
 * Remove: snap remove <package name>
+* The new apt command merges apt-get and apt-cache functionality and adds features.
 
 Update zshrc without logging out - source ~/.zshrc
 
@@ -637,6 +661,8 @@ To search for whole words grep -nrw --color '<path>' -ie '<pattern>' (Note: Do n
 Exclude binary files from search, use: -I
 Exclude directory from search --exclude-dir='<directory pattern>'
 Exclude file from search --exclude='<file name pattern>'
+Save colored output from grep: ls | grep --color=always -i "<pattern>" > <output filename>
+Save html viewable colored output: ls --color=always | aha > <filename>.html
 
 If screen becomes big/zoomed in then press Alt+Mouse wheel.
 
@@ -669,6 +695,7 @@ Suspend - xscreensaver-command -lock ; xfce4-session-logout --suspend
 The suspend button is not locking the computer
 For enabling the screen lock, make sure 'xscreensaver' package is installed and
 bind the Locking key combinations to xflock4?
+Change window manager xfce: Menu->Desktop Settings->Change it to xfwmm4 for faster window manager.
 
 Adding users xfce
 -----------------
@@ -829,6 +856,7 @@ Linux android usb connect
 adb devices
 adb root
 adb shell commands very useful
+To flash a new firmware: adb sideload <firmware>.bin
 
 Processes analyse: htop (with \)
 
@@ -899,6 +927,7 @@ Sometimes when I try to connect to a screen using screen -r command it says "The
 'echo $TERM && echo $STY && screen -ls' helps to know whether I'm in a screen. For tmux it is 'echo $TERM && echo $STY && tmux ls'
 For screen logging use -L option.
 To enable scrolling in screen do C-A Esc -> scroll -> q
+If for some reason ssh key of host machine has changed and you need to update key on the client machine: ssh-keyscan -t ecdsa 128.125.20.97 >> ~/.ssh/known_hosts
 
 To crop margins from pdf - pdfcrop --margins '-<left> -<top> -<right> -<bottom>' input.pdf output.pdf. This forcefully crops the margins. pdfcrop input.pdf output.pdf does not forcefully crop the margins.
 Briss is an awesome tool to crop margins. Run it using 'java -jar briss-0.9.jar'

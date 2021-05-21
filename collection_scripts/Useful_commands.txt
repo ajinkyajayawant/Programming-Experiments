@@ -357,8 +357,8 @@ Disabling shutter sound ubuntu
 ------------------------------
 sudo mv /usr/share/sounds/freedesktop/stereo/camera-shutter.oga /usr/share/sounds/freedesktop/stereo/camera-shutter-disabled.oga
 
-Shortcuts xfce
---------------
+# XFCE
+## Shortcuts xfce
 Installed whisker menu - sudo apt-get install xfce4-whiskermenu-plugin
 Removed applications menu from the panel
 Workspace move - Window manager
@@ -371,6 +371,21 @@ pactl -- set-sink-volume 0 +10%
 pactl -- set-sink-volume 0 +10%
 pactl -- set-sink-mute 0 toggle
 For adding folders to Places(Downloads) menu add them in the file - ~/.config/gtk-3.0/bookmarks
+Screenshot shortcut command:
+xfce4-screenshooter -f
+For getting all the options just - xfce4-screenshooter
+Screensaver - Menu-> screensaver -> blank screen only
+Suspend - xscreensaver-command -lock ; xfce4-session-logout --suspend
+The suspend button is not locking the computer
+For enabling the screen lock, make sure 'xscreensaver' package is installed and
+bind the Locking key combinations to xflock4?
+Change window manager xfce: Menu->Desktop Settings->Change it to xfwmm4 for faster window manager.
+Adding users xfce:
+sudo apt-get install gnome-system-tools
+Users and groups
+Open archive manager in xfce for a zip file - thunar ./<name>.zip &
+File managers - Thunar, PCMan FM
+
 Printing
 ~~~~~~~~
 Printer was not working, job was showing pending, and properties were showing stopped. Start menu->Printers->Right click on the printer->Enabled. Started working.
@@ -566,6 +581,14 @@ sudo reboot
 systemcl suspend
 mount - shows information on mounted devices
 
+Soft reboot
+R: Switch the keyboard from raw mode to XLATE mode
+E: Send the SIGTERM signal to all processes except init
+I: Send the SIGKILL signal to all processes except init
+S: Sync all mounted filesystems
+U: Remount all mounted filesystems in read-only mode
+B: Immediately reboot the system, without unmounting partitions or syncing
+
 pdftk manipulations
 -------------------
 Join multiple pages: pdftk pg_1.pdf pg_2.pdf pg_3.pdf cat output pg_all.pdf
@@ -600,11 +623,6 @@ ppa-purge - sudo ppa-purge ppa:whatever/ppa
 Temperature -
 sudo pacman -S lm_sensors
 sensors
-
-Screenshot shortcut command
----------------------------
-xfce4-screenshooter -f
-For getting all the options just - xfce4-screenshooter
 
 If linux breaks after a long upgrade and some packages are held back install those using: sudo apt-get install <names of packages>, then do maintainence commands like autoremove, update, upgrade.
 
@@ -645,6 +663,7 @@ Ubuntu package management
 * Install: snap install <package name>
 * For a less secure access to home install: snap install <package name> --classic
 * Remove: snap remove <package name>
+* Purge a package: snap remove --purge <package name>
 * The new apt command merges apt-get and apt-cache functionality and adds features.
 
 Update zshrc without logging out - source ~/.zshrc
@@ -690,18 +709,6 @@ Count number of files in the current directory - ls -1 | wc -l
 List ls output by columns: ls -C, rows: ls -x
 Parse the numbers correctly while file globbing using ls ./*: ls -v ./*
 
-Screensaver - Menu-> screensaver -> blank screen only
-Suspend - xscreensaver-command -lock ; xfce4-session-logout --suspend
-The suspend button is not locking the computer
-For enabling the screen lock, make sure 'xscreensaver' package is installed and
-bind the Locking key combinations to xflock4?
-Change window manager xfce: Menu->Desktop Settings->Change it to xfwmm4 for faster window manager.
-
-Adding users xfce
------------------
-sudo apt-get install gnome-system-tools
-Users and groups
-
 Change hard disk name - umount, disks, edit filesystem
 
 Compare strings zsh - [ "<your text string 1>" = "<your text string 2>" ] && echo "valid" || echo "invalid"
@@ -727,8 +734,6 @@ I'm feeling lucky corner swipe feature - Caused by ES file explorer. Uninstalled
 Duckduckgo on mobile - Visit DDG, Chrome setting, Search engine, recently visited.
 Block cookies - Chrome -> site settings, cookies, blocked.
 Even after disabling google assitant, mobile was listening to OK GOOGLE, so went to Settings -> App permissions -> Microphone: Disbled Camera and google permissions to microphone.
-
-Open archive manager in xfce for a zip file - thunar ./<name>.zip &
 
 Python
 ------
@@ -802,7 +807,7 @@ Primary protection from deletions:(Remove the write permissions from all, then i
 chmod ugo-w <filename>
 
 Sorting the space consumed by files: (https://serverfault.com/questions/62411/how-can-i-sort-du-h-output-by-size) du -h | sort -h
-To find the space available: df -ha
+To find the space available: df -ha, or df -H
 
 Foxit pdf reader
 ----------------
@@ -938,6 +943,7 @@ Restart when hung up - 'systemctl restart nordvpnd' or 'systemctl --global resta
 Seeing status - 'systemctl status nordvpnd' or 'systemctl --global restart nordvpnd'
 'systemcl list-units' seems to list
 None of this seems to work, but changing UDP to TCP seems to work.
+This works for restart after internet connection restart: service nordvpnd restart
 
 Dropbox
 ~~~~~~~
@@ -1046,11 +1052,35 @@ Remove an environment: conda env remove --name <environment name>
 Package search: conda search Tkinter
 Package install: conda install Tkinter
 If not available via regular install: conda install -c conda-forge pygsp
+If you don't run conda init you've to just run:
+~/anaconda3/bin/conda
+instead of conda.
+
+eval "$(/home/jinkx/anaconda3/bin/conda shell.zsh hook)"
+~/anaconda3/bin/conda init zsh
+
+Uninstall conda:
+rm -rf ~/miniconda
+OPTIONAL: Edit ~/.bash_profile to remove the Miniconda directory from your PATH environment variable.
+OPTIONAL: Remove the following hidden file and folders that may have been created in the home directory:
+.condarc file
+.conda directory
+.continuum directory
+By running:
+rm -rf ~/.condarc ~/.conda ~/.continuum
+
+~/anaconda3/envs/for_smop/bin/smop -o /tmp/trymatlabconvert/solver.py --verbose -N ~/Dropbox/USC/graph/code/loc2wts.m
+User installations usually default to ~/.local/
+
+Don't use setup.py install without a record.
+
+pip automatically inside the conda virtual environment.
 
 Libre office calc
 ~~~~~~~~~~~~~~~~~
 =COUNTA(A1:A10) gives the number of non-empty cells between 1 and 10.
 =COUNTIF(A1:A10, 2) counts the number of times 2 appears in the range of those cells.
+ =COUNTIF(C43:AK43,">0") Counts the number of cell values greater than 0.
 =ISNUMBER(MATCH(2;A1:A10;0)) checks if 2 appears in the range of the cells.
 =SUM(B14, B29, B38, B50) sums up the cells given by arguments.
 =SUM(B14:B20) sums up the cells given by argument array.
@@ -1059,6 +1089,7 @@ To move a row, ctrl+alt and drag for moving row.
 To have a sum formula for entire column, do it for one row and copy and paste that cell throughout the column.
 To concatenate columns corresponding to the same rows, use Shift and Ctrl intuitively.
 To transpose columns: Select cell range, cut, click the starting cell, edit->paste special, Paste all and transpose.
+If you don't want to explicitly write the cell ranges, just select the cell where you want to insert the result. Do Insert->Function, select the function you want to insert and insert the cells by selecting them.
 
 Standard regexp
 ~~~~~~~~~~~~~~~
@@ -1071,7 +1102,11 @@ Search for two words in a text file in linux: cat <filename> | grep -E 'word1|wo
 -E flag for grep gives us the extendend regexp support and -F limits grep to string search which makes it faster.
 Remember that parenthesis capture by default.
 Remember that character classes are their own mini language.
-Emacs regexp for removing set trace python commands: # +pdb.set_trace()C-qC-j
+## Emacs regexp
+Removing set trace python commands: # +pdb.set_trace()C-qC-j
+Adding spacing before and after = sign. \([[:alnum:]]\)=\([[:alnum:]]\) → \1 = \2 or \([^ ]\)=\([^ ]\) → \1 = \2
+Adding spacing after comma if it doesn't already exist: ,\([^ ]\) → , \1
+If numpy library is not prepended, prepend it: \([^.]\)arange → \1np.arange
 
 TODO
 ~~~~

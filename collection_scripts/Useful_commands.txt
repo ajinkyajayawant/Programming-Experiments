@@ -179,6 +179,12 @@ git status --ignored
 git ls-files --others --ignored --exclude-standard
 git ls-files --cached
 (Use this command with caution as it will overwrite local modified by unstaged file) Checkout a file from an old commit(In case you deleted by mistake or don't want to current one): git checkout <HASH> -- <filepath>
+When you don't remember the order in the files were modified, the best bet is see the last modified:
+git status -s | while read mode file; do echo $mode $file $(stat -c %y $file); done
+With sort by date:
+git status -s | while read mode file; \
+  do echo $mode $(stat -c %y $file) $file; \
+done|sort -k1,4
 
 Git and file permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -385,6 +391,8 @@ sudo apt-get install gnome-system-tools
 Users and groups
 Open archive manager in xfce for a zip file - thunar ./<name>.zip &
 File managers - Thunar, PCMan FM
+Command line application start: <Binary file location of application> %f &
+If connecting laptop to monitor is limiting the disply in top left corner: xfwm4 --replace. May have to press Ctrl-C after that if the command doesn't exit.
 
 Printing
 ~~~~~~~~
@@ -415,7 +423,7 @@ Firefox
 always open in private mode: about:config -> Browser.privatebrowsing.autostart to true
 do not close window on closing last tab: about:cnofig -> browser.tabs.closeWindowWithLastTab
 focus on link bar - alt+D, ctrl+L,
-Command to open window in private mode: firefor -private-window &
+Command to open window in private mode: firefox -private-window &
 
 Opera in private mode
 ---------------------
@@ -944,6 +952,7 @@ Seeing status - 'systemctl status nordvpnd' or 'systemctl --global restart nordv
 'systemcl list-units' seems to list
 None of this seems to work, but changing UDP to TCP seems to work.
 This works for restart after internet connection restart: service nordvpnd restart
+UDP protocol is at least 10 times faster. Use it whereever possible. Especially in video calls.
 
 Dropbox
 ~~~~~~~

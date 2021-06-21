@@ -1,4 +1,4 @@
-Change shell to zsh
+Change shell to zsh(once installation of package is done)
 chsh -s $(which zsh)
 List available shells: cat /etc/shells
 
@@ -240,7 +240,7 @@ Git commits to different branches
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Get the code from the remote branch - git fetch
 Merge the code locally with my current commit - git pull
-
+Search git commit messages: git log --all --grep=<text to search>'
 Merge a branch into another: git merge --no-ff <name of branch to merge>
 
 Git comparing
@@ -263,6 +263,7 @@ If the differences are hard to read, use
 diff -r dir1 dir2 | sort
 git diff <x> <x+∆x> shows the difference ∆x.
 Check for conflicts before merging: git merge --no-commit --no-ff $BRANCH, git merge --abort But I think a clean way is to create a throwaway branch.
+Comparing a file from two branches: git diff <branch1> <branch2> <filename>
 
 git index
 ~~~~~~~~~
@@ -393,6 +394,8 @@ Open archive manager in xfce for a zip file - thunar ./<name>.zip &
 File managers - Thunar, PCMan FM
 Command line application start: <Binary file location of application> %f &
 If connecting laptop to monitor is limiting the disply in top left corner: xfwm4 --replace. May have to press Ctrl-C after that if the command doesn't exit.
+To turn on password prompt at login: Check that ask for password is enabled in 'Users and Groups'. Check that manual login is enabled on Login window->Users.
+Asking for keyring on booting: lock and unlock default keyring in passwords and keys and check the box automatically unlock when logged in
 
 Printing
 ~~~~~~~~
@@ -558,6 +561,7 @@ Operating system information
 cat /etc/issue
 cat /etc/linuxmint/info
 cat /etc/os-release
+inxi -S
 
 Thumbnail problems
 ------------------
@@ -675,6 +679,10 @@ Ubuntu package management
 * The new apt command merges apt-get and apt-cache functionality and adds features.
 
 Update zshrc without logging out - source ~/.zshrc
+
+# Flatpak
+* List installed applications: flatpak list
+* Run application: flatpak run <application ID> &
 
 zsh features
 ------------
@@ -954,6 +962,9 @@ None of this seems to work, but changing UDP to TCP seems to work.
 This works for restart after internet connection restart: service nordvpnd restart
 UDP protocol is at least 10 times faster. Use it whereever possible. Especially in video calls.
 
+Network status: sudo systemctl status networking
+Following helps after suspend: sudo systemctl stop nordvpnd, sudo service network-manager restart, service nordvpnd restart
+
 Dropbox
 ~~~~~~~
 To exlude a particular directory from downloading to a computer, do
@@ -1094,11 +1105,12 @@ Libre office calc
 =SUM(B14, B29, B38, B50) sums up the cells given by arguments.
 =SUM(B14:B20) sums up the cells given by argument array.
 To keep a column fixed as you scroll, select a column to the right of the column. View->Freeze columns and rows.
-To move a row, ctrl+alt and drag for moving row.
+To move a row, ctrl+alt and drag for moving row.(this is not working)
 To have a sum formula for entire column, do it for one row and copy and paste that cell throughout the column.
 To concatenate columns corresponding to the same rows, use Shift and Ctrl intuitively.
 To transpose columns: Select cell range, cut, click the starting cell, edit->paste special, Paste all and transpose.
 If you don't want to explicitly write the cell ranges, just select the cell where you want to insert the result. Do Insert->Function, select the function you want to insert and insert the cells by selecting them.
+Moving columns(applies to rows too): Select the entire column. Click on a cell inside the column. Drag where you want it. Press Alt before leaving the click. Release mouse. Release Alt.
 
 Standard regexp
 ~~~~~~~~~~~~~~~
@@ -1116,6 +1128,7 @@ Removing set trace python commands: # +pdb.set_trace()C-qC-j
 Adding spacing before and after = sign. \([[:alnum:]]\)=\([[:alnum:]]\) → \1 = \2 or \([^ ]\)=\([^ ]\) → \1 = \2
 Adding spacing after comma if it doesn't already exist: ,\([^ ]\) → , \1
 If numpy library is not prepended, prepend it: \([^.]\)arange → \1np.arange
+Replacing , <number> or ,<number> by , <variable name> can be done by: , *[[:digit:]] -> , <variable name>
 
 TODO
 ~~~~

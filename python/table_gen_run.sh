@@ -8,3 +8,5 @@ python3.6 -c 'from table_generation_for_latex import argmax_max_two_tables; argm
 cat /tmp/a1.txt
 cat /tmp/a2.txt
 cat /tmp/a3.txt
+
+python3 -c 'from table_generation_for_latex import table_manipulation; table_manipulation("/tmp/sz_alg_snrs.dat", "/tmp/pandastry")'

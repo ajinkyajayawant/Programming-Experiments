@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import os
 
 def argmax_max_two_tables(table1_path, table2_path, col_inds, save_path):
     """ This function computes the maximum column from table one and applies that to table 2
@@ -12,10 +13,36 @@ def argmax_max_two_tables(table1_path, table2_path, col_inds, save_path):
 
     red_tab2 = tab2.iloc[:, col_inds]
     tab2_modified = tab2.assign(New_Column=-1)
-    
+
     for i, row in tab2_modified.iterrows():
         tab2_modified.loc[[i], ['New_Column']] = tab2_modified.loc[i, max_args[i]]
 
     tab2_modified.to_csv(save_path, header=False, index=False)
-    
+
+    return
+
+
+def table_manipulation(table_path, save_path):
+
+    my_table = pd.read_table(table_path, delim_whitespace=True, header=None)
+
+    drop_inds = [1, 2]
+    table_col_drop = my_table.drop(my_table.columns[drop_inds], axis = 1)
+
+    tab_0_replace =  table_col_drop.replace(0.0, "")
+    drop_inds_2 = [3,4]
+    table_col_drop_2 = my_table.drop(my_table.columns[drop_inds_2], axis = 1)
+
+    tab_stacked = pd.concat([tab_0_replace, table_col_drop_2], axis=0)
+
+    tab_0_replace.to_csv(os.path.join(save_path, "first_table.dat"), header=False, index=False)
+    table_col_drop_2.to_csv(os.path.join(save_path, "second_table.dat"), header=False, index=False)
+
+    # This stacks by aligning the columns
+    tab_stacked.to_csv(os.path.join(save_path, "stacked.dat"), header=False, index=False)
+
+    # Check for NaNs after
+    print("Checking original table {0}".format(my_table.isnull().values.any()))
+    print("Checking stacked table {0}".format(tab_stacked.isnull().values.any()))
+
     return

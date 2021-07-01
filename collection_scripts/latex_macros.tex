@@ -194,7 +194,7 @@ d = e
 % Notes
 % Use bfseries not bf - https://tex.stackexchange.com/questions/41681/correct-way-to-bold-italicize-text
 
-% For top aligned minipages do 
+% For top aligned minipages do
 \begin{minipage}[]{<x>\textwidth}
 
 % Enumerate with different styles
@@ -279,8 +279,8 @@ If I want to use algorithmicx I just need to do \usepackage{algorithm} \usepacka
 \definecolor{red}{RGB}{160,0,0}
 \definecolor{green}{RGB}{0,150,0}
 
-\lstset{language=Python, 
-  basicstyle=\ttfamily\small, 
+\lstset{language=Python,
+  basicstyle=\ttfamily\small,
   keywordstyle=\color{keywords},
   commentstyle=\color{comments},
   stringstyle=\color{red},
@@ -328,7 +328,7 @@ If I want to use algorithmicx I just need to do \usepackage{algorithm} \usepacka
 \documentclass[11pt]{article}
 \usepackage{multirow}
 \begin{document}
- 
+
 \begin{table}[ht]
 \caption{Multi-row table}
 \begin{center}
@@ -341,13 +341,13 @@ If I want to use algorithmicx I just need to do \usepackage{algorithm} \usepacka
 \end{center}
 \label{tab:multicol}
 \end{table}
- 
+
 \end{document}
 % Span multiple columns and rows -
 \documentclass[11pt]{article}
 \usepackage{multirow}
 \begin{document}
- 
+
 \begin{table}[ht]
 \caption{Multi-column and multi-row table}
 \begin{center}
@@ -362,7 +362,7 @@ If I want to use algorithmicx I just need to do \usepackage{algorithm} \usepacka
 \end{center}
 \label{tab:multicol}
 \end{table}
- 
+
 \end{document}
 
 % Adding space between columns in table -
@@ -382,4 +382,18 @@ If I want to use algorithmicx I just need to do \usepackage{algorithm} \usepacka
 % To disable the algorithm label for algorithms, put
 \floatname{algorithm}{}
 % after
-\begin{algorithm}  
+\begin{algorithm}
+
+% Comma separated table import
+\begin{table}[t]
+\centering
+    \caption{Execution time(secs.) for sampling, Random senor graphs with 20 nearest neighbors}
+    \pgfplotstableread[col sep=comma]{<tablename>}\mytableTime
+    \pgfplotstableset{
+    create on use/overhead/.style={
+    create col/expr={(\thisrow{8}/\thisrow{1})}}
+    }
+    \pgfplotstabletypeset[columns={[index]0,[index]1,[index]2,[index]11,[index]9,[index]8,overhead},
+
+    \label{tab:<labelname>}
+\end{table}

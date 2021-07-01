@@ -1,0 +1,30 @@
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+\documentclass{scrartcl}
+
+\usepackage{tikz, pgfplots, pgfplotstable}
+
+\begin{document}
+
+\begin{figure}
+    \pgfplotstableread[col sep=comma]{blank_entries.dat}\mytable
+    \centering
+   \begin{tikzpicture}
+
+     \begin{axis}[width = \linewidth,
+       grid=both,
+       grid style={line width=.1pt, draw=gray!10},
+       major grid style={line width=.2pt,draw=gray!50},]
+    \pgfplotstablegetcolsof{\mytable}
+    \foreach \i in {1,2}{%
+      \addplot table[x index=0,y index=\i] {\mytable};
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{figure}
+
+\end{document}

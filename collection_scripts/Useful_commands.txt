@@ -74,6 +74,7 @@ Show cursor position(especially column number) momentarily: M-x what-cursor-posi
 Deleting backup files -> Open dired, press ~(flags all backup files), press x, confirm
 Deleting backup files recursively: M-x find-name-dired, select directory, file pattern *~ and repeat the procedure above
 Open file in view/read only alt+x view-file. Convert and already opened file into view mode: alt+x view-mode
+view-file has its special shortcuts like q which exits the view mode. So a better solution in later versions of emacs is: M-x read-only-mode
 Open file in read only mode from terminal: emacsclient --create-frame --eval '(view-file "<filename>")'
 A file opened from gui closes all the frames when I close that buffer. A better option is to create an emacsclient frame assuming a server exists: emacsclient --create-frame &
 Opening file from dired: M-x dired, specify directory, press enter on a file.
@@ -103,6 +104,7 @@ Reload config file M-x load-file
 If the tabbar crashes or disappears just enable it from Options->Show/Hide->Tab Bar
 To close an emacs window opened by clicking, C-x C-c. To close a frame from opened from inside emacs C-x 5 0.
 To see what all operations were done say after a file locally changed and emacs tried to revert, check out the Messages buffer.
+Convert region to lowercase: M-x downcase-region
 Directories and file
 ~~~~~~~~~~~~~~~~~~~~
 M-x create-directory
@@ -333,7 +335,9 @@ rsync --progress --human-readable --recursive --verbose ./books/ /media/jinkx/TO
 To view changes that will be made: rsync --progress --human-readable --recursive --verbose --dry-run --itemize-changes --delete ./books/ /media/jinkx/TOURO\ Mobile/MintUrgentBackup/books
 If you want to delete extraneous files from destination directory: rsync --progress --human-readable --recursive --verbose --delete ./books/ /media/jinkx/TOURO\ Mobile/MintUrgentBackup/books
 
-Check if a program refuses to close because a file is open: lsof | grep -i <program name>
+Check if a program refuses to close, media refuses to eject, because a file is open: lsof | grep -i <program name>
+or
+lsof | grep -i <mount location>
 
 Shortcuts
 ---------
@@ -351,6 +355,7 @@ sudo fdisk /dev/sdb, Then press letter o to create a new empty DOS partition tab
 lsblk
 sudo mkfs.vfat /dev/sdb1
 sudo eject /dev/sdb
+Disks utility from the Linux mint menu is a convenient alternative to all these commands.
 
 Burning an iso - sudo dd if=/tmp/artixbang-beta-070318.iso of=/dev/sdb bs=4M status=progress && sync
 
@@ -427,6 +432,10 @@ always open in private mode: about:config -> Browser.privatebrowsing.autostart t
 do not close window on closing last tab: about:cnofig -> browser.tabs.closeWindowWithLastTab
 focus on link bar - alt+D, ctrl+L,
 Command to open window in private mode: firefox -private-window &
+
+Google chrome
+~~~~~~~~~~~~~
+Incognito: google-chrome -incognito &
 
 Opera in private mode
 ---------------------
@@ -988,6 +997,7 @@ Set a breakpoint: %debug -b <filename>.py:<linenumber>
 turn on pdb: %pdb on
 turn off pdb: %pdb off
 To start a function in debug mode: %debug <function> After this you can use the standard debugging commands.
+cat bash command, but from ipython: %cat <filename>
 
 Linux and users
 ~~~~~~~~~~~~~~~
@@ -1098,6 +1108,7 @@ pip automatically inside the conda virtual environment.
 
 Libre office calc
 ~~~~~~~~~~~~~~~~~
+Opening a document from the commandline: libreoffice --calc <document name> &
 =COUNTA(A1:A10) gives the number of non-empty cells between 1 and 10.
 =COUNTIF(A1:A10, 2) counts the number of times 2 appears in the range of those cells.
  =COUNTIF(C43:AK43,">0") Counts the number of cell values greater than 0.
@@ -1152,6 +1163,7 @@ iPad
 Backups
 -------
 du --human-readable --max-depth=1 ~/ | sort --human-numeric-sort
+To know used space, available space and total space: df --human-readable ./
 In order of large directory spaces, go one level deeper. Move the data somewhere else and run the command again until there is barely KBs of data.
 Sync dropbox and unlink:
 dropbox start && (echo "dropbox stop" | at now + 15 mins) && (echo "mv ~/.dropbox <backup dir>/.dropbox.old" | at now + 30 mins)
@@ -1164,3 +1176,12 @@ https://askubuntu.com/questions/935377/how-to-filter-du-output
 https://stackoverflow.com/questions/9794791/how-to-get-total-size-of-folders-with-find-and-du
 find ~/ -mindepth 1 -maxdepth 1 -type d -not -empty | xargs du -h --max-depth=0 | sort -h
 Can do a separate command for files or add it to this.
+
+# Windows
+## Ram details
+wmic MEMORYCHIP
+wmic MEMORYCHIP get BankLabel, DeviceLocator, MemoryType, TypeDetail, Capacity, Speed
+wmic memorychip list full
+systeminfo | findstr /C:”Total Physical Memory”
+systeminfo |find “Available Physical Memory”
+Using powershell: Get-WmiObject Win32_PhysicalMemory | Format-List *

@@ -1146,7 +1146,8 @@ Adding spacing after comma if it doesn't already exist: ,\([^ ]\) → , \1
 If numpy library is not prepended, prepend it: \([^.]\)arange → \1np.arange
 Replacing , <number> or ,<number> by , <variable name> can be done by: , *[[:digit:]] -> , <variable name>
 Searching citations with emacs regexp: \[[[:digit:]]+\]
-
+## Python regexp
+* Extract textcolors from latex: r"\\textcolor\{blue\}\{.*\}"
 TODO
 ~~~~
 * How to search patterns and extract lines using emacs or bash?

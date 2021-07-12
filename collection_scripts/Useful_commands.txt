@@ -115,6 +115,8 @@ M-x buffer-menu
 Flag buffers for deletion using d
 Flag buffers for save using s
 Execute the commands with x
+### Search
+* The search that gives the results one by one in emacs is the incremental search. Its commands start with isearch keyword. The shortcut to move to the next word in the incremental search is C-M-s.
 
 Git
 ------
@@ -401,6 +403,8 @@ Command line application start: <Binary file location of application> %f &
 If connecting laptop to monitor is limiting the disply in top left corner: xfwm4 --replace. May have to press Ctrl-C after that if the command doesn't exit.
 To turn on password prompt at login: Check that ask for password is enabled in 'Users and Groups'. Check that manual login is enabled on Login window->Users.
 Asking for keyring on booting: lock and unlock default keyring in passwords and keys and check the box automatically unlock when logged in
+Find who all is logged in: who -u
+Logout other users: pkill -KILL -u <loginname>
 
 Printing
 ~~~~~~~~
@@ -432,6 +436,7 @@ always open in private mode: about:config -> Browser.privatebrowsing.autostart t
 do not close window on closing last tab: about:cnofig -> browser.tabs.closeWindowWithLastTab
 focus on link bar - alt+D, ctrl+L,
 Command to open window in private mode: firefox -private-window &
+Directly open a link in a private mode: firefox -private-window <link> &
 
 Google chrome
 ~~~~~~~~~~~~~
@@ -1140,6 +1145,7 @@ Adding spacing before and after = sign. \([[:alnum:]]\)=\([[:alnum:]]\) → \1 =
 Adding spacing after comma if it doesn't already exist: ,\([^ ]\) → , \1
 If numpy library is not prepended, prepend it: \([^.]\)arange → \1np.arange
 Replacing , <number> or ,<number> by , <variable name> can be done by: , *[[:digit:]] -> , <variable name>
+Searching citations with emacs regexp: \[[[:digit:]]+\]
 
 TODO
 ~~~~

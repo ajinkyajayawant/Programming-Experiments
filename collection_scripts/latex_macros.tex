@@ -396,4 +396,9 @@ If I want to use algorithmicx I just need to do \usepackage{algorithm} \usepacka
     \pgfplotstabletypeset[columns={[index]0,[index]1,[index]2,[index]11,[index]9,[index]8,overhead},
 
     \label{tab:<labelname>}
-\end{table}
+  \end{table}
+
+
+  columns/0/.style={fixed} is useful when we don't want exponential notation for pgfplottable
+
+% If figures or tables are not fitting on a line with centering, try hfill to left align the left figure and right align the right figure.

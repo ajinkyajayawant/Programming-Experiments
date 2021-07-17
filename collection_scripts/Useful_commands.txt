@@ -105,6 +105,10 @@ If the tabbar crashes or disappears just enable it from Options->Show/Hide->Tab 
 To close an emacs window opened by clicking, C-x C-c. To close a frame from opened from inside emacs C-x 5 0.
 To see what all operations were done say after a file locally changed and emacs tried to revert, check out the Messages buffer.
 Convert region to lowercase: M-x downcase-region
+Find the value of a variable: M-x describe-variable
+### Org mode useful commands
+* The variable org-agenda-files holds the search paths for agenda files
+* Add the current file to agenda search list: org-agenda-file-to-front
 Directories and file
 ~~~~~~~~~~~~~~~~~~~~
 M-x create-directory
@@ -400,7 +404,7 @@ Users and groups
 Open archive manager in xfce for a zip file - thunar ./<name>.zip &
 File managers - Thunar, PCMan FM
 Command line application start: <Binary file location of application> %f &
-If connecting laptop to monitor is limiting the disply in top left corner: xfwm4 --replace. May have to press Ctrl-C after that if the command doesn't exit.
+If connecting laptop to monitor is limiting the disply in top left corner: xfwm4 --replace. May have to press Ctrl-C after that if the command doesn't exit. If that doesn't work, make sure to turn off the laptop display from Displays.
 To turn on password prompt at login: Check that ask for password is enabled in 'Users and Groups'. Check that manual login is enabled on Login window->Users.
 Asking for keyring on booting: lock and unlock default keyring in passwords and keys and check the box automatically unlock when logged in
 Find who all is logged in: who -u
@@ -619,10 +623,12 @@ pdftk manipulations
 -------------------
 Join multiple pages: pdftk pg_1.pdf pg_2.pdf pg_3.pdf cat output pg_all.pdf
 Rotate a page by 180 deg: pdftk pg.pdf cat 1-endsouth output pg1.pdf
+Rotate by 90 degrees clockwise: pdftk <input filename>.pdf cat 1-endeast output <output filename>.pdf
 
 Information of a pdf file
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Count the number of pages: pdfinfo <filename>.pdf | grep Pages
+Page size is also available with pdfinfo.
 
 wifi start for antergos
 -----------------------
@@ -1146,6 +1152,7 @@ Adding spacing after comma if it doesn't already exist: ,\([^ ]\) → , \1
 If numpy library is not prepended, prepend it: \([^.]\)arange → \1np.arange
 Replacing , <number> or ,<number> by , <variable name> can be done by: , *[[:digit:]] -> , <variable name>
 Searching citations with emacs regexp: \[[[:digit:]]+\]
+Replacing == <number> with [<number>] == 1:  == \([[:digit:]]+\) → [\1] == 1
 ## Python regexp
 * Extract textcolors from latex: r"\\textcolor\{blue\}\{.*\}"
 TODO

@@ -78,6 +78,7 @@ view-file has its special shortcuts like q which exits the view mode. So a bette
 Open file in read only mode from terminal: emacsclient --create-frame --eval '(view-file "<filename>")'
 A file opened from gui closes all the frames when I close that buffer. A better option is to create an emacsclient frame assuming a server exists: emacsclient --create-frame &
 Opening file from dired: M-x dired, specify directory, press enter on a file.
+Creating a new diretory in dired mode - Once in dired mode press +
 Substitute selection - (delete-selection-mode 1)
 Display line numbers - (global-linum-mode t)
 Replacing newline, enter newline character C-q C-j

@@ -289,6 +289,7 @@ The symbols --- and +++ represent what is used to describe the file.
 Git edit upload commands
 -------------------------------
 git clone git@gitlab.com:shekkizh/Random_Sampling_Explore.git
+To download a specific branch: git clone <link> --branch <branch name>
 cd Random_Sampling_Explore
 cp ../rnd_cpy/random_sampling_experiment.m ./
 cp ../rnd_cpy/main.m ./
@@ -967,6 +968,7 @@ Normal characters are forwarded over the ssh session, so we need to use special 
 Sometimes disconnecting the connection results in termination signal for the program in screen. To avoid that, just suspending the ssh service works.
 Sometimes when I try to connect to a screen using screen -r command it says "There is no screen to be resumed matching". This behavior actually results from using multi-display mode. When you detach a screen session on multi-display, it will only detach on the current terminal. In my case it usually happens if the screen was started from another ssh session or terminal which did not detach before the session closed I think. Using -x instead of -r helps.
 'echo $TERM && echo $STY && screen -ls' helps to know whether I'm in a screen. For tmux it is 'echo $TERM && echo $STY && tmux ls'
+Sometimes the name of the tmux session is not clear from the green bottom strip, so we can do the following for that: tmux display-message -p "#S"
 For screen logging use -L option.
 To enable scrolling in screen do C-A Esc -> scroll -> q
 If for some reason ssh key of host machine has changed and you need to update key on the client machine: ssh-keyscan -t ecdsa 128.125.20.97 >> ~/.ssh/known_hosts

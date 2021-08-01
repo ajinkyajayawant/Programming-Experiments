@@ -1042,6 +1042,7 @@ Detaching from a session - Ctrl-b + d
 Split current pane vertically into two panes - Ctrl+b "
 Tmux does not have looging by default. To know whether you are in a tmux session, check whether there is a green bar at the bottom.
 To close a tmux session Ctrl-b + : then enter kill-session and press enter.
+To execute a command in a detached tmux session from outside: tmux send -t <session name>.0 <command> ENTER
 
 Alternative grammar checker option:
 * Use libreoffice write grammar checker. (Tools-> Spelling and grammar, options, grammar as you type). Or with abiword. Install abiword-plugin-grammar. Edit-> Preferences -> Spell checking -> Check grammar as you type.

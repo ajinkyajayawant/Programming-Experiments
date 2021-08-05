@@ -56,7 +56,32 @@ accum x = addthree x
 -- Let in clause
 
 
--- Where clause 
+-- Where clause
 
 
 -- If as an expression
+
+
+-- Type constraint try
+fixNum :: (Num a) => a -> a
+fixNum x = x + 2
+
+-- Without fixing type constraint
+noFixNum x = x + 2
+
+-- Fixing type explicitly. This is a wrong implementation
+-- Because I think the declaration of the function takes types not variables of a type
+-- And haskell needs definitions along with declarations
+-- fixExplicit :: Integer
+-- exFixNum :: fixExplicit -> fixExplicit
+-- exFixNum  x = x + 2
+
+-- Fixing type directly
+dirFixNum :: Integer -> Integer
+dirFixNum  x = x + 2
+
+-- Fixing bigger type directly
+-- This doesn't work either
+-- I think because Num is a typeclass and not a type
+-- bigDirFixNum :: Num -> Num
+-- bigDirFixNum  x = x + 2

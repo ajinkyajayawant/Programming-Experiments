@@ -22,3 +22,19 @@ tup2lst (2,"zj")
 
 -- Output of accumulation using partial application
 ((accum 2) 3) 4
+
+
+-- Try fixNum with and without numeric input
+fixNum 4
+fixNum "four"
+
+-- Try fixNum with and without numeric input
+noFixNum 4
+noFixNum "four"
+
+-- Try fixNum with and without numeric input
+dirFixNum 4
+dirFixNum "four"
+
+-- All the functions with integer call run effortlessly
+-- We get more informative message for the third function dirFixNum

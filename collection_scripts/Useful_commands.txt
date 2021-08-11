@@ -129,34 +129,13 @@ git init
 git remote add origin https://github.com/ginkx/surfacing-tetrahedral.git
 git config --global user.name
 git config --global user.email
-ls
-vim .gitignore
-git status
-vim .gitignore
-git status
-git add *
-git status
-git add *.cpp
-git add *.hpp
-git add .gitignore
-git status
-git commit -m 'Initial project repo'
-git push -u origin master
+<Adding commiting and pushing>
 ls ~/.ssh
 ssh-keygen -t rsa -b 4096 -C "ajinkyajayawant@yahoo.in"
 cat ~/.ssh/id_rsa.pub
-git status
-clear
-ls
-touch readme.md
-git add readme.md
-git commit -m 'Added readme'
-git push origin master
 git remote add origin git@github.com:ginkx/surfacing-tetrahedral.git
 git remote set-url origin git@github.com:ginkx/surfacing-tetrahedral.git
-git push origin master
 Sometimes when I add a file like LICENSE to github repository I need to update it with the local repository. To do that I do 'git fetch origin', then I do 'git merge origin/master' and 'git push -u origin master'.
-To view all commits do 'git log'.
 
 Git branch details
 ~~~~~~~~~~~~~~~~~~
@@ -180,10 +159,12 @@ To discard unstaged changes the cleanest way I have found is to stash them and t
 The cleanest way to check for conflicts with the current branch in git is to create a new branch and try to merge there. This is a good idea because branches are so cheap you could just delete the new branch after trying.
 
 Git get a file from a particular Hash - git show <HASH>:/path/to/file > <file_destination>
+Git get a file from a particular branch - git show <branch name>:/path/to/file > <file_destination>
 Git push a local branch to the repo: git push -u origin <branchname>
 
 Git file status
 ~~~~~~~~~~~~~~~
+git status
 git status --ignored
 git ls-files --others --ignored --exclude-standard
 git ls-files --cached
@@ -237,6 +218,10 @@ git rm --cached
 git rm --cached -r ./
 (May need to update index after this)
 Unstage staged file: git reset HEAD <filename>
+Undo a commit, while keeping the changes from commit in staging area: git reset --soft HEAD~1
+If you want to further unstage the changes: git restore --staged <filename>
+If you want to further delete the changes, save and drop the stash.
+Undo a commit, without keeping the changes from commit in staging area: git reset --hard HEAD~1
 Visualize git branches: gitk --all
 Compare two branches git: git diff <branch1>..<branch2>
 

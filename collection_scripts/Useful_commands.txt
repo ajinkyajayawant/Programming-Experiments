@@ -179,6 +179,10 @@ done|sort -k1,4
 Git and file permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Discarding changes in file permissions/mode or executable :
+Set core editor:
+git config --global core.editor <editor command>
+For example,
+git config --global core.editor emacs
 Config ONLY for current repo:
 git config core.filemode false
 
@@ -196,6 +200,8 @@ git config --get merge.tool
 
 Configure mergetool:
 git config --global merge.tool <tool name>
+For example,
+git config --global merge.tool meld
 
 A merge conflict inserts markers in the conflicted files and your task is to clear the markers. git mergetool creates additional files with REMOTE, LOCAL,... names. Tools like meld use these files to edit the marked up conflicted file. When we exit the REMOTE, LOCAL, ... files get deleted too.
 git mergetool creates *.orig backup files while resolving merges. These are safe to remove once a file has been merged and its git mergetool session has completed.
@@ -424,7 +430,7 @@ To remove an at command do: at -r <at id>
 Firefox
 -------
 always open in private mode: about:config -> Browser.privatebrowsing.autostart to true
-do not close window on closing last tab: about:cnofig -> browser.tabs.closeWindowWithLastTab
+do not close window on closing last tab: about:config -> browser.tabs.closeWindowWithLastTab
 focus on link bar - alt+D, ctrl+L,
 Command to open window in private mode: firefox -private-window &
 Directly open a link in a private mode: firefox -private-window <link> &
@@ -505,7 +511,8 @@ To save a variable outside while debugging, do - assignin('<workspace name>','<v
 Vim
 ---
 case insensitive search /<word>\c
-Opening file in new tab gvim:
+Opening file in new tab gvim is done through :tabnew <filename>
+For just opening a new tab use :tabnew
 In the gvim.desktop desktop file (/usr/share/applications/ for most GNU/Linux systems) look for the "Exec" line. It will probably be like this:
 Exec=gvim -f %F
 Change the Exec line to:
@@ -533,6 +540,7 @@ Set line numbers: set number
 To skip to a particular line: <linenumber>G or :<linenumber>Ctrl+Return
 Find vim swap type of files: find <path> -type f -name "*.sw[klmnop]"
 Find and delete vim swap type of files: find <path> -type f -name "*.sw[klmnop]" -delete
+Close all tabs with :qa
 
 Find and delete files
 ---------------------
@@ -611,6 +619,11 @@ pdftk manipulations
 Join multiple pages: pdftk pg_1.pdf pg_2.pdf pg_3.pdf cat output pg_all.pdf
 Rotate a page by 180 deg: pdftk pg.pdf cat 1-endsouth output pg1.pdf
 Rotate by 90 degrees clockwise: pdftk <input filename>.pdf cat 1-endeast output <output filename>.pdf
+
+## Strip a pdf of its annotations and highlights
+pdftk <input>.pdf output uncompressed.pdf uncompress
+LANG=C sed -n '/^\/Annots/!p' uncompressed.pdf > stripped.pdf
+pdftk stripped.pdf output final.pdf compress
 
 Information of a pdf file
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -698,7 +711,7 @@ To cd into /usr/local/bin/ just type /u/lo/b and then press tab
 Move file/directory to trash - gvfs-trash <filename>, from the package gvfs-bin
 
 Search for pattern inside multiple pdfs - pdfgrep -HiR 'pattern' /path
-Search for pattern inside multiple text files - grep -nr --color '<path>' -ie '<pattern>'
+Search for pattern inside multiple text files. Exclude binary files from search, use I option - grep -nrI --color '<path>' -ie '<pattern>'
 To search for whole words grep -nrw --color '<path>' -ie '<pattern>' (Note: Do not use wildcards in the pattern here, do not use w if do not want to match entire word.)
 Exclude binary files from search, use: -I
 Exclude directory from search --exclude-dir='<directory pattern>'
@@ -848,6 +861,12 @@ while [ $x -le 5 ]
 do
   echo "Welcome $x times"
   x=$(( $x + 1 ))
+done
+
+Killing tmux sessions with numbered names in bash loop:
+for number in 1 2 3 4 5 6
+do
+tmux kill-session -t <session name>$number
 done
 
 Looping over sub-directories in bash
@@ -1027,6 +1046,7 @@ Detaching from a session - Ctrl-b + d
 Split current pane vertically into two panes - Ctrl+b "
 Tmux does not have looging by default. To know whether you are in a tmux session, check whether there is a green bar at the bottom.
 To close a tmux session Ctrl-b + : then enter kill-session and press enter.
+Kill a tmux session from detached state: tmux kill-session -t <session name>
 To execute a command in a detached tmux session from outside: tmux send -t <session name>.0 <command> ENTER
 
 Alternative grammar checker option:
@@ -1142,6 +1162,7 @@ If numpy library is not prepended, prepend it: \([^.]\)arange → \1np.arange
 Replacing , <number> or ,<number> by , <variable name> can be done by: , *[[:digit:]] -> , <variable name>
 Searching citations with emacs regexp: \[[[:digit:]]+\]
 Replacing == <number> with [<number>] == 1:  == \([[:digit:]]+\) → [\1] == 1
+Find f(j,<number>)+ in the text, search for the regex: f(j,.)\+
 ## Python regexp
 * Extract textcolors from latex: r"\\textcolor\{blue\}\{.*\}"
 TODO

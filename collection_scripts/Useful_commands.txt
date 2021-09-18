@@ -1,6 +1,11 @@
 Change shell to zsh(once installation of package is done)
 chsh -s $(which zsh)
 List available shells: cat /etc/shells
+Find the default system shell: echo $SHELL
+Find currently used shell: echo $0
+Find currently used shell option 2: ps -p $$
+Guake can use zsh by installing zsh and setting the preference to use zsh at login. This way we don't change the default shell, change is only limited to guake.
+Simple way to distinguish between zsh and bash after my config is that the prompt in zsh is a block of a color whereas bash has colored font.
 
 sudo add-apt-repository ppa:blueman/ppa
 sudo apt-get update
@@ -570,6 +575,7 @@ dconf-editor: org->gnome->desktop->media-handling->automount-open(uncheck)
 For mate: org->mate->desktop->media-handling->automount-open(uncheck)
 Doing these does not help xfce. For xfce, open home->Edit->Preferences->Advanced-?Configure management of removable drives and media->(Removable drives and media opens up)->Uncheck browse removable media
 (Or simply search Removable drives in the system search tool and do the modification there)
+For mounting rules specific to external hardware, open disks->edit mount options->turn off user session defaults->change the mount options(This edits the /etc/fstab file)
 
 Settings usually take effect when the application that usues them is closed and opened.
 
@@ -653,6 +659,13 @@ Stripping image of metadata
 ---------------------------
 sudo apt-get install libimage-exiftool-perl
 exiftool -all= <image_name>.jpg
+Stripping pdf of metadata:
+exiftool -all= <filename>.pdf
+But this can be reverted by
+exiftool -PDF-update:all= <filename>.pdf
+To see the metadata: exiftool <filename>
+qpdf --linearize <input>.pdf <output>.pdf
+finally deletes the metadata
 
 ppa-purge - sudo ppa-purge ppa:whatever/ppa
 

@@ -6,17 +6,19 @@ Find currently used shell: echo $0
 Find currently used shell option 2: ps -p $$
 Guake can use zsh by installing zsh and setting the preference to use zsh at login. This way we don't change the default shell, change is only limited to guake.
 Simple way to distinguish between zsh and bash after my config is that the prompt in zsh is a block of a color whereas bash has colored font.
+Restart zsh(current zsh shell will be replaced by a new one): exec zsh
 
 sudo add-apt-repository ppa:blueman/ppa
 sudo apt-get update
 sudo apt-get upgrade blueman
 sudo apt-get install pulseaudio-module-bluetooth
-continue tithout pairing
+continue without pairing
 pactl load-module module-bluetooth-discover
 
 Sometimes the pulseaudio does not detect the blutooth speaker, in that case can do
 
 To provide yes as an answer to a command which prompts you, for example apt-get upgrade: yes | sudo apt-get upgrade
+Usually it is convenient to update, upgrade, and atuoremove at the same time. For that sudo apt update && yes | sudo apt upgrade && sudo apt autoremove
 Logical commands execution linux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 <Command_a> && <Command_b> : Excecutes <Command_b> only if <Command_a> is a success.
@@ -25,6 +27,8 @@ Logical commands execution linux
 
 Wait for some time: sleep <time in seconds>
 Change directory into previous directory: cd -
+
+Find the number of days the computer has been on(uptime): use the command htop and see the uptime
 
 To interchange two keys on keyboard
 -----------------------------------
@@ -236,6 +240,7 @@ If you want to further delete the changes, save and drop the stash.
 Undo a commit, without keeping the changes from commit in staging area: git reset --hard HEAD~1
 Visualize git branches: gitk --all
 Compare two branches git: git diff <branch1>..<branch2>
+git diff <branch> is confusing. It compares the current branch with respect to <branch> as the base.
 
 Git delete untracked files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -747,6 +752,8 @@ xinput disable "AT Translated Set 2 keyboard"
 xinput enable "AT Translated Set 2 keyboard"
 Think about how to deal with the click buttons trackpad - Mouse buttons still work
 xinput disable "ThinkPad Extra Buttons" does not disable onboard mouse buttons
+Numlock on: numlockx on
+Numlock off: numlockx off
 
 Convert jpg to pdf
 ------------------

@@ -1187,6 +1187,8 @@ Replacing , <number> or ,<number> by , <variable name> can be done by: , *[[:dig
 Searching citations with emacs regexp: \[[[:digit:]]+\]
 Replacing == <number> with [<number>] == 1:  == \([[:digit:]]+\) → [\1] == 1
 Find f(j,<number>)+ in the text, search for the regex: f(j,.)\+
+Replace the newlines and spaces with a space query replace regex with \( *
++ *\|  +\) replaced by space
 ## Python regexp
 * Extract textcolors from latex: r"\\textcolor\{blue\}\{.*\}"
 TODO

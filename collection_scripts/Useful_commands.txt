@@ -100,7 +100,7 @@ Reload file - A-x revert-buffer
 M-x list-packages and M-x package-list-packages are different, wasn't able to install matlab mode from former, installed it with later
 Installed - matlab-mode
 Set mark - C-space
-Incremental regexp search: isearch-forward-regexp. But for convenience Ctrl+Alt+S is better to make the same search again and again.
+Incremental regexp search: isearch-forward-regexp. But for convenience Ctrl+Alt+S is better to make the same search again and again. Ctrl+Alt+S is a shortcut to the isearch-forward-regexp command.
 You can hit M-e to edit the current search term. This runs the command isearch-edit-string. You can then type C-s to resume the search.
 Center page around the cursor: C-l
 Count number of lines in the page(before and after cursor): C-x l
@@ -132,6 +132,15 @@ Flag buffers for save using s
 Execute the commands with x
 ### Search
 * The search that gives the results one by one in emacs is the incremental search. Its commands start with isearch keyword. The shortcut to move to the next word in the incremental search is C-M-s.
+## Filtering in emacs(to be tested)
+https://emacs.stackexchange.com/questions/40596/how-do-i-quickly-remove-lines-from-emacs-buffer
+https://emacs.stackexchange.com/questions/68636/filter-text-of-buffer-in-a-grep-like-way
+flush-lines
+delete-matching-lines
+keep-lines
+delete-non-matching-lines
+occur
+loccur
 
 Git
 ------
@@ -416,6 +425,11 @@ To turn on password prompt at login: Check that ask for password is enabled in '
 Asking for keyring on booting: lock and unlock default keyring in passwords and keys and check the box automatically unlock when logged in
 Find who all is logged in: who -u
 Logout other users: pkill -KILL -u <loginname>
+List all users:
+grep -E '^UID_MIN|^UID_MAX' /etc/login.defs
+getent passwd {1000..60000}
+## Issues
+* If after an upgrade desktop, icons disappear or xfce desktop doesn't perform normally like wallpaper is missing, windows are maximized by default: rm -r ~/.cache/sessions/*
 
 Printing
 ~~~~~~~~
@@ -719,6 +733,7 @@ Ubuntu package management
 * Remove: snap remove <package name>
 * Purge a package: snap remove --purge <package name>
 * The new apt command merges apt-get and apt-cache functionality and adds features.
+* See the list of packages that will be updated: apt list --upgradable
 
 Update zshrc without logging out - source ~/.zshrc
 
@@ -1072,6 +1087,7 @@ Tmux does not have looging by default. To know whether you are in a tmux session
 To close a tmux session Ctrl-b + : then enter kill-session and press enter.
 Kill a tmux session from detached state: tmux kill-session -t <session name>
 To execute a command in a detached tmux session from outside: tmux send -t <session name>.0 <command> ENTER
+Switch session Ctrl-b s
 
 Alternative grammar checker option:
 * Use libreoffice write grammar checker. (Tools-> Spelling and grammar, options, grammar as you type). Or with abiword. Install abiword-plugin-grammar. Edit-> Preferences -> Spell checking -> Check grammar as you type.
@@ -1098,6 +1114,7 @@ montage a.png b.png -geometry <width>x montage_output.png
 
 To check the RAM slots in the machine, 'sudo lshw -class memory'
 To just dump all hardware information, do - 'sudo lshw'
+To know the laptop model: sudo dmidecode -s system-product-name
 
 Extracting printable strings from a mixed file: strings <filename>. For example strings .git/index
 
@@ -1150,6 +1167,12 @@ Don't use setup.py install without a record.
 
 pip automatically inside the conda virtual environment.
 
+## Python virtual environments
+Create directory as a python virtual environment: python3 -m venv <directory path>
+Activate virtual environment: source bin/activate
+Deactivate virtual environment: deactivate
+Install package inside python virtual environment: python3 -m pip install <package name>
+
 Libre office calc
 ~~~~~~~~~~~~~~~~~
 Opening a document from the commandline: libreoffice --calc <document name> &
@@ -1169,6 +1192,8 @@ Moving columns(applies to rows too): Select the entire column. Click on a cell i
 
 Standard regexp
 ~~~~~~~~~~~~~~~
+While writing regexp syntax please do not confuse with the bash globbing syntax.
+* and + try to match as many characters as possible. Append a ? if you want a non-greedy version.
 [^{] Match the abscence of { character.
 . Matches any character usually excluding newlines.
 [^a-zA-z0-9] Matches anything but the those in the lists included in []
@@ -1189,6 +1214,10 @@ Replacing == <number> with [<number>] == 1:  == \([[:digit:]]+\) → [\1] == 1
 Find f(j,<number>)+ in the text, search for the regex: f(j,.)\+
 Replace the newlines and spaces with a space query replace regex with \( *
 + *\|  +\) replaced by space
+\\textcolor{red}{\\sout{.*?}} ->
+\\textcolor{blue}{\(.*?\)} -> \1
+Delete the end of line comments in latex. Replace the regexp [
+]\{0,1\}%.*$ with nothing
 ## Python regexp
 * Extract textcolors from latex: r"\\textcolor\{blue\}\{.*\}"
 TODO

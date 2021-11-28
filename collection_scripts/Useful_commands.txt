@@ -55,6 +55,10 @@ To make frames from a video
 ffmpeg -i input.avi output%d.png
 To concatenate frames into a video - ffmpeg -f image2 -framerate 5 -i image%2d.png vieo.mp4
 
+## VLC
+Play songs from a music directory: vlc <path to music directory> --loop --random --no-repeat
+Make VLC recurse into sub-directories: Preferences - show all settings -> playlist -> Subdirectory behaviour - Expand
+
 Junest
 ------
 pacman -Sy
@@ -75,9 +79,14 @@ pip-autoremove <package name> to remove package and dependencies
 emacs
 -----
 Find the version: M-x emacs-version
+The cut, copy, and paste commands are the following in emacs:
+Cut: (M-x kill-region)
+Copy: (M-x kill-ring-save)
+Paste: (M-x yank)
 kill-rectangle: Mark one corner of the rectangle go to the other end and do M-x kill-rectangle. M-x copy-rectangle-as-kill copies a rectangle. M-x yank-rectangle pastes the rectangle.
 For inserting text in a rectangle: M-x string-insert-rectangle RET string RET
 Replace rectangle: M-x string-rectangle
+Paste the copied rectangle starting at the position of cursor(no need to select the region here): M-x yank-rectangle
 Count words and lines: M-x count-words, M-x count-lines
 Show cursor position(especially column number) momentarily: M-x what-cursor-position
 Deleting backup files -> Open dired, press ~(flags all backup files), press x, confirm
@@ -88,6 +97,9 @@ Open file in read only mode from terminal: emacsclient --create-frame --eval '(v
 A file opened from gui closes all the frames when I close that buffer. A better option is to create an emacsclient frame assuming a server exists: emacsclient --create-frame &
 Opening file from dired: M-x dired, specify directory, press enter on a file.
 Creating a new diretory in dired mode - Once in dired mode press +
+To rename files in dired: %R <original file name> <new file name>
+Dired go up a directory: ^
+Dired remove the 'delete' flag: u
 Substitute selection - (delete-selection-mode 1)
 Display line numbers - (global-linum-mode t)
 Replacing newline, enter newline character C-q C-j
@@ -98,6 +110,8 @@ Ido mode suggestion ignore- press C-f again
 Delete lines containing a phrase - Meta-x flush-lines(It also has keep lines)
 Reload file - A-x revert-buffer
 M-x list-packages and M-x package-list-packages are different, wasn't able to install matlab mode from former, installed it with later
+Mark package for install: i
+Mark package for removal: d
 Installed - matlab-mode
 Set mark - C-space
 Incremental regexp search: isearch-forward-regexp. But for convenience Ctrl+Alt+S is better to make the same search again and again. Ctrl+Alt+S is a shortcut to the isearch-forward-regexp command.
@@ -141,6 +155,8 @@ keep-lines
 delete-non-matching-lines
 occur
 loccur
+## Term mode
+If you change the input mode to line-mode, then regular Emacs commands work. You can switch to line-mode with C-c C-j. You can switch back to char-mode with C-c C-k.
 
 Git
 ------
@@ -194,6 +210,7 @@ With sort by date:
 git status -s | while read mode file; \
   do echo $mode $(stat -c %y $file) $file; \
 done|sort -k1,4
+Note that git status only shows the status for the current branch and not all branches.
 
 Git and file permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -310,6 +327,8 @@ git add -A
 git commit -m "fix for fully connected graph"
 git push origin master
 To push all branches: git push origin --all
+
+For some reason after cloning a repository from github, local branches are not created. Using git fetch --all or git pull --all doesn't change anything. To have a local repository just checkout that repository by looking at the remote repository names in git branch -av, and git does the right thing and you automatically have a local version.
 
 View changes git
 ----------------
@@ -881,7 +900,8 @@ chmod u-r <filename>
 Primary protection from deletions:(Remove the write permissions from all, then it will ask you before deleting a write protected file)
 chmod ugo-w <filename>
 
-Sorting the space consumed by files: (https://serverfault.com/questions/62411/how-can-i-sort-du-h-output-by-size) du -h | sort -h
+Sorting the space consumed by files: (https://serverfault.com/questions/62411/how-can-i-sort-du-h-output-by-size) du --human-readable | sort --human-numeric-sort
+For reverse sorting directories by the space they consume: du --human-readable --max-depth=0 <parent directory path> | sort --numeric-sort --reverse
 To find the space available: df -ha, or df -H
 
 Foxit pdf reader
@@ -1055,6 +1075,7 @@ turn on pdb: %pdb on
 turn off pdb: %pdb off
 To start a function in debug mode: %debug <function> After this you can use the standard debugging commands.
 cat bash command, but from ipython: %cat <filename>
+Clear screen from inside IPython: Ctrl+L
 
 Linux and users
 ~~~~~~~~~~~~~~~

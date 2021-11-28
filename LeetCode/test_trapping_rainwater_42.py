@@ -32,6 +32,18 @@ def get_vol_binary(heights):
         else:
             new_vec = binary_vec
         return new_vec
+
+    def skip_starting_0s_it(binary_vec):
+        if binary_vec:
+            ind_list = [i for i, x in enumerate(binary_vec) if x]
+            if ind_list == []:
+                new_vec = []
+            else:
+                new_vec = binary_vec[ind_list[0]:]
+        else:
+            new_vec = binary_vec
+        return new_vec
+
     def skip_ending_0s(binary_vec):
         if binary_vec and binary_vec[-1] == 0:
             new_vec = skip_ending_0s(binary_vec[:-1])
@@ -39,7 +51,18 @@ def get_vol_binary(heights):
             new_vec = binary_vec
         return new_vec
 
-    heights_only_valleys = skip_ending_0s(skip_starting_0s(heights))
+    def skip_ending_0s_it(binary_vec):
+        if binary_vec:
+            ind_list = [i for i, x in enumerate(binary_vec[::-1]) if x]
+            if ind_list == []:
+                new_vec = []
+            else:
+                new_vec = binary_vec[:len(binary_vec)-ind_list[0]]
+        else:
+            new_vec = binary_vec
+        return new_vec
+
+    heights_only_valleys = skip_ending_0s_it(skip_starting_0s_it(heights))
 
     def count_depressions(binary_heights):
         count = 0

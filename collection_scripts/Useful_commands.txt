@@ -127,6 +127,7 @@ It makes sense to have split window inside a tab so we can have different locati
 It makes sense to have different contexts in different frames. Like programming related stuff in a frame. Text notes in one frame. And so on.
 Reload config file M-x load-file
 If the tabbar crashes or disappears just enable it from Options->Show/Hide->Tab Bar
+Switch to a different tab: M-x tab-bar-switch-to-tab
 To close an emacs window opened by clicking, C-x C-c. To close a frame from opened from inside emacs C-x 5 0.
 To see what all operations were done say after a file locally changed and emacs tried to revert, check out the Messages buffer.
 Convert region to lowercase: M-x downcase-region
@@ -373,6 +374,8 @@ Backup a folder into hard drive
 rsync --progress --human-readable --recursive --verbose ./books/ /media/jinkx/TOURO\ Mobile/MintUrgentBackup/books
 To view changes that will be made: rsync --progress --human-readable --recursive --verbose --dry-run --itemize-changes --delete ./books/ /media/jinkx/TOURO\ Mobile/MintUrgentBackup/books
 If you want to delete extraneous files from destination directory: rsync --progress --human-readable --recursive --verbose --delete ./books/ /media/jinkx/TOURO\ Mobile/MintUrgentBackup/books
+Copy files according to a list in a text file: rsync --verbose --files-from=atry/list.txt ./atry/ ./btry/
+Good thing is there can be spaces in the file names in the file. (This is the best option if a drive fails and I need to back up in chunks)
 
 Check if a program refuses to close, media refuses to eject/unmount, because a file is open: lsof | grep -i <program name>
 or
@@ -740,6 +743,7 @@ sudo apt-get install trash-cli, which has command trash <filename>,trash-list,tr
 Use 'ls -d */' to just list the directories.
 Use 'ls -l | egrep -v '^d'' to list only files.
 Use 'ls -I "*.py" -I "*.m"' to exclude files with extension py and m.
+List all files or directories in a parent directory along with path: ls --directory <directory path>/*
 
 Ubuntu package management
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -768,6 +772,7 @@ Move file/directory to trash - gvfs-trash <filename>, from the package gvfs-bin
 
 Search for pattern inside multiple pdfs - pdfgrep -HiR 'pattern' /path
 Search for pattern inside multiple text files. Exclude binary files from search, use I option - grep -nrI --color '<path>' -ie '<pattern>'
+If the output is long then save it as an html: grep --line-number --recursive --binary-files=without-match --color=always '<path>' --ignore-case --regexp='<pattern>' | aha > <filename>.html
 To search for whole words grep -nrw --color '<path>' -ie '<pattern>' (Note: Do not use wildcards in the pattern here, do not use w if do not want to match entire word.)
 Exclude binary files from search, use: -I
 Exclude directory from search --exclude-dir='<directory pattern>'

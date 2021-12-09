@@ -280,6 +280,9 @@ Get the code from the remote branch - git fetch
 Merge the code locally with my current commit - git pull
 Search git commit messages: git log --all --grep=<text to search>'
 Merge a branch into another: git merge --no-ff <name of branch to merge>
+Find the commits corresponding to a user: git log --author="<author name>"
+Finding the commits corresponding to a user also works in a similar way with gitk: gitk log --author="<author name>" &
+Find the files modified by a user: git log --no-merges --author="<author name pattern>" --name-only --pretty=format:"" | sort -u
 
 Git comparing
 ~~~~~~~~~~~~~
@@ -1244,6 +1247,7 @@ Replace the newlines and spaces with a space query replace regex with \( *
 \\textcolor{blue}{\(.*?\)} -> \1
 Delete the end of line comments in latex. Replace the regexp [
 ]\{0,1\}%.*$ with nothing
+Replace a one or two digit number surrounded by square braces. Usually C or python type indexing: \[[0-9]\{1,2\}\]
 ## Python regexp
 * Extract textcolors from latex: r"\\textcolor\{blue\}\{.*\}"
 TODO

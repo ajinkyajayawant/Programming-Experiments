@@ -10,7 +10,7 @@ we write
 defun var_x():
      return 10
 ```
-. So every time we want to use the variable x we can simply use var_x() instead of x.
+. So every time we want to use the variable `x` we can simply use `var_x()` instead of `x`.
 
 # Objects
 Objects which maintain state but you do not want to expose state can be defined using closures. The nonlocal keyword is needed here because integer variables are non mutable in python.

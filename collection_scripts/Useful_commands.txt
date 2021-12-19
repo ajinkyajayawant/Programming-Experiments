@@ -7,6 +7,7 @@ Find currently used shell option 2: ps -p $$
 Guake can use zsh by installing zsh and setting the preference to use zsh at login. This way we don't change the default shell, change is only limited to guake.
 Simple way to distinguish between zsh and bash after my config is that the prompt in zsh is a block of a color whereas bash has colored font.
 Restart zsh(current zsh shell will be replaced by a new one): exec zsh
+Expand a path in linux: realpath <pathname>
 
 sudo add-apt-repository ppa:blueman/ppa
 sudo apt-get update
@@ -27,6 +28,7 @@ Logical commands execution linux
 
 Wait for some time: sleep <time in seconds>
 Change directory into previous directory: cd -
+See the directory structure: tree
 
 Find the number of days the computer has been on(uptime): use the command htop and see the uptime
 
@@ -132,6 +134,7 @@ To close an emacs window opened by clicking, C-x C-c. To close a frame from open
 To see what all operations were done say after a file locally changed and emacs tried to revert, check out the Messages buffer.
 Convert region to lowercase: M-x downcase-region
 Find the value of a variable: M-x describe-variable
+Reapeat previously issued command: M-x repeat or C-x z
 ### Org mode useful commands
 * The variable org-agenda-files holds the search paths for agenda files
 * Add the current file to agenda search list: org-agenda-file-to-front
@@ -158,6 +161,13 @@ occur
 loccur
 ## Term mode
 If you change the input mode to line-mode, then regular Emacs commands work. You can switch to line-mode with C-c C-j. You can switch back to char-mode with C-c C-k.
+## Keys
+Find the description of a key in emacs: M-x describe-key
+## Navigation
+Page up: M-v
+Page down: C-v
+One word forward: M-f
+One word backward: M-b
 
 Git
 ------
@@ -193,6 +203,7 @@ Pop a stash(Convenient because you don't have to remember whether you used a sta
 Drop all stashes - git stash clear
 To discard unstaged changes the cleanest way I have found is to stash them and then drop the stash.
 The cleanest way to check for conflicts with the current branch in git is to create a new branch and try to merge there. This is a good idea because branches are so cheap you could just delete the new branch after trying.
+When we change branch, untracked files remain as they are. That's because by definition they are not tracked. As soon as you commit then you need to keep comitting if you don't want to lose changes before switching branch.
 
 Git get a file from a particular Hash - git show <HASH>:/path/to/file > <file_destination>
 Git get a file from a particular branch - git show <branch name>:/path/to/file > <file_destination>
@@ -736,6 +747,8 @@ unzip '*.zip'
 Undo an unzip:
 For files: unzip -l freemind-bin-max-1.0.1.zip |  awk 'BEGIN { OFS="" ; ORS="" } ; { for ( i=4; i<NF; i++ ) print $i " "; print $NF "\n" }' | xargs -I{} rm -vr {}
 For files and directories: unzip -l freemind-bin-max-1.0.1.zip |  awk 'BEGIN { OFS="" ; ORS="" } ; { for ( i=4; i<NF; i++ ) print $i " "; print $NF "\n" }' | xargs -I{} rm -v {}
+## Untar file
+For uncompressing a .tar.gz file: tar --extract --verbose --gzip --file=<filename>.tar.gz
 
 Color code ls command output
 ----------------------------

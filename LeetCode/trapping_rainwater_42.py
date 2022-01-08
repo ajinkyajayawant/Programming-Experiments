@@ -16,6 +16,11 @@ class Solution:
 
             return topology_up, topology_down
 
+        def get_topology_subtracted_volume(topology):
+            height_subtracted_topology = remove_basic_height(topology)
+            vol = get_water_volume(height_subtracted_topology)
+            return vol
+
         def get_water_volume(topology):
             topology_up, topology_down = topology_up_down(topology)
             vol_up = get_vol_binary(topology_up)
@@ -26,6 +31,11 @@ class Solution:
                 vol_down = get_vol_binary(topology_down)
 
             return vol_up + vol_down
+
+        def remove_basic_height(topology):
+            min_height = min(topology)
+            new_topology = [ht - min_height for ht in topology]
+            return new_topology
 
         def get_vol_binary(heights):
             def skip_starting_0s(binary_vec):
@@ -76,4 +86,4 @@ class Solution:
 
             return count_depressions(heights_only_valleys)
 
-        return get_water_volume(height)
+        return get_topology_subtracted_volume(height)

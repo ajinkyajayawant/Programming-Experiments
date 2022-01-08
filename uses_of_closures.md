@@ -28,7 +28,7 @@ def get_plus_one():
 ```
 
 # Caching
-Caching is required for algorithms that need memoization. Dynamic programming algorithms typically need memoization. A memoized version of a function can be manually generated(if you dont want to use teh library function) using closures.
+Caching is required for algorithms that need memoization. Dynamic programming algorithms typically need memoization. A memoized version of a function can be manually generated(if you dont want to use the library function) using closures.
 ```
 def memoize(func):
     cache = dict()

@@ -30,8 +30,6 @@ Wait for some time: sleep <time in seconds>
 Change directory into previous directory: cd -
 See the directory structure: tree
 
-Find the number of days the computer has been on(uptime): use the command htop and see the uptime
-
 To interchange two keys on keyboard
 -----------------------------------
 xev
@@ -168,6 +166,9 @@ Page up: M-v
 Page down: C-v
 One word forward: M-f
 One word backward: M-b
+## Calculator
+To start the calculator: M-x calc
+For infix type of operations use apostrphe operator, for example: '2+3
 
 Git
 ------
@@ -223,6 +224,7 @@ git status -s | while read mode file; \
   do echo $mode $(stat -c %y $file) $file; \
 done|sort -k1,4
 Note that git status only shows the status for the current branch and not all branches.
+git find files that are being tracked: git ls-tree -r master --name-only
 
 Git and file permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -294,6 +296,7 @@ Merge a branch into another: git merge --no-ff <name of branch to merge>
 Find the commits corresponding to a user: git log --author="<author name>"
 Finding the commits corresponding to a user also works in a similar way with gitk: gitk log --author="<author name>" &
 Find the files modified by a user: git log --no-merges --author="<author name pattern>" --name-only --pretty=format:"" | sort -u
+Changing commit message. Note that if you add any new files in the meanwhile they will be included in this new commit: git commit --amend
 
 Git comparing
 ~~~~~~~~~~~~~
@@ -479,6 +482,7 @@ Menu->Privacy->Off
 History
 -------
 vim ~/.zsh_history
+To list zsh history run the command: history 0
 
 Timed commands
 ~~~~~~~~~~~~~~
@@ -678,6 +682,8 @@ I: Send the SIGKILL signal to all processes except init
 S: Sync all mounted filesystems
 U: Remount all mounted filesystems in read-only mode
 B: Immediately reboot the system, without unmounting partitions or syncing
+Before doing this, if you know an application that is hanging up the system, switch to TTY 1 by pressing Ctrl+Alt+F1 and kill the process from the terminal. Then switch back to the visuall TTY. That is usually TTY 7.
+If an application is misbehaving, one easy option to debug is to run the application from the terminal. This way you can see the error messages.
 
 pdftk manipulations
 -------------------
@@ -773,6 +779,13 @@ Ubuntu package management
 * Purge a package: snap remove --purge <package name>
 * The new apt command merges apt-get and apt-cache functionality and adds features.
 * See the list of packages that will be updated: apt list --upgradable
+* Search for a package or versions of the package available, for example libsdl: apt-cache search ^libsdl
+
+## Install packages from source
+Usually even if I have the required pacakges, installing from source requires the source files of the dependencies. These are included  in the -dev package versions of the original package.
+### CMAKE
+To specify a directory to install the binaries: cmake -DCMAKE_INSTALL_PREFIX=<location to install> <source directory>
+Passing arguments to cmake works via specifying a -D in front of the argument. Like specifying a -D in front of CMAKE_INSTALL_PREFIX.
 
 Update zshrc without logging out - source ~/.zshrc
 
@@ -928,10 +941,20 @@ To find the space available: df -ha, or df -H
 Foxit pdf reader
 ----------------
 Disable javascript: Tools -> Preferences -> Javascript(uncheck) (Didn't find this in my linux foxit but that's the internet solution)
+If the foxitreader is hanging up then open a file directlty using the terminal. For example: ./FoxitReader <filename> &
 
-
+## Bash
 Bash arithmetic: can be done but is painful. If you want to see the result of 3+4 the quickest way is $((3+4)). Arithmetic operations with variables do not need variables to have $. for example for printing the value of a+3 we just do $((a+3)) not $(($a + 3))
 For printing the value of any variable have to do echo. For substituting the value of the variable have to do $<variable name>
+For storing the output of a command in a variable: <varname>=$(<command>)
+To check whether a variable is empty string:
+if [ -z "$<varname>" ]; then
+   echo "variable not empty"
+fi
+To check whether a variable is non-empty string:
+if [ -n "$<varname>" ]; then
+   echo "variable not empty"
+fi
 
 Loops bash
 ----------
@@ -985,7 +1008,9 @@ adb root
 adb shell commands very useful
 To flash a new firmware: adb sideload <firmware>.bin
 
+Find the number of days the computer has been on(uptime): use the command htop and see the uptime
 Processes analyse: htop (with \)
+Use top in batch mode for a few iterations: top -b -n 4
 
 basename <filepath> : This strips the filename of it's filepath. Eg. basename "$(pwd)/atry.txt"
 Opening a file read-only: Use cat command.
@@ -1029,6 +1054,7 @@ For the git EOF errors - https://stackoverflow.com/questions/21277806/fatal-earl
 
 Latex
 ~~~~~
+Installing latex and packages: Use tlmgr to install only if you install texlive independently. If you use apt to install tex, use apt to install additional tex packages.
 Label for figures comes after the caption.
 
 Execute a time taking command via ssh - Eg. nohup matlab -batch "myscript" (https://www.mathworks.com/help/matlab/ref/matlabwindows.html#f7-621863-option1optionN)
@@ -1068,6 +1094,16 @@ Seeing status - 'systemctl status nordvpnd' or 'systemctl --global restart nordv
 None of this seems to work, but changing UDP to TCP seems to work.
 This works for restart after internet connection restart: service nordvpnd restart
 UDP protocol is at least 10 times faster. Use it whereever possible. Especially in video calls.
+## Solution for the problem of nordvpn not working when waking from sleep
+ps aux | grep nordvpn
+kill -9 <nordvpn process number>
+iptables --policy INPUT ACCEPT
+iptables --policy FORWARD ACCEPT
+iptables --policy OUTPUT ACCEPT
+iptables -t nat --flush
+iptables -t mangle --flush
+iptables --flush
+iptables -X
 
 Network status: sudo systemctl status networking
 Following helps after suspend: sudo systemctl stop nordvpnd, sudo service network-manager restart, service nordvpnd restart
@@ -1261,6 +1297,7 @@ Replace the newlines and spaces with a space query replace regex with \( *
 Delete the end of line comments in latex. Replace the regexp [
 ]\{0,1\}%.*$ with nothing
 Replace a one or two digit number surrounded by square braces. Usually C or python type indexing: \[[0-9]\{1,2\}\]
+Find lines in latex that have .dat file, use the following regexp with occur command: .*\.dat
 ## Python regexp
 * Extract textcolors from latex: r"\\textcolor\{blue\}\{.*\}"
 TODO

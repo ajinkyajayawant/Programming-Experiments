@@ -8,7 +8,7 @@
 
 ;; For some reason I was unable to use menu based widgets
 
-(defun all-widgets()
+(defun try-all-widgets()
   (with-ltk ()
     (let ((b (make-instance 'button))
 	  (cb (make-instance 'check-button))

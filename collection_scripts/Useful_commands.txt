@@ -97,6 +97,7 @@ Open file in read only mode from terminal: emacsclient --create-frame --eval '(v
 A file opened from gui closes all the frames when I close that buffer. A better option is to create an emacsclient frame assuming a server exists: emacsclient --create-frame &
 Opening file from dired: M-x dired, specify directory, press enter on a file.
 Creating a new diretory in dired mode - Once in dired mode press +
+Easy way to rename files in dired: Press R, it prompts for the filename to rename to. Press downarrow if you want to access the earlier filename. Change the filename and press enter.
 To rename files in dired: %R <original file name> <new file name>
 Dired go up a directory: ^
 Dired remove the 'delete' flag: u

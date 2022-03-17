@@ -134,9 +134,19 @@ To see what all operations were done say after a file locally changed and emacs 
 Convert region to lowercase: M-x downcase-region
 Find the value of a variable: M-x describe-variable
 Reapeat previously issued command: M-x repeat or C-x z
+- If I am trying to edit matlab files in emacs, just use the octave mode.
 ### Org mode useful commands
 * The variable org-agenda-files holds the search paths for agenda files
 * Add the current file to agenda search list: org-agenda-file-to-front
+* To move between TODO, DONE, unlabeled states, use shift left and shift right
+* If you want to see the TODO tasks from a list, use M-x org-show-todo-tree
+* If you want to move back from the tree view to the full view, go to the header and press TAB
+* Pressing TAB at a header sycles between only header, header and all bullets, header all bullets and descriptions.
+* Doing Alt left and right moves the bullet one level deeper or outer.
+* Doing Alt up or down moves the task up or down in the list spatially.
+* Create timestamps for a task with the org-time-stamp command
+* Find emacs uptime: M-x emacs-uptime
+* Run an command in the tiny space at the bottom: M-: <command>
 Directories and file
 ~~~~~~~~~~~~~~~~~~~~
 M-x create-directory
@@ -189,6 +199,7 @@ Git branch details
 ~~~~~~~~~~~~~~~~~~
 Create a new branch: git branch <new branch name>
 git branch -av
+Git introduced changes in recent release that makes git branch give us a separate page instead of print output on the terminal. I don't like that because after 2-3 commands when I want to switch to a branch I forget what were the names of the branches. To have the git branch command print output in the terminal, do: git config --global pager.branch false
 
 Resolve merge conflict: Simple way is to edit the file yourself to remove the conflicts.
 
@@ -747,6 +758,7 @@ Download files on a webpage
 wget --no-parent -r <page_link>
 options: --random-wait, -U mozilla, -l 2(depth of recursion), -p (prerequisites), -k (convert links for local viewing),
 wget  -r -p   http://www.example.com
+If the main page is like <url>/index.php, spcify the <url> for download and not <url>/index.php
 
 Unzip multiple files
 --------------------
@@ -754,6 +766,7 @@ unzip '*.zip'
 Undo an unzip:
 For files: unzip -l freemind-bin-max-1.0.1.zip |  awk 'BEGIN { OFS="" ; ORS="" } ; { for ( i=4; i<NF; i++ ) print $i " "; print $NF "\n" }' | xargs -I{} rm -vr {}
 For files and directories: unzip -l freemind-bin-max-1.0.1.zip |  awk 'BEGIN { OFS="" ; ORS="" } ; { for ( i=4; i<NF; i++ ) print $i " "; print $NF "\n" }' | xargs -I{} rm -v {}
+zip a directory: zip --recurse-paths <newfilename>.zip <dir name>
 ## Untar file
 For uncompressing a .tar.gz file: tar --extract --verbose --gzip --file=<filename>.tar.gz
 
@@ -1345,3 +1358,9 @@ wmic memorychip list full
 systeminfo | findstr /C:”Total Physical Memory”
 systeminfo |find “Available Physical Memory”
 Using powershell: Get-WmiObject Win32_PhysicalMemory | Format-List *
+
+# Overleaf
+Overleaf does not allow directcory uploads. To make major changes it is easier to download the git and the push it back. The commands for it are as follows. First find the git link from somewhere in the overleaf GUI. Usually its the same as the project link with the www replaced by git.
+git clone <link>
+<Make changes and commit>
+git push origin master

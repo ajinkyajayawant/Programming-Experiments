@@ -1,0 +1,54 @@
+# 2
+## Method
+Algorithm wise seems a straightforward problem.
+Brute force: compute the sum by traversing the linked lists simultaneously
+## Decomposition of functions
+## Questions
+- How to create a new list
+- How to traverse lists simultaneously
+- What does the colon notation mean
+- How to detect end of list?
+- What was the data structure Optional? I didn't understand
+
+# 6
+## Method
+Have lists for different rows. Process the string character by character and doing an operation like modulo, fill in the lists.
+## Questions
+- How to create(in one shot) a dictionary with keys given by indices?
+- How to iterate a string?
+
+# 15
+## Method
+- Basic iteration by recursively solving. Hold one index and pass the rest of the array for another criteria.
+
+# 16
+## Method
+- Similar to problem 15
+
+# 17
+## Questions
+- When strings are spliced do we create new strings or are they part of the original string?
+
+# 19
+- After writing individual functions for the list length, getting the 2nd node after, it is easy to remove the node in-place or create another list.
+## Questions
+- To pass reference to a node in the list, we should just return that object? Or is there any different syntax?
+
+# 347
+## Questions
+- Is there any built in frequency counter function in python?
+
+# 437
+## Method
+- Can be solved in a recursive way
+
+# 1504
+Didn't get this. Didn't get even after two hints. Didn't have a clue what category/type of problem it is.
+
+# 1535
+- Seems just like a simulation
+
+# 1802
+Tough for me in the first attempt.
+## Method
+- On thinking again seems more like a math problem than a programming problem.

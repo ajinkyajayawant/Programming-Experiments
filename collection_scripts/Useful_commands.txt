@@ -177,6 +177,16 @@ Page up: M-v
 Page down: C-v
 One word forward: M-f
 One word backward: M-b
+Line up: C-p
+Line down: C-n
+Character forward: C-f
+Character backward: C-b
+Paragraph start: M-a
+Paragraph end: M-e
+To display images inline in org mode, use the command: org-toggle-inline-images
+Make sure the path of the image is specified even if the image is in the same directory.
+For showing the full text of the links, for example image links, use the command: org-toggle-link-display
+
 ## Calculator
 To start the calculator: M-x calc
 For infix type of operations use apostrphe operator, for example: '2+3
@@ -309,6 +319,7 @@ Find the commits corresponding to a user: git log --author="<author name>"
 Finding the commits corresponding to a user also works in a similar way with gitk: gitk log --author="<author name>" &
 Find the files modified by a user: git log --no-merges --author="<author name pattern>" --name-only --pretty=format:"" | sort -u
 Changing commit message. Note that if you add any new files in the meanwhile they will be included in this new commit: git commit --amend
+Most git commands like merge support a dry run option. Try it first if you are not sure if you want to merge. Option flag: --dry-run
 
 Git comparing
 ~~~~~~~~~~~~~
@@ -359,6 +370,10 @@ git push origin master
 To push all branches: git push origin --all
 
 For some reason after cloning a repository from github, local branches are not created. Using git fetch --all or git pull --all doesn't change anything. To have a local repository just checkout that repository by looking at the remote repository names in git branch -av, and git does the right thing and you automatically have a local version.
+If you want to delete the local version of the remote branch after the remote branch has been deleted just do:
+git fetch --prune
+instead of git fetch.
+After doing this if you want to delete the local branch just use the usual -d option with the branch name.
 
 View changes git
 ----------------
@@ -657,6 +672,9 @@ cat /etc/linuxmint/info
 cat /etc/os-release
 inxi -S
 
+## Directories in linux
+- lost+found is a system directory used to store corrputed bits of files, things that could not be transferred. It is often hard to recover files from there.
+
 Thumbnail problems
 ------------------
 Can be solved by just deleting the thumbnails as follows:
@@ -905,11 +923,6 @@ To avoid the newline at the end, for python 3, print(<stuff to print>, end=" ")
 Memory info
 ~~~~~~~~~~~
 To know the memory location of a particular object, do 'list(map(id, <object name>))'
-PDB
-~~~
-When in debugger, to list all the breakpoints, simply type 'b'.
-Breakpoints are placed in files. To specify a filename to place a breakpoint, do 'b <filepath/filename>:<line number>'
-To stop code execution at the particular point and enter the debugger, do 'pdb.set_trace()'.
 
 Using viztracer
 ~~~~~~~~~~~~~~~
@@ -930,6 +943,7 @@ Convert pdf to jpg images
 -------------------------
 (Credits https://askubuntu.com/questions/50170/how-to-convert-pdf-to-image)
 pdftoppm <inputfilename> <outputname> -png
+- To convert webp images into png. Install the webp package then run: dwebp <input filename>.webp -o <output filename>.png
 Convert them back to pdf
 ~~~~~~~~~~~~~~~~~~~~~~~~
 convert *.png <outputname>.pdf
@@ -1135,19 +1149,6 @@ Jupyter notebook launch
 'jupyter notebook'
 For a jupyter notebook for a specific python version, say 3.6: python3.6 -m noteboook
 
-Ipython
--------
-Start Ipython shell: python3.6 -m IPython
-List files: !ls or %ls
-Change directory: %cd <new directory>
-Run ipython scripts: python3.6 -m IPython <scriptname>.ipy
-Set a breakpoint: %debug -b <filename>.py:<linenumber>
-turn on pdb: %pdb on
-turn off pdb: %pdb off
-To start a function in debug mode: %debug <function> After this you can use the standard debugging commands.
-cat bash command, but from ipython: %cat <filename>
-Clear screen from inside IPython: Ctrl+L
-
 Linux and users
 ~~~~~~~~~~~~~~~
 To find details about users
@@ -1180,6 +1181,8 @@ To close a tmux session Ctrl-b + : then enter kill-session and press enter.
 Kill a tmux session from detached state: tmux kill-session -t <session name>
 To execute a command in a detached tmux session from outside: tmux send -t <session name>.0 <command> ENTER
 Switch session Ctrl-b s
+Usually if you start a detached session by sending a command, that detached session closes after the command is executed. So giving the dropbox command directly is not a good idea. Instead send it via the send-keys command.
+tmux send-keys -t "<session_name>:0" "<command>" Enter
 
 Alternative grammar checker option:
 * Use libreoffice write grammar checker. (Tools-> Spelling and grammar, options, grammar as you type). Or with abiword. Install abiword-plugin-grammar. Edit-> Preferences -> Spell checking -> Check grammar as you type.
@@ -1197,6 +1200,11 @@ free -mt -c 1000
 
 Docker
 ~~~~~~
+For downloading a docker package: docker pull <package name>
+like for example
+docker pull silex/emacs
+List of images: docker images
+List containers: docker ls
 For mounting a particular
 docker run -it --name <dockername> --mount type=bind,source=<machine path>,target=<docker path> --rm --gpus all <id of docker>
 

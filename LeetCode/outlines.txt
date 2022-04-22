@@ -52,3 +52,15 @@ Didn't get this. Didn't get even after two hints. Didn't have a clue what catego
 Tough for me in the first attempt.
 ## Method
 - On thinking again seems more like a math problem than a programming problem.
+
+Hackerrank
+# Mini-max sum
+This question is specific to when you want to leave out one element.
+Loop over the array to find the minimum or the maximum element. In the same loop, sum over the elements of the array. At the end remove the minimum or the maximum element and report the remaining sum.
+Brute force method to selve the problem is to sort the array and drop the first or the ending elements.
+If the question is asked for dropping more than one element then brute force method of first sorting is easy.
+# Palindrome
+This is a problem which requires multiple functions.
+To find the largest palindrome using substrings from two strings.
+Find write a function to find if a word is a palindrome. For this use a function to check if a string is the reverse. Use standard string operations to reverse and compare strings.
+The try to find substrings with lengths starting from the largest possible.

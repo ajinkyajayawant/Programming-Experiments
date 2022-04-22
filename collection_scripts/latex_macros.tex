@@ -401,4 +401,7 @@ If I want to use algorithmicx I just need to do \usepackage{algorithm} \usepacka
 
   columns/0/.style={fixed} is useful when we don't want exponential notation for pgfplottable
 
-% If figures or tables are not fitting on a line with centering, try hfill to left align the left figure and right align the right figure.
+  % If figures or tables are not fitting on a line with centering, try hfill to left align the left figure and right align the right figure.
+
+  % For hyperlinking images the solution is simple. Include the includegraphics command inside the href command. For example,
+\href{<link to the page>}{\includegraphics{<figure path>}}

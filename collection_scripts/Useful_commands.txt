@@ -130,7 +130,7 @@ Reload config file M-x load-file
 If the tabbar crashes or disappears just enable it from Options->Show/Hide->Tab Bar
 Switch to a different tab: M-x tab-bar-switch-to-tab
 To close an emacs window opened by clicking, C-x C-c. To close a frame from opened from inside emacs C-x 5 0.
-To see what all operations were done say after a file locally changed and emacs tried to revert, check out the Messages buffer.
+To see what all operations were done say after a file locally changed and emacs tried to revert, check out the Messages buffer. *Messages* buffer is also useful in general for installation and command logs.
 Convert region to lowercase: M-x downcase-region
 Find the value of a variable: M-x describe-variable
 Reapeat previously issued command: M-x repeat or C-x z
@@ -183,9 +183,14 @@ Character forward: C-f
 Character backward: C-b
 Paragraph start: M-a
 Paragraph end: M-e
+Delete a word after the cursor: M-d
+Deleting the word before the cursor can either be done with C-Backspace or M-Backspace
 To display images inline in org mode, use the command: org-toggle-inline-images
 Make sure the path of the image is specified even if the image is in the same directory.
 For showing the full text of the links, for example image links, use the command: org-toggle-link-display
+To find the name of the current major mode:
+M-x describe-variable
+major-mode
 
 ## Calculator
 To start the calculator: M-x calc

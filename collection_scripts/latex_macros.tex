@@ -403,8 +403,11 @@ If I want to use algorithmicx I just need to do \usepackage{algorithm} \usepacka
 
   % If figures or tables are not fitting on a line with centering, try hfill to left align the left figure and right align the right figure.
 
-  % For hyperlinking images the solution is simple. Include the includegraphics command inside the href command. For example,
-\href{<link to the page>}{\includegraphics{<figure path>}}
+% Images
+% For hyperlinking images the solution is simple. Include the includegraphics command inside the href command. For example,
+  \href{<link to the page>}{\includegraphics{<figure path>}}
+  % For adding a path to search for images,
+  \graphicspath{{<path>}}
 
 % Graphs in tikz
 % Note that we dont need to use the tikzpicture environment here

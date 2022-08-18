@@ -38,12 +38,21 @@ Have lists for different rows. Process the string character by character and doi
 ## Questions
 - Is there any built in frequency counter function in python?
 
+# 391
+Check that the new rectangle doesn't overlap with the existing ones.
+Find the maximum bounding rectangle.
+Check that the sum of areas is the area of the final rectangle.
+
 # 437
 ## Method
 - Can be solved in a recursive way
 
+# 780
+- I think this can be solved recursively with the stopping criterion of exceeding the value of the target x or y-coordinate.
+
 # 1504
 Didn't get this. Didn't get even after two hints. Didn't have a clue what category/type of problem it is.
+Can be done using a recursive approach where the objects of recursion are squares extending to right and bottom.
 
 # 1535
 - Seems just like a simulation
@@ -52,6 +61,16 @@ Didn't get this. Didn't get even after two hints. Didn't have a clue what catego
 Tough for me in the first attempt.
 ## Method
 - On thinking again seems more like a math problem than a programming problem.
+
+# 907
+Doable in O(n^2) time.
+This can be done by considering sliding window from two sides.
+Non-trivial for O(n) time.
+The algorithmic solution according to chaitanya requires looking for the second lowest and the third lowest metric around every point in the array.
+Chaitanya was saying you can use some datastructure like specialized stack for this.
+However I think this can be solved in a recursive way by passing additional information about the number of subarrays starting at that point with minimum already less than the earlier element.
+And while calling the smaller function you pass the value of the earlier element.
+Monotonic stack can be used here according to chaitanya.
 
 Hackerrank
 # Mini-max sum

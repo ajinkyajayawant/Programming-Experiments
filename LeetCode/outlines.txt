@@ -50,6 +50,10 @@ Check that the sum of areas is the area of the final rectangle.
 # 780
 - I think this can be solved recursively with the stopping criterion of exceeding the value of the target x or y-coordinate.
 
+# 1361
+Can there be a loop? No because then it's like starting from the same point plus your effort increases.
+
+
 # 1504
 Didn't get this. Didn't get even after two hints. Didn't have a clue what category/type of problem it is.
 Can be done using a recursive approach where the objects of recursion are squares extending to right and bottom.

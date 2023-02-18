@@ -1,0 +1,41 @@
+This document consists of the commands that I have found useful for computer maintenance or programming tasks.
+
+* Linux
+** Directory structure
+*** Paths where softwares and libraries are installed
+/usr/local/
+/usr/
+~/.local/
+** Operating system information
+Sometimes when you are looking at package compatibilities, thinking of installing a new system, it helps if you can quickly look up the details of the current system. That can be achieved with:
+#+BEGIN_SRC shell
+cat /etc/issue
+cat /etc/linuxmint/info
+cat /etc/os-release
+inxi -S
+#+END_SRC
+** Moving around
+Change directory into previous directory:
+#+BEGIN_SRC shell
+  cd -
+#+END_SRC
+See the directory structure:
+#+BEGIN_SRC shell
+tree
+#+END_SRC
+** Apt package manager
+Usually it is convenient to update, upgrade, and atuoremove at the same time. For that
+#+BEGIN_SRC shell
+sudo apt update && yes | sudo apt upgrade && sudo apt autoremove
+#+END_SRC
+** Grub
+Sometimes either intentionally or by mistake, you replace the bootloader that came with the computer when you bought it, with Grub. Grub is the bootloader for distributions like Ubuntu which are derived from Debian. Moving forward for live USB installation or errors while bootloading, it is necessary to be able to work with grub. Here are a few commands and procedures that I have found useful.
+- Press escape for the grub menu to appear
+- Use ls to see the hardware disks available
+- Use cat to see contents of files: cat (hd0)/boot/
+- To see the files from a particular disk, do: ls (hd0)/boot/
+and press tab to see options
+- To specify the OS to boot from the usb do:
+set root=(hd0) <or other diskname as needed>
+chainloader (hd0)/efi/boot/grub64.efi
+boot <This invokes the new bootloader>

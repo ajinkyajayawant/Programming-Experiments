@@ -34,12 +34,21 @@ sudo apt update && yes | sudo apt upgrade && sudo apt autoremove
 Sometimes either intentionally or by mistake, you replace the bootloader that came with the computer when you bought it, with Grub. Grub is the bootloader for distributions like Ubuntu which are derived from Debian. Moving forward for live USB installation or errors while bootloading, it is necessary to be able to work with grub. Here are a few commands and procedures that I have found useful.
 - Press escape for the grub menu to appear
 - Use ls to see the hardware disks available
-- Use cat to see contents of files: src_shell{cat (hd0)/boot/}
-- To see the files from a particular disk, do: src_shell{ls (hd0)/boot/}
-and press tab to see options
+- Use cat to see contents of files:
+  #+BEGIN_SRC shell
+    cat (hd0)/boot/
+  #+END_SRC
+- To see the files from a particular disk, do:
+  #+BEGIN_SRC shell
+    src_shell{ls (hd0)/boot/}
+  #+END_SRC
+  and press tab to see options
 - To specify the OS to boot from the usb do:
+  #+BEGIN_SRC shell
+    set root=(hd0) <or other diskname as needed>
+    chainloader (hd0)/efi/boot/grub64.efi
+  #+END_SRC
+To involde the new bootloader:
 #+BEGIN_SRC shell
-set root=(hd0) <or other diskname as needed>
-chainloader (hd0)/efi/boot/grub64.efi
+boot
 #+END_SRC
-To involde the new bootloader: src_shell{boot}

@@ -40,7 +40,7 @@ Sometimes either intentionally or by mistake, you replace the bootloader that ca
   #+END_SRC
 - To see the files from a particular disk, do:
   #+BEGIN_SRC shell
-    src_shell{ls (hd0)/boot/}
+    ls (hd0)/boot/
   #+END_SRC
   and press tab to see options
 - To specify the OS to boot from the usb do:
@@ -48,7 +48,7 @@ Sometimes either intentionally or by mistake, you replace the bootloader that ca
     set root=(hd0) <or other diskname as needed>
     chainloader (hd0)/efi/boot/grub64.efi
   #+END_SRC
-To involde the new bootloader:
+To invoke the new bootloader:
 #+BEGIN_SRC shell
 boot
 #+END_SRC

@@ -52,3 +52,61 @@ To invoke the new bootloader:
 #+BEGIN_SRC shell
 boot
 #+END_SRC
+** Miscellaneous sytem tasks
+Get the time:
+#+BEGIN_SRC shell
+date +"%r"
+#+END_SRC
+Backlight to minimum:
+#+BEGIN_SRC shell
+xbacklight -set 10
+#+END_SRC
+Turn off display(can be set up as keyboard shortcut shit+F1)
+#+BEGIN_SRC shell
+xset dpms force off
+#+END_SRC
+To interchange two keys on keyboard:
+#+BEGIN_SRC shell
+xev
+# (state 0x10, keycode 110 (keysym 0xff55, Prior), same_screen YES,)
+xmodmap -e "keycode 110 = Next"
+setxkbmap -option ctrl:swapcaps
+#+END_SRC
+The last one always works for me. Needs to be run again after plugging in a new keyboard
+
+
+* Softwares
+** Git
+Initialize git in a directory:
+#+BEGIN_SRC shell
+git init
+#+END_SRC
+*** Branches
+Create a new branch:
+#+BEGIN_SRC shell
+git branch <new branch name>
+#+END_SRC
+Get all git branch details:
+#+BEGIN_SRC shell
+git branch -av
+#+END_SRC
+To rename a local branch, checkout the old branch and run:
+#+BEGIN_SRC shell
+git branch -m <new-name>
+#+END_SRC
+Or to rename from the master branch use the command:
+#+BEGIN_SRC shell
+git branch -m <old-name> <new-name>
+#+END_SRC
+Deleting branches locally when you mess it up
+#+BEGIN_SRC shell
+git branch -d <local_branch_1> <local_branch_2>
+#+END_SRC
+To delete a branch from the online repository:
+#+BEGIN_SRC shell
+git push <remote> --delete <branch>
+#+END_SRC
+Compare two branches git:
+#+BEGIN_SRC shell
+git diff <branch1>..<branch2>
+#+END_SRC

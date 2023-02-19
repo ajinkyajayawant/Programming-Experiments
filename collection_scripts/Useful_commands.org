@@ -73,6 +73,40 @@ xmodmap -e "keycode 110 = Next"
 setxkbmap -option ctrl:swapcaps
 #+END_SRC
 The last one always works for me. Needs to be run again after plugging in a new keyboard
+Rotate screen:
+#+BEGIN_SRC shell
+xrandr --output LVDS1 --rotate left
+xrandr --output LVDS1 --rotate right
+xrandr --output LVDS1 --rotate inverted
+xrandr --output LVDS1 --rotate normal
+#+END_SRC
+Find display information:
+#+BEGIN_SRC shell
+xrandr
+#+END_SRC
+Convenient time format for Orage clock:
+#+BEGIN_SRC shell
+%I:%M p%
+#+END_SRC
+*** Timed commands
+To run a command at a particular time:
+#+BEGIN_SRC shell
+at 10:10
+ls -l > /tmp/ls_output.txt
+Ctrl-D
+#+END_SRC
+To avoid the prompt just do
+#+BEGIN_SRC shell
+echo "ls -l > /tmp/ls_output" | at 10:10
+#+END_SRC
+To view all at commands do:
+#+BEGIN_SRC shell
+atq
+#+END_SRC
+To remove an at command do:
+#+BEGIN_SRC shell
+at -r <at id>
+#+END_SRC
 
 
 * Softwares
@@ -109,4 +143,23 @@ git push <remote> --delete <branch>
 Compare two branches git:
 #+BEGIN_SRC shell
 git diff <branch1>..<branch2>
+#+END_SRC
+** Pdftk
+Join multiple pages:
+#+BEGIN_SRC shell
+pdftk pg_1.pdf pg_2.pdf pg_3.pdf cat output pg_all.pdf
+#+END_SRC
+Rotate a page by 180 deg:
+#+BEGIN_SRC shell
+pdftk pg.pdf cat 1-endsouth output pg1.pdf
+#+END_SRC
+Rotate by 90 degrees clockwise:
+#+BEGIN_SRC shell
+pdftk <input filename>.pdf cat 1-endeast output <output filename>.pdf
+#+END_SRC
+Strip a pdf of its annotations and highlights:
+#+BEGIN_SRC shell
+pdftk <input>.pdf output uncompressed.pdf uncompress
+LANG=C sed -n '/^\/Annots/!p' uncompressed.pdf > stripped.pdf
+pdftk stripped.pdf output final.pdf compress
 #+END_SRC

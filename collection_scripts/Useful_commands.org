@@ -163,3 +163,52 @@ pdftk <input>.pdf output uncompressed.pdf uncompress
 LANG=C sed -n '/^\/Annots/!p' uncompressed.pdf > stripped.pdf
 pdftk stripped.pdf output final.pdf compress
 #+END_SRC
+** Emacs
+Find the version:
+#+BEGIN_SRC elisp
+M-x emacs-version
+#+END_SRC
+The cut, copy, and paste commands are the following in emacs:
+Cut:
+#+BEGIN_SRC elisp
+M-x kill-region
+#+END_SRC
+Copy:
+#+BEGIN_SRC elisp
+M-x kill-ring-save
+#+END_SRC
+Paste:
+#+BEGIN_SRC elisp
+M-x yank
+#+END_SRC
+*** Rectangle commands
+For cutting rectangle, mark one corner of the rectangle go to the other end and do
+#+BEGIN_SRC elisp
+M-x kill-rectangle
+#+END_SRC
+Copy a rectangle:
+#+BEGIN_SRC elisp
+M-x copy-rectangle-as-kill
+#+END_SRC
+Paste the copied rectangle starting at the position of cursor(no need to select the region here)
+#+BEGIN_SRC elisp
+M-x yank-rectangle
+#+END_SRC
+For inserting text in a rectangle:
+#+BEGIN_SRC elisp
+M-x string-insert-rectangle RET string RET
+#+END_SRC
+Replace rectangle:
+#+BEGIN_SRC elisp
+M-x string-rectangle
+#+END_SRC
+
+Count words and lines:
+#+BEGIN_SRC elisp
+M-x count-words
+M-x count-lines
+#+END_SRC
+Show cursor position(especially column number) momentarily:
+#+BEGIN_SRC elisp
+M-x what-cursor-position
+#+END_SRC

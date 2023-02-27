@@ -181,6 +181,15 @@ Paste:
 #+BEGIN_SRC elisp
 M-x yank
 #+END_SRC
+Count words and lines:
+#+BEGIN_SRC elisp
+M-x count-words
+M-x count-lines
+#+END_SRC
+Show cursor position(especially column number) momentarily:
+#+BEGIN_SRC elisp
+M-x what-cursor-position
+#+END_SRC
 *** Rectangle commands
 For cutting rectangle, mark one corner of the rectangle go to the other end and do
 #+BEGIN_SRC elisp
@@ -201,14 +210,4 @@ M-x string-insert-rectangle RET string RET
 Replace rectangle:
 #+BEGIN_SRC elisp
 M-x string-rectangle
-#+END_SRC
-
-Count words and lines:
-#+BEGIN_SRC elisp
-M-x count-words
-M-x count-lines
-#+END_SRC
-Show cursor position(especially column number) momentarily:
-#+BEGIN_SRC elisp
-M-x what-cursor-position
 #+END_SRC

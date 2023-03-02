@@ -190,6 +190,18 @@ Show cursor position(especially column number) momentarily:
 #+BEGIN_SRC elisp
 M-x what-cursor-position
 #+END_SRC
+Open file in view/read only mode:
+#+BEGIN_SRC elisp
+M-x view-file
+#+END_SRC
+Convert and already opened file into view mode:
+#+BEGIN_SRC elisp
+M-x view-mode
+#+END_SRC
+view-file has its special shortcuts like q which exits the view mode. So a better solution in later versions of emacs is:
+#+BEGIN_SRC elisp
+M-x read-only-mode
+#+END_SRC
 *** Rectangle commands
 For cutting rectangle, mark one corner of the rectangle go to the other end and do
 #+BEGIN_SRC elisp
@@ -211,3 +223,31 @@ Replace rectangle:
 #+BEGIN_SRC elisp
 M-x string-rectangle
 #+END_SRC
+*** Dired
+Deleting backup files: Open dired, press ~​~​~ (flags all backup files), press ~x~, confirm
+Deleting backup files recursively:
+#+BEGIN_SRC elisp
+M-x find-name-dired
+#+END_SRC
+select directory, file pattern ~*​~​~ and repeat the procedure above
+Open file in read only mode from terminal:
+#+BEGIN_SRC shell
+emacsclient --create-frame --eval '(view-file "<filename>")'
+#+END_SRC
+A file opened from gui closes all the frames when I close that buffer. A better option is to create an emacsclient frame assuming a server exists:
+#+BEGIN_SRC shell
+emacsclient --create-frame &
+#+END_SRC
+Opening file from dired:
+#+BEGIN_SRC elisp
+M-x dired
+#+END_SRC
+specify directory, press enter on a file.
+Creating a new diretory in dired mode - Once in dired mode press ~+~
+Easy way to rename files in dired: Press ~R~, it prompts for the filename to rename to. Press downarrow if you want to access the earlier filename. Change the filename and press enter.
+To rename files in dired:
+#+BEGIN_SRC elisp
+%R <original file name> <new file name>
+#+END_SRC
+Dired go up a directory: ~^~
+Dired remove the delete flag: ~u~

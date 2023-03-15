@@ -37,6 +37,18 @@ view-file has its special shortcuts like q which exits the view mode. So a bette
 #+BEGIN_SRC elisp
 M-x read-only-mode
 #+END_SRC
+To have a ruler on top of emacs to measure row width:
+#+BEGIN_SRC elisp
+  M-x ruler-mode
+#+END_SRC
+The variable that controls where the line will wrap is:
+#+BEGIN_SRC elisp
+M-x fill-column
+#+END_SRC
+To set the fill column variable you can use the function:
+#+BEGIN_SRC elisp
+  M-x set-fill-column
+#+END_SRC
 *** Rectangle commands
 For cutting rectangle, mark one corner of the rectangle go to the other end and do
 #+BEGIN_SRC elisp
@@ -86,3 +98,17 @@ To rename files in dired:
 #+END_SRC
 Dired go up a directory: ~^~
 Dired remove the delete flag: ~u~
+*** Tables
+Insert table:
+#+BEGIN_SRC elisp
+M-x table-insert
+#+END_SRC
+Insert row:
+#+BEGIN_SRC elisp
+M-x table-insert-row table-delete-row
+#+END_SRC
+Insert/delete column:
+#+BEGIN_SRC elisp
+  M-x table-insert-column
+  M-x table-delete-column
+#+END_SRC

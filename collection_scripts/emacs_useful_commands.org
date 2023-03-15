@@ -178,5 +178,3 @@ Amend a commit:
 magit-commit-amend
 #+END_SRC
 It is easier to go through the commit menu by pressing ~c~ and then selecting the amend option using ~a~.
-*** Emacs and buffers from reddit
-As a general principle, Emacs never deletes a buffer unless you explicitly tell it to do so, and this even goes for buffers that you might think of as "throw-away" buffers like the output of git diff. I don't know the reasoning for doing this, I would guess it has something to do with the fact that keeping things in memory is cheaper than waiting for a process to re-compute in the case you accidentally delete it, and it is better to let the user decide when the output of a process should be deleted.

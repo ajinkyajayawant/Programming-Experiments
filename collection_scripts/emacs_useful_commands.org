@@ -1,4 +1,4 @@
-** Emacs
+* Emacs
 Find the version:
 #+BEGIN_SRC elisp
 M-x emacs-version
@@ -49,7 +49,7 @@ To set the fill column variable you can use the function:
 #+BEGIN_SRC elisp
   M-x set-fill-column
 #+END_SRC
-*** Rectangle commands
+** Rectangle commands
 For cutting rectangle, mark one corner of the rectangle go to the other end and do
 #+BEGIN_SRC elisp
 M-x kill-rectangle
@@ -70,7 +70,7 @@ Replace rectangle:
 #+BEGIN_SRC elisp
 M-x string-rectangle
 #+END_SRC
-*** Dired
+** Dired
 Deleting backup files: Open dired, press ~​~​~ (flags all backup files), press ~x~, confirm
 Deleting backup files recursively:
 #+BEGIN_SRC elisp
@@ -98,7 +98,7 @@ To rename files in dired:
 #+END_SRC
 Dired go up a directory: ~^~
 Dired remove the delete flag: ~u~
-*** Tables
+** Tables
 Insert table:
 #+BEGIN_SRC elisp
 M-x table-insert
@@ -112,3 +112,71 @@ Insert/delete column:
   M-x table-insert-column
   M-x table-delete-column
 #+END_SRC
+** Calculator
+To start the calculator:
+#+BEGIN_SRC elisp
+M-x calc
+#+END_SRC
+For infix type of operations use apostrphe operator, for example: ~'2+3~
+** Magit
+To start magit run:
+#+BEGIN_SRC elisp
+  magit-status
+#+END_SRC
+To refresh the status, can use(g):
+#+BEGIN_SRC elisp
+  magit-refresh
+#+END_SRC
+To fold and unfold entries use ~TAB~
+To see all the remotes, open a split window and use the command(y):
+#+BEGIN_SRC elisp
+  magit-show-refs
+#+END_SRC
+To fetch use the command(f):
+#+BEGIN_SRC elisp
+magit-fetch
+#+END_SRC
+To pull use the command(F):
+#+BEGIN_SRC elisp
+magit-pull
+#+END_SRC
+To checkout a branch use the command(bound to b):
+#+BEGIN_SRC elisp
+magit-branch
+#+END_SRC
+To delete branches, whether local or remote, point at that branch and give the following command(b m):
+#+BEGIN_SRC elisp
+magit-branch-delete
+#+END_SRC
+See an ascii visualization of commits and branches:
+#+BEGIN_SRC elisp
+magit-log
+#+END_SRC
+To stage(add) changes, go the the corresponding unstaged entry and use the command(s):
+#+BEGIN_SRC elisp
+magit-stage
+#+END_SRC
+To unstage changes (u):
+#+BEGIN_SRC elisp
+magit-unstage
+#+END_SRC
+To commit the changes(c):
+#+BEGIN_SRC elisp
+magit-commit
+#+END_SRC
+After the magit-commit command you will first get the diff buffer. If that is okay, press the ~c~ key which will then take you to the commit buffer.
+After writing the text for the commit use the command:
+#+BEGIN_SRC elisp
+with-editor-finish
+#+END_SRC
+To save a stash use the following and follow up with the prompts(z):
+#+BEGIN_SRC elisp
+  magit-stash
+#+END_SRC
+Amend a commit:
+#+BEGIN_SRC elisp
+magit-commit-amend
+#+END_SRC
+It is easier to go through the commit menu by pressing ~c~ and then selecting the amend option using ~a~.
+*** Emacs and buffers from reddit
+As a general principle, Emacs never deletes a buffer unless you explicitly tell it to do so, and this even goes for buffers that you might think of as "throw-away" buffers like the output of git diff. I don't know the reasoning for doing this, I would guess it has something to do with the fact that keeping things in memory is cheaper than waiting for a process to re-compute in the case you accidentally delete it, and it is better to let the user decide when the output of a process should be deleted.

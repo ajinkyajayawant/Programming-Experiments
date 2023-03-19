@@ -178,3 +178,19 @@ Amend a commit:
 magit-commit-amend
 #+END_SRC
 It is easier to go through the commit menu by pressing ~c~ and then selecting the amend option using ~a~.
+** Tramp:
+To start tramp, do ~C-x C-f~ and type the filename as
+#+BEGIN_SRC elisp
+/ssh:<username>@<host>:
+#+END_SRC
+Once you press the colon after the hostname it will ask you for the password and will
+then connect you once you enter it.
+To end tramp connections use the following command:
+#+BEGIN_SRC elisp
+tramp-cleanup-connection
+#+END_SRC
+To run octave on the remote machine just give the
+#+BEGIN_SRC elisp
+M-x run-octave
+#+END_SRC
+command when current directory is one of the remote directories.

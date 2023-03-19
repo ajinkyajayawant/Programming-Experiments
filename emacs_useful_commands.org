@@ -178,7 +178,7 @@ Amend a commit:
 magit-commit-amend
 #+END_SRC
 It is easier to go through the commit menu by pressing ~c~ and then selecting the amend option using ~a~.
-** Tramp:
+** Tramp
 To start tramp, do ~C-x C-f~ and type the filename as
 #+BEGIN_SRC elisp
 /ssh:<username>@<host>:
@@ -194,3 +194,67 @@ To run octave on the remote machine just give the
 M-x run-octave
 #+END_SRC
 command when current directory is one of the remote directories.
+** Org mode
+The variable ~org-agenda-files~ holds the search paths for agenda files
+Add the current file to agenda search list:
+#+BEGIN_SRC elisp
+org-agenda-file-to-front
+#+END_SRC
+- To move between TODO, DONE, unlabeled states, use shift left and shift right
+If you want to see the TODO tasks from a list, use
+#+BEGIN_SRC elisp
+M-x org-show-todo-tree
+#+END_SRC
+- If you want to move back from the tree view to the full view, go to the header and press TAB
+- Pressing TAB at a header sycles between only header, header and all bullets, header all bullets and descriptions.
+- Doing Alt left and right moves the bullet one level deeper or outer.
+- Doing Alt up or down moves the task up or down in the list spatially.
+For opening the agenda view use the command:
+#+BEGIN_SRC elisp
+org-agenda
+#+END_SRC
+For selecting day/month/year view while in aenda mode use:
+#+BEGIN_SRC elisp
+v d/v m/v y
+#+END_SRC
+To enter a time stamp:
+#+BEGIN_SRC elisp
+org-time-stamp
+#+END_SRC
+- Deadline: You start seeing this early in the agenda view
+- Scheduled: You start seeing this in the agenda view after the set date
+- Plain timestamp: You don't see this in the agenda view after that date
+To have an am/pm timestamp in org-agenda, toggle the variable:
+#+BEGIN_SRC elisp
+org-agenda-timegrid-use-ampm
+#+END_SRC
+Once you have set the custom time format in the ~org-display-custom-times~ or ~org-time-stamp-custom-formats~ variables, you can toggle the viewing of the time format with the command ~org-toggle-time-stamp-overlays~.
+To set up or change priorities Use ~S-up~ or ~S-down~.
+To set a tag use the command:
+#+BEGIN_SRC elisp
+org-set-tags-command
+#+END_SRC
+To isolate all the tasks for a tag, do:
+#+BEGIN_SRC elisp
+M-x org-agenda m
+#+END_SRC
+To view agenda for specific week, go to the agenda view and type: ~v <week number> w~
+- To find the week number of the current week, look at the topmost line when in the org-agenda mode
+- When you use scheduled or deadline it automatically appears in your agenda till you mark it done. You don't need to mark it todo explicitly for it to appear.
+- The repeat in emacs works with end date if you do not have todo with it. So it just adds a calendar entry on that day. I think this would be ideal for birthdays.
+To cycle the folding states for the entire buffer, including putting the folder in the only-headings state:
+#+BEGIN_SRC elisp
+M-x org-global-cycle
+#+END_SRC
+- Cycling the entire buffer in the folding states can also be done with the shortcut: ~S-TAB~
+- To create tables in org mode simply make the title like ~| a | b | c |~ and use tab to align them every now and then
+- To start a reminder for a deadline different number of days earlier, add words like -5d. For example if the deadline is mentioned as DEADLINE: <2004-02-29 Sun>, edit it to DEADLINE: <2004-02-29 Sun -5d>.
+To see the agenda for the next <n> days, use the command:
+#+BEGIN_SRC elisp
+C-u <n> M-x org-agenda a
+#+END_SRC
+To repeat a subtree:
+#+BEGIN_SRC elisp
+org-clone-subtree-wth-time-shift
+#+END_SRC
+To match by tags, run the ~org-agenda~ command, press ~m~, and then enter the tag name with ~TAB~ for completion if needed.

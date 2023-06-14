@@ -50,18 +50,18 @@ To set the fill column variable you can use the function:
   M-x set-fill-column
 #+END_SRC
 ** Navigation
-Page up: M-v
-Page down: C-v
-One word forward: M-f
-One word backward: M-b
-Line up: C-p
-Line down: C-n
-Character forward: C-f
-Character backward: C-b
-Paragraph start: M-a
-Paragraph end: M-e
-Delete a word after the cursor: M-d
-Deleting the word before the cursor can either be done with C-Backspace or M-Backspace
+- Page up: M-v
+- Page down: C-v
+- One word forward: M-f
+- One word backward: M-b
+- Line up: C-p
+- Line down: C-n
+- Character forward: C-f
+- Character backward: C-b
+- Paragraph start: M-a
+- Paragraph end: M-e
+- Delete a word after the cursor: M-d
+- Deleting the word before the cursor can either be done with C-Backspace or M-Backspace
 ** Buffer menu
 Kill/save multiple buffers:
 #+BEGIN_SRC elisp

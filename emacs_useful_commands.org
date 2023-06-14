@@ -49,6 +49,27 @@ To set the fill column variable you can use the function:
 #+BEGIN_SRC elisp
   M-x set-fill-column
 #+END_SRC
+** Navigation
+Page up: M-v
+Page down: C-v
+One word forward: M-f
+One word backward: M-b
+Line up: C-p
+Line down: C-n
+Character forward: C-f
+Character backward: C-b
+Paragraph start: M-a
+Paragraph end: M-e
+Delete a word after the cursor: M-d
+Deleting the word before the cursor can either be done with C-Backspace or M-Backspace
+** Buffer menu
+Kill/save multiple buffers:
+#+BEGIN_SRC elisp
+M-x buffer-menu
+#+END_SRC
+Flag buffers for deletion using d
+Flag buffers for save using s
+Execute the commands with x
 ** Rectangle commands
 For cutting rectangle, mark one corner of the rectangle go to the other end and do
 #+BEGIN_SRC elisp
@@ -258,3 +279,13 @@ To repeat a subtree:
 org-clone-subtree-wth-time-shift
 #+END_SRC
 To match by tags, run the ~org-agenda~ command, press ~m~, and then enter the tag name with ~TAB~ for completion if needed.
+** Config
+Substitute selection
+#+BEGIN_SRC elisp
+(delete-selection-mode 1)
+#+END_SRC
+Display line numbers
+#+BEGIN_SRC elisp
+(global-linum-mode t)
+#+END_SRC
+Sometimes the zenburn theme may not be installed, install it with: M-x package-install <RET> zenburn-theme <RET>

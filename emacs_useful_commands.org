@@ -3,19 +3,6 @@ Find the version:
 #+BEGIN_SRC elisp
 M-x emacs-version
 #+END_SRC
-The cut, copy, and paste commands are the following in emacs:
-Cut:
-#+BEGIN_SRC elisp
-M-x kill-region
-#+END_SRC
-Copy:
-#+BEGIN_SRC elisp
-M-x kill-ring-save
-#+END_SRC
-Paste:
-#+BEGIN_SRC elisp
-M-x yank
-#+END_SRC
 Count words and lines:
 #+BEGIN_SRC elisp
 M-x count-words
@@ -62,15 +49,21 @@ To set the fill column variable you can use the function:
 - Paragraph end: M-e
 - Delete a word after the cursor: M-d
 - Deleting the word before the cursor can either be done with C-Backspace or M-Backspace
-** Buffer menu
-Kill/save multiple buffers:
+** Editing
+The cut, copy, and paste commands are the following in emacs:
+Cut:
 #+BEGIN_SRC elisp
-M-x buffer-menu
+M-x kill-region
 #+END_SRC
-Flag buffers for deletion using d
-Flag buffers for save using s
-Execute the commands with x
-** Rectangle commands
+Copy:
+#+BEGIN_SRC elisp
+M-x kill-ring-save
+#+END_SRC
+Paste:
+#+BEGIN_SRC elisp
+M-x yank
+#+END_SRC
+*** Rectangle commands
 For cutting rectangle, mark one corner of the rectangle go to the other end and do
 #+BEGIN_SRC elisp
 M-x kill-rectangle
@@ -91,6 +84,14 @@ Replace rectangle:
 #+BEGIN_SRC elisp
 M-x string-rectangle
 #+END_SRC
+** Buffer menu
+Kill/save multiple buffers:
+#+BEGIN_SRC elisp
+M-x buffer-menu
+#+END_SRC
+Flag buffers for deletion using d
+Flag buffers for save using s
+Execute the commands with x
 ** Dired
 Deleting backup files: Open dired, press ~​~​~ (flags all backup files), press ~x~, confirm
 Deleting backup files recursively:

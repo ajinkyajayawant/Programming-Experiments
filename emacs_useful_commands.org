@@ -1,17 +1,4 @@
 * Emacs
-Find the version:
-#+BEGIN_SRC elisp
-M-x emacs-version
-#+END_SRC
-Count words and lines:
-#+BEGIN_SRC elisp
-M-x count-words
-M-x count-lines
-#+END_SRC
-Show cursor position(especially column number) momentarily:
-#+BEGIN_SRC elisp
-M-x what-cursor-position
-#+END_SRC
 Open file in view/read only mode:
 #+BEGIN_SRC elisp
 M-x view-file
@@ -36,6 +23,24 @@ To set the fill column variable you can use the function:
 #+BEGIN_SRC elisp
   M-x set-fill-column
 #+END_SRC
+** Info
+Find the version:
+#+BEGIN_SRC elisp
+M-x emacs-version
+#+END_SRC
+Count words and lines:
+#+BEGIN_SRC elisp
+M-x count-words
+M-x count-lines
+#+END_SRC
+Show cursor position(especially column number) momentarily:
+#+BEGIN_SRC elisp
+M-x what-cursor-position
+#+END_SRC
+Find emacs uptime:
+#+BEGIN_SRC elisp
+M-x emacs-uptime
+#+END_SRC
 ** Navigation
 - Page up: M-v
 - Page down: C-v
@@ -49,6 +54,7 @@ To set the fill column variable you can use the function:
 - Paragraph end: M-e
 - Delete a word after the cursor: M-d
 - Deleting the word before the cursor can either be done with C-Backspace or M-Backspace
+- Command to go to a particular line: goto-line
 ** Editing
 The cut, copy, and paste commands are the following in emacs:
 Cut:

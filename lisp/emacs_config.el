@@ -145,3 +145,9 @@
 ;; For code folding
 (load-library "hideshow")
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
+
+;; For telling the name of the function we are inside
+;; when browsing
+(which-function-mode 1)
+(eval-after-load "which-func"
+  '(setq which-function-modes '(cc-mode c++-mode)))

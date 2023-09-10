@@ -150,4 +150,4 @@
 ;; when browsing
 (which-function-mode 1)
 (eval-after-load "which-func"
-  '(setq which-function-modes '(cc-mode c++-mode)))
+  '(setq which-function-modes '(c-mode c++-mode python-mode)))

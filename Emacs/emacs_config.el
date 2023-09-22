@@ -108,7 +108,8 @@
 
 ;; Disabling the C-Tab option in magit because it comflicts with the tab bar mode
 (with-eval-after-load 'magit-status
-  (define-key magit-status-mode-map (kbd "C-<tab>") nil))
+  (define-key magit-status-mode-map (kbd "C-<tab>") nil)
+  (define-key magit-refs-mode-map (kbd "C-<tab>") nil))
 
 ;; Want to preserve Ctrl tab functionality for tab bar movement
 (add-hook 'org-mode-hook

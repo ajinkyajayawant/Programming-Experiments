@@ -1,3 +1,6 @@
+-- Installing haskell on linux mint
+-- Go to the package manager and install haskell-platform
+
 -- Practising from the Haskell wiki book
 
 squareit x = x * x

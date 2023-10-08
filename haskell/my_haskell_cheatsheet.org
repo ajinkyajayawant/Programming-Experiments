@@ -26,3 +26,17 @@ list_rest = tail orig_list
 #+BEGIN_SRC haskell
 a_list = [i | i <- [1..100]]
 #+END_SRC
+
+* IO
+- Reading integer from line
+#+BEGIN_SRC haskell
+a <- readLn
+#+END_SRC
+- Print string to output
+#+BEGIN_SRC haskell
+putStrLn mystr
+#+END_SRC
+- IO action that does nothing, typically used inside conditional
+#+BEGIN_SRC haskell
+return ()
+#+END_SRC

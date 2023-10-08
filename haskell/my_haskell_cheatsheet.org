@@ -1,0 +1,28 @@
+* Conditionals
+- Assignment inside if conditional seems difficult. A more straightforward way is that the if conditional will have some value and you will assign it to a variable outside. For example
+#+BEGIN_SRC haskell
+a = if b>0
+then 2
+else 3
+#+END_SRC
+
+* Functions
+- Typical syntax of function input and return
+#+BEGIN_SRC haskell
+  f inp_1 inp_2 = output where
+  function body
+#+END_SRC
+
+* Lists
+- Getting the starting element of a list
+#+BEGIN_SRC haskell
+list_0 = head orig_list
+#+END_SRC
+- Getting the list with the head element stripped
+#+BEGIN_SRC haskell
+list_rest = tail orig_list
+#+END_SRC
+- List comprehension syntax is like the following
+#+BEGIN_SRC haskell
+a_list = [i | i <- [1..100]]
+#+END_SRC

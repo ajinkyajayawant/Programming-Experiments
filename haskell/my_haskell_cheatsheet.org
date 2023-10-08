@@ -26,6 +26,10 @@ list_rest = tail orig_list
 #+BEGIN_SRC haskell
 a_list = [i | i <- [1..100]]
 #+END_SRC
+- Creating a bigger list from two or more lists
+#+BEGIN_SRC haskell
+big_list = list_1 ++ list_2
+#+END_SRC
 
 * IO
 - Reading integer from line

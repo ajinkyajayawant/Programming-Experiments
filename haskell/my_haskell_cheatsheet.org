@@ -1,3 +1,14 @@
+* Basics
+- For finding the type of a variable
+#+BEGIN_SRC haskell
+  :type var_name
+  :t var_name
+#+END_SRC
+- Information about a ghci name
+#+BEGIN_SRC haskell
+:info ghci_name
+#+END_SRC
+
 * Conditionals
 - Assignment inside if conditional seems difficult. A more straightforward way is that the if conditional will have some value and you will assign it to a variable outside. For example
 #+BEGIN_SRC haskell
@@ -25,6 +36,10 @@ list_rest = tail orig_list
 - List comprehension syntax is like the following
 #+BEGIN_SRC haskell
 a_list = [i | i <- [1..100]]
+#+END_SRC
+- Filtering in list comprehension
+#+BEGIN_SRC haskell
+a_list = [i | i <- [1..100], i<50]
 #+END_SRC
 - Creating a bigger list from two or more lists
 #+BEGIN_SRC haskell

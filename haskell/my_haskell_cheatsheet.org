@@ -8,6 +8,14 @@
 #+BEGIN_SRC haskell
 :info ghci_name
 #+END_SRC
+** Indentation
+- Code which is part of some expression should be indented further in than the beginning of that expression
+- All grouped expressions must be exactly aligned.
+- When the beginning of an expression is not at the start of a line. In this case, it's safe to just indent further than the line containing the expression's beginning.
+- Since haskell uses very less parenthesis in genera, sometimes parenthesis might be needed where you wouldn't need it in C like languages. In the example below parenthsis around -1 are necessary.
+#+BEGIN_SRC haskell
+mySignum (-1) 1
+#+END_SRC
 
 * Conditionals
 - Assignment inside if conditional seems difficult. A more straightforward way is that the if conditional will have some value and you will assign it to a variable outside. For example
@@ -16,6 +24,7 @@ a = if b>0
 then 2
 else 3
 #+END_SRC
+- The haskell if else construct has to result in a value in both cases and, specifically, a value of the same type in both cases.
 
 * Functions
 - Typical syntax of function input and return
@@ -44,6 +53,10 @@ a_list = [i | i <- [1..100], i<50]
 - Creating a bigger list from two or more lists
 #+BEGIN_SRC haskell
 big_list = list_1 ++ list_2
+#+END_SRC
+- Making a list out of two same sized lits with new element the tuple of the corresponding elements of the lists.
+#+BEGIN_SRC haskell
+list_zipped = zip list_1 list_2
 #+END_SRC
 
 * IO

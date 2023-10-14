@@ -58,6 +58,21 @@ big_list = list_1 ++ list_2
 #+BEGIN_SRC haskell
 list_zipped = zip list_1 list_2
 #+END_SRC
+- Foldr mechanism
+#+BEGIN_SRC haskell
+foldr (#) v [x0, x1, ..., xn] = x0 # (x1 # (... (xn # v)))
+#+END_SRC
+- Foldl mechanism
+#+BEGIN_SRC haskell
+foldr (#) v [x0, x1, ..., xn] = (((v # x0) # x1) ...) # xn
+#+END_SRC
+- map function mechanism
+  #+BEGIN_SRC haskell
+    map fn [x0, x1, ..., xn]
+#+END_SRC
+#+BEGIN_SRC haskell
+    [fn(x0), fn(x1), ..., fn(xn)]
+#+END_SRC
 
 * IO
 - Reading integer from line

@@ -64,12 +64,13 @@ foldr (#) v [x0, x1, ..., xn] = x0 # (x1 # (... (xn # v)))
 #+END_SRC
 - Foldl mechanism
 #+BEGIN_SRC haskell
-foldr (#) v [x0, x1, ..., xn] = (((v # x0) # x1) ...) # xn
+foldl (#) v [x0, x1, ..., xn] = (((v # x0) # x1) ...) # xn
 #+END_SRC
 - map function mechanism
   #+BEGIN_SRC haskell
     map fn [x0, x1, ..., xn]
 #+END_SRC
+gives
 #+BEGIN_SRC haskell
     [fn(x0), fn(x1), ..., fn(xn)]
 #+END_SRC

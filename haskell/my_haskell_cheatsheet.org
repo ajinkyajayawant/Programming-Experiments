@@ -38,6 +38,10 @@ else 3
 #+BEGIN_SRC haskell
 list_0 = head orig_list
 #+END_SRC
+- Checking if the list is empty. This is better than using == [] since it doesn't require Eq defined on the elements of the list.
+#+BEGIN_SRC haskell
+null list_name
+#+END_SRC
 - Getting the list with the head element stripped
 #+BEGIN_SRC haskell
 list_rest = tail orig_list

@@ -13,6 +13,46 @@ emacsclient --create-frame --eval '(view-file "<filename>")'
 ```
 emacsclient --create-frame &
 ```
+* Replacing newline, enter newline character C-q C-j
+* Replace expressions - Suppose we have to replace a linebreak. This is basically an a newline at the end of a line to maintain fixed column width. `\(\ca\)C-q C-j \(\ca\)` replace with `\1 \2`. \(\) forms a group and in the replacing we can refer to the group by a number. Similarly if we want to replace three or more newlines with two newlines we can say replace `C-qC-jC-qC-j+` with `C-qC-jC-qC-j`
+* Add a whitespace after comma: `M-x query-replace-regexp ,\([[:graph:]]\) -> , \1`
+* Replace all occurences - `!`
+* Ido mode suggestion ignore- press C-f again
+* Delete lines containing a phrase - `Meta-x flush-lines`(It also has keep lines)
+* Reload file - `M-x revert-buffer`
+* `M-x list-packages` and `M-x package-list-packages` are different, wasn't able to install matlab mode from former, installed it with later
+* Mark package for install: `i`
+* Mark package for removal: `d`
+* Set mark - `C-space`
+* Incremental regexp search: `isearch-forward-regexp`. But for convenience `Ctrl+Alt+S` is better to make the same search again and again. `Ctrl+Alt+S` is a shortcut to the `isearch-forward-regexp` command.
+* You can hit `M-e` to edit the current search term. This runs the command `isearch-edit-string`. You can then type `C-s` to resume the search.
+* Center page around the cursor: `C-l`
+* Count number of lines in the page(before and after cursor): `C-x l`
+* Filter regexp: `M-x occur RET <regexp>` and then `M-x keep-lines`
+* Help on a `C-x` command: `C-x ?`
+* Open a new frame: `C-x 5 2`
+* Close the current frame: `C-x 5 0`
+* (Frames are the gui windows in emacs)
+* It makes sense to have split window inside a tab so we can have different locations views of the same file.
+* It makes sense to have different contexts in different frames. Like programming related stuff in a frame. Text notes in one frame. And so on.
+* Reload config file `M-x load-file`
+* If the tabbar crashes or disappears just enable it from `Options->Show/Hide->Tab Bar`
+* Switch to a different tab: `M-x tab-bar-switch-to-tab`
+* To close an emacs window opened by clicking, `C-x C-c`. To close a frame from opened from inside emacs `C-x 5 0`.
+* To see what all operations were done say after a file locally changed and emacs tried to revert, check out the Messages buffer. *Messages* buffer is also useful in general for installation and command logs.
+* Convert region to lowercase: `M-x downcase-region`
+* Find the value of a variable: `M-x describe-variable`
+* Repeat previously issued command: `M-x repeat` or `C-x z`
+* If I am trying to edit matlab files in emacs, just use the octave mode.
+* To see the edited portion after the last save: `diff-buffer-with-file`
+* Batch indent in python one tab to the right: `python-indent-shift-right`
+* Batch indent in python one tab to the left: `python-indent-shift-left`
+* When you are opening files, in the minibuffer sometimes there is one persistent suggestion that you do not want. If you just press enter that suggestion gets selected. If you don't want that suggestion, press `C-x C-f` again, and you would be in a prompt without the suggestion.
+* Command to increase font size in current buffer: `text-scale-increase`
+* Command to decrease font size in current buffer: `text-scale-decrease`
+* In the bar at the bottom you will see display like (Octave SP AC Abbrev Fill), the first word means the major mode and the later words mean the minor modes.
+* To diff files use `M-x ediff` if that doesn't work as expected think of installing vdiff
+* Run an command in the tiny space at the bottom: `M-: <command>`
 
 ## Info
 * Find the version: `M-x emacs-version`

@@ -33,11 +33,8 @@ emacsclient --create-frame &
 * Open a new frame: `C-x 5 2`
 * Close the current frame: `C-x 5 0`
 * (Frames are the gui windows in emacs)
-* It makes sense to have split window inside a tab so we can have different locations views of the same file.
 * It makes sense to have different contexts in different frames. Like programming related stuff in a frame. Text notes in one frame. And so on.
 * Reload config file `M-x load-file`
-* If the tabbar crashes or disappears just enable it from `Options->Show/Hide->Tab Bar`
-* Switch to a different tab: `M-x tab-bar-switch-to-tab`
 * To close an emacs window opened by clicking, `C-x C-c`. To close a frame from opened from inside emacs `C-x 5 0`.
 * To see what all operations were done say after a file locally changed and emacs tried to revert, check out the Messages buffer. *Messages* buffer is also useful in general for installation and command logs.
 * Convert region to lowercase: `M-x downcase-region`
@@ -53,6 +50,7 @@ emacsclient --create-frame &
 * In the bar at the bottom you will see display like (Octave SP AC Abbrev Fill), the first word means the major mode and the later words mean the minor modes.
 * To diff files use `M-x ediff` if that doesn't work as expected think of installing vdiff
 * Run an command in the tiny space at the bottom: `M-: <command>`
+* Command to find definitions from a keywords: `apropos`
 
 ## Info
 * Find the version: `M-x emacs-version`
@@ -79,11 +77,36 @@ M-x count-lines
 * Deleting the word before the cursor can either be done with `C-Backspace` or `M-Backspace`
 * Command to go to a particular line: `goto-line`
 
+## Directories and file
+```
+M-x create-directory
+M-x delete-directory
+M-x delete-file
+```
+
 ## Editing
 The cut, copy, and paste commands are the following in emacs:
 * Cut: `M-x kill-region`
 * Copy: `M-x kill-ring-save`
 * Paste: `M-x yank`
+
+## Keys
+* Find the description of a key in emacs. This is also useful to find the command corresponding to a shortcut: `M-x describe-key`
+* `(local-unset-key key)` removes the binding of the key from the current map.
+
+## Search
+* The search that gives the results one by one in emacs is the incremental search. Its commands start with isearch keyword. The shortcut to move to the next word in the incremental search is C-M-s.
+* To count the number of occurences of a pattern, use the command: `how-many`
+### Filtering
+For filtering the buffer based on patterns the following commands are useful:
+```
+flush-lines
+delete-matching-lines
+keep-lines
+delete-non-matching-lines
+occur
+loccur
+```
 
 ### Rectangle commands
 * For cutting rectangle, mark one corner of the rectangle go to the other end and do `M-x kill-rectangle`
@@ -107,6 +130,17 @@ The cut, copy, and paste commands are the following in emacs:
 * To rename files in dired: `%R <original file name> <new file name>`
 * Dired go up a directory: `^`
 * Dired remove the delete flag: `u`
+
+## Modes
+To find the name of the current major mode:
+```
+M-x describe-variable
+major-mode
+```
+
+## Term mode
+* If you change the input mode to `line-mode`, then regular Emacs commands work. You can switch to `line-mode` with `C-c C-j`. You can switch back to `char-mode` with `C-c C-k`.
+* Char-mode is used for the terminal behavior and line mode is used for emacs shortcuts
 
 ## Tables
 * Insert table: `M-x table-insert`
@@ -136,6 +170,13 @@ The cut, copy, and paste commands are the following in emacs:
 * To save a stash use the following and follow up with the prompts(z): `magit-stash`
 * Amend a commit: `magit-commit-amend`
 * It is easier to go through the commit menu by pressing `c` and then selecting the amend option using `a`.
+
+## Tab bar
+* If the tabbar crashes or disappears just enable it from `Options->Show/Hide->Tab Bar`
+* Switch to a different tab: `M-x tab-bar-switch-to-tab`
+* To move a tab to the right in the deafult tab bar mode use the command: `tab-bar-move-tab`
+* To move to the left use: `tab-bar-move-backward`
+* It makes sense to have split window inside a tab so we can have different locations views of the same file.
 
 ## Tramp
 * To start tramp, do `C-x C-f` and type the filename as `/ssh:<username>@<host>:`
@@ -174,8 +215,35 @@ The cut, copy, and paste commands are the following in emacs:
 * To see the agenda for the next <n> days, use the command: `C-u <n> M-x org-agenda a`
 * To repeat a subtree: `org-clone-subtree-wth-time-shift`
 * To match by tags, run the `org-agenda` command, press `m`, and then enter the tag name with `TAB` for completion if needed.
+* To display images inline in org mode, use the command: `org-toggle-inline-images` or `org-display-inline-images`
+* To resize images put the following in the config file: `(setq org-image-actual-width nil)`, and put the following just above the image link: `#+ATTR_ORG: :width <width in numbers>`
+* Make sure the path of the image is specified even if the image is in the same directory.
+* For showing the full text of the links, for example image links, use the command: `org-toggle-link-display`
 
 ## Config
 * Substitute selection `(delete-selection-mode 1)`
 * Display line numbers `(global-linum-mode t)`
 * Sometimes the zenburn theme may not be installed, install it with: `M-x package-install <RET> zenburn-theme <RET>`
+
+## Elpy
+* Specifying elpy to use a particular python: (setq elpy-rpc-python-command "python3")
+* Remove keybindings after loading a mode, example:
+```
+(eval-after-load "elpy"
+  '(cl-dolist (key '("M-<up>" "M-<down>" "M-<left>" "M-<right>"))
+     (define-key elpy-mode-map (kbd key) nil)))
+```
+* To get the details how elpy is configured in your system, use the command: elpy-config
+* To check whether flycheck is installed and working, do: M-x flycheck-verify-setup
+* Generate pylint configuration file if needed using: pylint --generate-rcfile > ~/.pylintrc
+* To have syntax highlighting in emacs elpy, use the command: pyvenv-activate
+### Flake8
+Create .flake8 file in the home directory for a global config. Sample config file below:
+```
+[flake8]
+ignore = H903, E266, D203, H306
+exclude = .git
+max-complexity = 10
+max_line_length = 120
+```
+Sometimes emacs doesn't check the config files unless you restart it.

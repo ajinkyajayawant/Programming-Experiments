@@ -51,6 +51,10 @@ emacsclient --create-frame &
 * To diff files use `M-x ediff` if that doesn't work as expected think of installing vdiff
 * Run an command in the tiny space at the bottom: `M-: <command>`
 * Command to find definitions from a keywords: `apropos`
+* To change the name of the emacs window: `set-frame-name`
+
+## Setup
+* Writing your config in `init.el` file inside `.emacs.d` is recommended. But keep in mind the `init.el` is not read if emacs finds a `.emacs` file.
 
 ## Info
 * Find the version: `M-x emacs-version`
@@ -123,6 +127,7 @@ loccur
 
 ## Dired
 * Deleting backup files: Open dired, press `~​~​~` (flags all backup files), press `x`, confirm
+* Find files using dired: `find-name-dired`
 * Deleting backup files recursively: `M-x find-name-dired` select directory, file pattern `~\*​~​~` and repeat the procedure above
 * Opening file from dired: `M-x dired` specify directory, press enter on a file.
 * Creating a new diretory in dired mode - Once in dired mode press `+`
@@ -224,6 +229,8 @@ major-mode
 * Substitute selection `(delete-selection-mode 1)`
 * Display line numbers `(global-linum-mode t)`
 * Sometimes the zenburn theme may not be installed, install it with: `M-x package-install <RET> zenburn-theme <RET>`
+### Local config
+* Per repository config can be written inside `.dir-locals.el` and it will apply to all files inside that directory.
 
 ## Elpy
 * Specifying elpy to use a particular python: (setq elpy-rpc-python-command "python3")
@@ -247,3 +254,10 @@ max-complexity = 10
 max_line_length = 120
 ```
 Sometimes emacs doesn't check the config files unless you restart it.
+
+## Flymake
+* Go to next error: `flymake-goto-next-error`
+* Go to previous error: `flymake-goto-prev-error`
+
+# Regular expressions replace
+* Convert variables with underscore name to camel case: `_\([a-z]\)` to `\,(upcase \1)`
